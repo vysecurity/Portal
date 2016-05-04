@@ -1,0 +1,385 @@
+﻿@model Portal.Models.GeneralModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" type="image/ico" href="~/Content/Images/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+    @Styles.Render("~/bundles/MetronicMadatoryCss")
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    @Styles.Render("~/assets/global/plugins/morris/morris.css")
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+
+    <!-- BEGIN PAGE STYLES -->
+    @Styles.Render("~/assets/admin/pages/css/tasks.css")
+    @Styles.Render("~/assets/global/plugins/fullcalendar/fullcalendar.min.css")
+
+    <!-- END PAGE STYLES -->
+
+    <!-- BEGIN THEME STYLES -->
+    @Styles.Render("~/bundles/ThemeStylesIndex")
+
+    @Scripts.Render("~/assets/global/plugins/jquery.min.js")
+    @Scripts.Render("~/bundles/JQueryIndex")
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+    @Scripts.Render("~/assets/global/plugins/morris/raphael-min.js")
+    @Scripts.Render("~/assets/global/plugins/jquery.sparkline.min.js")
+
+    @Scripts.Render("~/assets/global/plugins/moment.min.js")
+    @Scripts.Render("~/assets/global/plugins/fullcalendar/fullcalendar.min.js")
+    @Scripts.Render("~/assets/global/plugins/fullcalendar/lang-all.js")
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    @Scripts.Render("~/assets/global/scripts/metronic.js")
+    @Scripts.Render("~/assets/admin/layout3/scripts/layout.js")
+    @*   @Scripts.Render("~/assets/admin/layout3/scripts/demo.js")*@
+    @*   @Scripts.Render("~/assets/admin/pages/scripts/index3.js")*@
+    @Scripts.Render("~/assets/admin/pages/scripts/tasks.js")
+    @Scripts.Render("~/Content/Javascript/Dashboard.js")
+
+    @if (Model.MenuViewModel != null && Model.MenuViewModel.Menus != null && Model.MenuViewModel.Menus.Count != 0)
+    {
+        Model.MenuViewModel.Menus = Model.MenuViewModel.Menus.OrderBy(p => Convert.ToInt32(p.Order)).ToList();
+    }
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+    <!-- END THEME STYLES -->
+</head>
+<body style="background: #eff3f8">
+
+    @if (Model.MenuViewModel != null)
+    {
+        <!-- BEGIN HEADER -->
+        <div class="page-header" style="position: fixed; width: 100%; z-index: 10000;">
+            <!-- BEGIN HEADER TOP -->
+            <div class="page-header-top">
+                <div class="container">
+                    <!-- BEGIN LOGO -->
+                    <div class="page-logo">
+                        <img src="/@Model.PortalLogoURL" alt="logo" class="logo-default makehorizontalverticalfortheme1" id="littlelogo">
+                    </div>
+                    <a href="#" class="menu-toggler"></a>
+                    <!-- END LOGO -->
+                    @if (Model.MenuViewModel != null && Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.External.ToString())
+                    {
+                        if (Model.MenuViewModel.Languages.Count > 0 && String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromErrorPage))
+                        {
+                        <div class="top-menu">
+
+                            <ul class="nav navbar-nav pull-right">
+
+
+                                <li class="dropdown dropdown-user ">
+
+                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                        @{ var MainLanguage = Model.MenuViewModel.Languages.Where(p => p.NativeName.Equals(Model.ExtraViewModel.PortalLanguage)).FirstOrDefault(); }
+
+                                        <span class="langname langclicker" data-configurationid="@MainLanguage.ConfigurationId" data-basenavitename="@MainLanguage.BaseNativeName" data-baselangid="@MainLanguage.BaseLangId" data-langid="@MainLanguage.LangId" data-nativename="@MainLanguage.NativeName">@MainLanguage.Label</span>
+                                    </a>
+                                    @if (Model.MenuViewModel.Languages.Count > 1)
+                                    {
+                                        <ul class="dropdown-menu dropdown-menu-default">
+
+                                            @foreach (var item in Model.MenuViewModel.Languages)
+                                            {
+                                                if (item.NativeName != MainLanguage.NativeName)
+                                                {
+                                                    var href = String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromPersonel) ? @item.NativeName : "/Page/PersonelInfo/" + item.NativeName;
+                                                <li>
+                                                    <a href="@href">
+                                                        <span class="langnameelements langclicker" data-configurationid="@MainLanguage.ConfigurationId" data-basenavitename="@item.BaseNativeName" data-baselangid="@item.BaseLangId" data-langid="@item.LangId" data-nativename="@item.NativeName">@item.Label</span>
+
+                                                    </a>
+                                                </li>
+                                                }
+                                            }
+
+
+
+
+                                        </ul>
+                                    }
+                                </li>
+
+                            </ul>
+                        </div>
+                        }
+
+                    }
+                    @if (Model.MenuViewModel != null && Model.MenuViewModel.ComingFrom != Portal.Helper.Enums.MenuSource.External.ToString())
+                    {                      
+                        <!-- BEGIN TOP NAVIGATION MENU -->
+                        <div class="top-menu">
+
+                            <ul class="nav navbar-nav pull-right">
+
+                                @if (Model.MenuViewModel.Languages.Count > 0 && String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromErrorPage))
+                                {
+                                    <li class="dropdown dropdown-user ">
+
+                                        <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                            @{ var MainLanguage = Model.MenuViewModel.Languages.Where(p => p.NativeName.Equals(Model.ExtraViewModel.PortalLanguage)).FirstOrDefault(); }
+
+                                            <span class="langname langclicker" data-configurationid="@MainLanguage.ConfigurationId" data-basenavitename="@MainLanguage.BaseNativeName" data-baselangid="@MainLanguage.BaseLangId" data-langid="@MainLanguage.LangId" data-nativename="@MainLanguage.NativeName">@MainLanguage.Label</span>
+                                        </a>
+                                        @if (Model.MenuViewModel.Languages.Count > 1)
+                                        {
+                                            <ul class="dropdown-menu dropdown-menu-default">
+
+                                                @foreach (var item in Model.MenuViewModel.Languages)
+                                                {
+                                                    if (item.NativeName != MainLanguage.NativeName)
+                                                    {
+                                                        var href = String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromPersonel) ? @item.NativeName : "/Page/PersonelInfo/" + item.NativeName;
+                                                    
+                                                    <li>
+                                                        <a href="@href">
+                                                            <span class="langnameelements langclicker" data-configurationid="@MainLanguage.ConfigurationId" data-basenavitename="@item.BaseNativeName" data-baselangid="@item.BaseLangId" data-langid="@item.LangId" data-nativename="@item.NativeName">@item.Label</span>
+
+                                                        </a>
+                                                    </li>
+                                                    }
+                                                }
+
+
+
+
+                                            </ul>
+                                        }
+                                    </li>
+                                }
+                                <li class="droddown dropdown-separator">
+                                    <span class="separator"></span>
+                                </li>
+                                <!-- BEGIN USER LOGIN DROPDOWN -->
+                                <li class="dropdown dropdown-user dropdown-dark">
+                                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                        @if (Model.MenuViewModel.Picture != null && Model.MenuViewModel.Picture != String.Empty)
+                                        {
+                                            <img id="profiler" alt="" class="img-circle" src="data:image/png;base64,@Model.MenuViewModel.Picture">
+                                        }
+                                        else
+                                        {
+                                            <img alt="" id="profiler" class="img-circle" src="~/Content/Images/anonymous.png">
+                                        }
+
+                                        <span class="username username-hide-mobile">@Model.MenuViewModel.LoggedUser </span>
+                                    </a>
+
+                                    <ul class="dropdown-menu dropdown-menu-default">
+                                        <li>
+                                            <a href="#" class="personel">
+                                                <i class="icon-user "></i>@Model.LocalizationModel.MyProfile </a>
+                                        </li>
+
+                                        <li>
+                                            <a href="#" class="picturemenu">
+                                                <i class="icon-picture "></i>@Model.LocalizationModel.ProfilePicture</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/Dashboard/Logout">
+                                                <i class="icon-key"></i>@Model.LocalizationModel.LoggOff</a>
+                                        </li>
+
+
+                                    </ul>
+                                </li>
+                                <!-- END USER LOGIN DROPDOWN -->
+                            </ul>
+
+
+                        </div>
+                        <!-- END TOP NAVIGATION MENU -->
+                       
+                    }
+                </div>
+
+            </div>
+            <!-- END HEADER TOP -->
+            @if (Model.MenuViewModel != null && Model.MenuViewModel.Menus != null && Model.MenuViewModel.Menus.Count != 0)
+            {                
+                <!-- BEGIN HEADER MENU -->
+                <div class="page-header-menu">
+                    <div class="container">
+                        <div class="hor-menu ">
+                            <ul class="nav navbar-nav">
+                                @if (Model.MenuViewModel.Menus != null && Model.MenuViewModel.Menus.Count != 0)
+                                {
+                                    foreach (var item in Model.MenuViewModel.Menus)
+                                    {
+                                        String classname = String.Empty;
+                                        if (item.Order == "1")
+                                        {
+                                            classname = "";
+                                        }
+                                        if (item.IsSubMenu == false)
+                                        {
+
+                                            List<Portal.Models.Menu> submenus = new List<Portal.Models.Menu>();
+                                            submenus = Model.MenuViewModel.Menus.Where(p => p.ParentMenuId == item.MenuId).ToList();
+                                            submenus = submenus.OrderBy(p => Convert.ToInt32(p.Order)).ToList();
+@*iterate in submenus*@
+         
+                                            if (submenus.Count > 0)
+                                            {
+                                    <li class="menu-dropdown classic-menu-dropdown menuclick parentmenu" data-order="@item.Order">
+                                        @if (item.PageId == String.Empty)
+                                        {
+                                            <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="" data-isparent="true">@HttpUtility.HtmlDecode(@item.Name)<i class="fa fa-angle-down"></i>
+                                            </a>
+                                        }
+                                        else
+                                        {
+                                            String ParentPageHref = "/P/" + HttpUtility.HtmlDecode(item.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(item.UniqueName) + "/" + HttpUtility.HtmlDecode(Model.ExtraViewModel.PortalLanguage);
+                                            <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="@ParentPageHref" data-IsParent ="true" >@HttpUtility.HtmlDecode(@item.Name)<i class="fa fa-angle-down"></i>
+                                            </a>
+                                        }
+                                        <ul class="dropdown-menu">
+                                            @foreach (var submenusitem in @submenus)
+                                            {
+                                                List<Portal.Models.Menu> newsubmenus = Model.MenuViewModel.Menus.Where(p => p.ParentMenuId == submenusitem.MenuId).ToList();
+                                                if (newsubmenus.Count > 0)
+                                                {                     
+                                                <li class="@classname dropdown-submenu">
+                                                    <a href="#">@HttpUtility.HtmlDecode(@submenusitem.Name)</a>
+                                                    @Html.Partial("~/Views/Dashboard/SubMenu.cshtml", new ViewDataDictionary { { "menumodel", Model.MenuViewModel.Menus }, { "id", submenusitem.MenuId }, { "PortalLanguage", HttpUtility.HtmlDecode(Model.ExtraViewModel.PortalLanguage) } })
+                                                </li>
+                                                }
+                                                else
+                                                {
+                                                    if (submenusitem.ExternalLink == String.Empty)
+                                                    {
+                                                <li class="@classname menuclick" data-submenu="true">
+                                                    @if (Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.Internal.ToString() || Model.MenuViewModel.ComingFrom == null)
+                                                    {
+                                                        @Html.ActionLink(HttpUtility.HtmlDecode(submenusitem.Name), "BuildPage", new { NavigationId = HttpUtility.HtmlDecode(submenusitem.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(submenusitem.UniqueName), LangId = HttpUtility.HtmlDecode(Model.ExtraViewModel.PortalLanguage) })
+                                                    }
+                                                    else if (Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.External.ToString())
+                                                    {
+                                                        @Html.ActionLink(HttpUtility.HtmlDecode(item.Name), "ExternalBuildPage", new { NavigationId = HttpUtility.HtmlDecode(submenusitem.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(submenusitem.UniqueName), LangId = HttpUtility.HtmlDecode(Model.ExtraViewModel.PortalLanguage) })
+                                                    }
+                                                </li>
+                                                    }
+                                                    else
+                                                    {
+                                                <li class="@classname menuclick" data-order="@submenusitem.Order">
+                                                    <a href="@submenusitem.ExternalLink" target="_blank">@HttpUtility.HtmlDecode(@submenusitem.Name)</a>
+                                                </li>
+                                                    }
+                                                }
+                                            }
+                                        </ul>
+                                    </li>
+                                            }
+                                            else
+                                            {
+                                                if (item.ExternalLink == String.Empty)
+                                                {
+                                    <li class="@classname menuclick parentmenu" data-order="@item.Order">
+                                        @if (Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.Internal.ToString() || Model.MenuViewModel.ComingFrom == null)
+                                        {
+                          
+                                            @Html.ActionLink(HttpUtility.HtmlDecode(item.Name), "BuildPage", new { NavigationId = HttpUtility.HtmlDecode(item.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(item.UniqueName), LangId = HttpUtility.HtmlDecode(Model.ExtraViewModel.PortalLanguage) })
+                                        }
+                                        else if (Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.External.ToString())
+                                        {
+                                            @Html.ActionLink(HttpUtility.HtmlDecode(item.Name), "ExternalBuildPage", new { NavigationId = HttpUtility.HtmlDecode(item.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(item.UniqueName), LangId = HttpUtility.HtmlDecode(Model.ExtraViewModel.PortalLanguage) })
+                                        }
+                                    </li>
+                                                }
+                                                else
+                                                {
+                                    <li class="@classname menuclick parentmenu" data-order="@item.Order">
+                                        <a href="@item.ExternalLink" target="_blank">@HttpUtility.HtmlDecode(@item.Name)</a>
+                                    </li>
+                                                }
+                                            }
+                                        }
+
+                                    }
+                                }
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- END HEADER MENU -->
+                //}
+            }
+@*for external error pages black menu bar*@
+            @if (Model.MenuViewModel.Languages.Count > 0 && !String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromErrorPage) && Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.External.ToString() )
+            {
+                <div class="page-header-menu">
+                    <div class="container">
+                    </div>
+                </div>
+            }
+            @if (Model.ExtraViewModel.IsExternalWidget == "1" || !String.IsNullOrEmpty(Model.ExtraViewModel.IsEditFormInNewWindow))
+            {  
+                <div class="page-header-menu">
+                    <div class="container">
+                    </div>
+                </div>
+            }
+        </div>
+        <!-- END HEADER -->
+    }
+
+    <div class="page-content" style="padding-top: 145px; width: 100%; position: absolute;">
+
+        <div class="container">
+            @if (Convert.ToString(ViewContext.RouteData.Values["action"]) == "ExternalBuildPage")
+            {
+               @Scripts.Render("~/Content/Javascript/LoginPage.js")
+            }        
+             
+            @RenderSection("MyOtherJavascript", required: false)
+            @RenderBody()
+        </div>
+    </div>
+    <div class="page-footer" style="position: fixed; bottom: 0; width: 100%; height: 40px; z-index:1000">
+        <div class="container">
+            <a href="http://xrm.link" target="_blank">
+                @*<span>©Powered by xRMLink- @System.Diagnostics.FileVersionInfo.GetVersionInfo(System.Reflection.Assembly.GetAssembly(typeof(Portal.Controllers.PageController)).GetName().EscapedCodeBase.Replace("file:///", "")).ProductVersion</span>*@
+            </a>
+        </div>
+    </div>
+
+    <!-- ADD DYNAMİC SCRİPTS -->
+    @{ 
+        if (Model.MenuViewModel != null && Model.MenuViewModel.Scripts != null)
+        {
+            String[] ScriptArr = Model.MenuViewModel.Scripts.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+            foreach (var item in ScriptArr)
+            {
+                if (item != String.Empty)
+                {
+        @Scripts.Render(item)
+                }
+            }
+        }
+    }
+    @Styles.Render("~/Content/Css/CustomCss.css")
+    <!-- END DYNAMİC SCRİPTS -->
+
+</body>
+</html>

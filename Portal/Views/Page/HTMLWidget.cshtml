@@ -1,0 +1,12 @@
+﻿<script>
+    var htmlwidgetarray = [];        
+    var obj ={};
+    obj.Id = @Html.Raw("'" + ViewData["id"] +"'");
+    @*obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(ViewData["html"])); *@
+    obj.data = @Html.Raw(@Json.Encode(ViewData["html"]));
+    htmlwidgetarray.push(obj);
+
+</script>
+
+<div class="@ViewData["class"]" data-type="htmlwidget" data-id="@ViewData["id"]">
+</div>

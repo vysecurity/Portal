@@ -1,0 +1,35 @@
+﻿@model Portal.Models.GeneralModel
+
+@{ var item = Model.WidgetDataViewModel[0]; }
+
+<script>
+    var dataarray = [];
+</script>
+
+@{ 
+
+    Portal.Models.WidgetModel models = new Portal.Models.WidgetModel();
+    if (@ViewData["Personel"] != "1")
+    {
+        if (Request.Cookies[Request.Url.Authority + "usernameguidcookie"] != null)
+        {
+            models = ((List<Portal.Models.WidgetModel>)System.Web.HttpContext.Current.Application[Request.Cookies[Request.Url.Authority + "usernameguidcookie"].Values[0] + "widgets"]).Where(p => p.pagewidgetid.Equals(item.PageWidgetId)).FirstOrDefault();
+        }
+    }   
+}
+
+
+<script>  
+    var SubGridInitialValueArray = [];
+    var obj ={};
+    obj.Id = @Html.Raw("'" + @item.PageWidgetId + "'");
+    obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(models));
+    SubGridInitialValueArray.push(obj);
+</script>
+
+@Html.Raw("<div class='row'>")
+@Html.Partial("~/Views/Page/Form.cshtml", item, new ViewDataDictionary { { "class", "col-lg-12 col-md-12 col-sm-12 col-xs-12" }, { "Detail", "0" }, { "IsEditable","true" }, { "IsOwnerShip", "0" }, { "CustomDatePicker", "false" } , { "IscomingFromSubGrid", "true" }, {"LanguageModel" , Model.LocalizationModel}})
+@Html.Raw("</div>")
+
+@Html.Partial("~/Views/Page/RenderCommonScripts.cshtml");
+@Scripts.Render("~/Content/Javascript/SubGridForm.js") 

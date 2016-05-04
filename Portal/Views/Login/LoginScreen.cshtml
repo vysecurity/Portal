@@ -1,0 +1,43 @@
+﻿@model Portal.Models.GeneralModel
+
+<script>   
+    navigationid = @Html.Raw("'" + ViewContext.RouteData.Values["NavigationId"] + "'");
+
+</script>
+
+
+
+@{   
+    List<Portal.Models.Menu> mydata = Model.MenuViewModel.Menus;
+
+    if (mydata.Count > 0)
+    {
+        List<Portal.Models.Menu> defaultarea = mydata.OrderBy(p => Convert.ToInt32(p.Order)).ToList();
+        // Order'ı 1 olan ilk gelsin..
+        System.Web.HttpContext.Current.Application[defaultarea.FirstOrDefault().MenuId] = defaultarea.FirstOrDefault().MenuId;
+
+        var PortalInfo = Newtonsoft.Json.JsonConvert.DeserializeObject<Portal.PortalService.CrmServiceInformation>(Request.Cookies[Request.Url.Authority + "portalcookie"].Values[0]);
+        if (!String.IsNullOrEmpty(Convert.ToString(ViewContext.ViewData[PortalInfo.PortalId + "returnurl"])))
+        {
+            if ((Convert.ToString(ViewContext.ViewData[PortalInfo.PortalId + "returnurl"]).Contains("EWL") || Convert.ToString(ViewContext.ViewData[PortalInfo.PortalId + "returnurl"]).Contains("ewl"))
+               || (Convert.ToString(ViewContext.ViewData[PortalInfo.PortalId + "returnurl"]).Contains("IsComingFromExternal=1")))
+            {
+                Response.Redirect(Url.Action("ExternalBuildPage", "Page", new { NavigationId = defaultarea.FirstOrDefault().URLName.Replace(" ", "-") + "-" + defaultarea.FirstOrDefault().UniqueName, LangId = Model.ExtraViewModel.PortalLanguage }) + "?returnurl=" + ViewContext.ViewData[PortalInfo.PortalId + "returnurl"].ToString());
+            }
+            else
+            {
+                Response.Redirect(Url.Action("ExternalBuildPage", "Page", new { NavigationId = defaultarea.FirstOrDefault().URLName.Replace(" ", "-") + "-" + defaultarea.FirstOrDefault().UniqueName, LangId = Model.ExtraViewModel.PortalLanguage }));
+            }
+            
+        }
+        else
+        {
+            Response.Redirect(Url.Action("ExternalBuildPage", "Page", new { NavigationId = defaultarea.FirstOrDefault().URLName.Replace(" ", "-") + "-" + defaultarea.FirstOrDefault().UniqueName, LangId = Model.ExtraViewModel.PortalLanguage }));
+        }
+
+    }
+    
+      
+}
+
+

@@ -1,0 +1,71 @@
+﻿@model Portal.Models.GeneralModel
+
+
+
+@foreach (var item in Model.WidgetDataViewModel)
+{
+
+    item.WidgetId = Model.ExtraViewModel != null ? Model.ExtraViewModel.WidgetId : "99";
+    item.PageWidgetId = Model.ExtraViewModel != null ? Model.ExtraViewModel.PageWidgetId : "99";
+    @Html.Raw("<div class='row'>")
+    @Html.Partial("~/Views/Page/Form.cshtml", item, new ViewDataDictionary { { "class", "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+                                                                             { "Detail", "1" },
+                                                                             { "IsEditable", Model.ExtraViewModel.Editable },
+                                                                             { "IsOwnerShip", Model.ExtraViewModel.Ownership },
+                                                                             { "CustomDatePicker", "false" }, 
+                                                                             { "IscomingFromSubGrid", Model.ExtraViewModel.IsComingFromSubGrid }, 
+                                                                             { "LanguageModel", Model.LocalizationModel }, 
+                                                                             {"formopenstyle" ,  Model.ExtraViewModel.FormOpenType },
+                                                                             { "iscomingfromlookup" , Model.ExtraViewModel.IsComingLookupDetail },  })
+    @Html.Raw("</div>")
+
+    <script>     
+        
+        var dataarray = $.grep(dataarray, function(value) {
+            return value.LookupDetail != 1;
+        });
+
+        var dataarray = $.grep(dataarray, function(value) {
+            return value.SubGridDetail != 1;
+        });
+        var obj ={};
+        obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(item.FormDatas));
+        obj.IsVisible = @Html.Raw(Model.MenuViewModel.IsVisible);
+        obj.Id = @Html.Raw("'" + item.PageWidgetId + "'");
+        obj.EntityId = @Html.Raw("'" + @item.FormLayout.EntityId + "'");
+        obj.DateTime = @Html.Raw("'" + long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss"))+ "'");
+        @if(!String.IsNullOrEmpty(Model.ExtraViewModel.IsComingLookupDetail))
+        {
+            @Html.Raw("obj.LookupDetail = " )   @Html.Raw("'1';");
+        }
+         @if(!String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromSubGrid))
+        {
+            @Html.Raw("obj.SubGridDetail = " )   @Html.Raw("'1';");
+        }
+        dataarray.push(obj);    
+        
+       
+    </script> 
+}
+@Html.Partial("~/Views/Page/RenderCommonScripts.cshtml");
+@if (Model.WidgetDataViewModel.Count > 0)
+{
+    if (!String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromSubGrid))
+    {
+    
+    @Scripts.Render("~/Content/Javascript/SubGridForm.js") 
+    }
+    else if (!String.IsNullOrEmpty(Model.ExtraViewModel.IsComingLookupDetail))
+    {
+    @Scripts.Render("~/Content/Javascript/LookupDetail.js") 
+  
+    }
+    else
+    {
+    @Scripts.Render("~/Content/Javascript/EditForm.js") 
+    }
+}
+else
+{
+    @Scripts.Render("~/Content/Javascript/EditForm.js") 
+}

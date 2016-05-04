@@ -1,0 +1,284 @@
+﻿@model Portal.Models.GeneralModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Portal Dashboard</title>
+
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta content="" name="description" />
+    <meta content="" name="author" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <link rel="shortcut icon" type="image/ico" href="~/Content/Images/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <link href='https://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <!-- BEGIN GLOBAL MANDATORY STYLES -->
+    @Styles.Render("~/bundles/MetronicMadatoryCss")
+    <!-- END GLOBAL MANDATORY STYLES -->
+
+
+
+    <!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+    @Styles.Render("~/assets/global/plugins/morris/morris.css")
+    <!-- END PAGE LEVEL PLUGIN STYLES -->
+
+    <!-- BEGIN PAGE STYLES -->
+    @Styles.Render("~/assets/admin/pages/css/tasks.css")
+    @Styles.Render("~/assets/global/plugins/fullcalendar/fullcalendar.min.css")
+
+    <!-- END PAGE STYLES -->
+
+    <!-- BEGIN THEME STYLES -->
+    @Styles.Render("~/bundles/DarkThemeStyle")
+
+    @Scripts.Render("~/assets/global/plugins/jquery.min.js")
+    @Scripts.Render("~/bundles/JQueryIndex")
+    <!-- END CORE PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+
+    @Scripts.Render("~/assets/global/plugins/morris/raphael-min.js")
+    @Scripts.Render("~/assets/global/plugins/jquery.sparkline.min.js")
+
+    @Scripts.Render("~/assets/global/plugins/moment.min.js")
+    @Scripts.Render("~/assets/global/plugins/fullcalendar/fullcalendar.min.js")
+    @Scripts.Render("~/assets/global/plugins/fullcalendar/lang-all.js")
+
+    <!-- END PAGE LEVEL PLUGINS -->
+
+    <!-- BEGIN PAGE LEVEL SCRIPTS -->
+    @Scripts.Render("~/assets/global/scripts/metronic.js")
+    @Scripts.Render("~/assets/admin/layout5/scripts/layout.js")
+    @*   @Scripts.Render("~/assets/admin/layout3/scripts/demo.js")*@
+    @*   @Scripts.Render("~/assets/admin/pages/scripts/index3.js")*@
+    @Scripts.Render("~/assets/admin/pages/scripts/tasks.js")
+    @Scripts.Render("~/Content/Javascript/Dashboard.js")
+
+    @if (Model.MenuViewModel != null && Model.MenuViewModel.Menus != null && Model.MenuViewModel.Menus.Count != 0)
+    {
+        Model.MenuViewModel.Menus = Model.MenuViewModel.Menus.OrderBy(p => Convert.ToInt32(p.Order)).ToList();
+    }
+    <!-- END PAGE LEVEL SCRIPTS -->
+
+    <!-- END THEME STYLES -->
+</head>
+<body>
+    <div class="wrapper">
+        @if (Model.MenuViewModel != null)
+        {
+            <!-- BEGIN HEADER -->
+            <!-- BEGIN MAIN LAYOUT -->
+     
+            <!-- Header BEGIN -->
+            <header class="page-header">
+                <nav class="navbar mega-menu" role="navigation">
+                    <div class="container-fluid">
+                        <div class="page-logo">
+                            <img src="" alt="logo" class="logo-default makehorizontalvertical" id="littlelogo">
+                        </div>
+                        <a href="javascript:;" class="menu-toggler"></a>
+                        @if (Model.MenuViewModel != null && Model.MenuViewModel.ComingFrom != Portal.Helper.Enums.MenuSource.External.ToString())
+                        {
+                            <!-- BEGIN TOP NAVIGATION MENU -->
+                            <div class="topbar-actions">
+
+                                <div class="btn-group-img btn-group">
+                                    <!-- BEGIN USER LOGIN DROPDOWN -->
+                                    <button type="button" class="btn btn-sm dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                                        @if (Model.MenuViewModel.Picture != null && Model.MenuViewModel.Picture != String.Empty)
+                                        {
+                                            <img id="profiler" alt="" class="img-circle" src="data:image/png;base64,@Model.MenuViewModel.Picture">
+                                        }
+                                        else
+                                        {
+                                            <img alt="" id="profiler" class="img-circle" src="~/Content/Images/anonymous.png">
+                                        }
+                                        <span class="username username-hide-mobile">@Model.MenuViewModel.LoggedUser </span>
+                                    </button>
+
+
+                                    <ul class="dropdown-menu-v2" role="menu">
+                                        <li>
+                                            <a href="/Page/PersonelInfo">
+                                                <i class="icon-user"></i>@Model.LocalizationModel.MyProfile </a>
+                                        </li>
+                                        <li>
+                                            <a href="#">
+                                                <i class="icon-picture picturemenu"></i>@Model.LocalizationModel.ProfilePicture</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/Dashboard/Logout">
+                                                <i class="icon-key"></i>@Model.LocalizationModel.LoggOff</a>
+                                        </li>
+
+                                    </ul>
+
+                                </div>
+                                <!-- END USER LOGIN DROPDOWN -->
+
+
+
+                            </div>
+                            <!-- END TOP NAVIGATION MENU -->
+                        }
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        @if (Model.MenuViewModel != null && Model.MenuViewModel.Menus != null && Model.MenuViewModel.Menus.Count != 0)
+                        {
+                            if ((Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.External.ToString() && Model.MenuViewModel.Menus.Count > 1)
+                              || Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.Internal.ToString()
+                              || Model.MenuViewModel.ComingFrom == null)
+                            {
+                            <div class="nav-collapse collapse navbar-collapse navbar-responsive-collapse">
+                                <ul class="nav navbar-nav text-uppercase">
+                                    @if (Model.MenuViewModel.Menus != null && Model.MenuViewModel.Menus.Count != 0)
+                                    {
+                                        foreach (var item in Model.MenuViewModel.Menus)
+                                        {
+                                            String classname = String.Empty;
+                                            if (item.Order == "1")
+                                            {
+                                                classname = "";
+                                            }
+                                            if (item.IsSubMenu == false)
+                                            {
+
+                                                List<Portal.Models.Menu> submenus = new List<Portal.Models.Menu>();
+                                                submenus = Model.MenuViewModel.Menus.Where(p => p.ParentMenuId == item.MenuId).ToList();
+                                                submenus = submenus.OrderBy(p => Convert.ToInt32(p.Order)).ToList();
+
+                                                if (submenus.Count > 0)
+                                                {
+                                                    String ClickClass = String.Empty;
+                                                    if (item.PageId != String.Empty)
+                                                    {
+                                                        ClickClass = "menuclick";
+                                                    }
+                                        <li class="dropdown dropdown-fw @ClickClass" data-order="@item.Order">
+                                            @if (item.PageId == String.Empty)
+                                            {
+                                                <a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="javascript:;" data-isparent="true">@HttpUtility.HtmlDecode(@item.Name)<i class="fa fa-angle-down"></i>
+                                                </a>
+                                            }
+                                            else
+                                            {
+                                                //String ParentPageHref = "/Page/BuildPage/" + item.MenuId;
+@*<a data-hover="megamenu-dropdown" data-close-others="true" data-toggle="dropdown" href="@ParentPageHref" data-IsParent ="true" >@HttpUtility.HtmlDecode(@item.Name)<i class="fa fa-angle-down"></i>
+                                                </a>*@
+                                            }
+                                            <ul class="dropdown-menu dropdown-menu-fw">
+                                                @foreach (var submenusitem in @submenus)
+                                                {
+                                                    List<Portal.Models.Menu> newsubmenus = Model.MenuViewModel.Menus.Where(p => p.ParentMenuId == submenusitem.MenuId).ToList();
+                                                    if (newsubmenus.Count > 0)
+                                                    {                     
+                                                    <li class="@classname menuclick">
+                                                        <a href="#">@HttpUtility.HtmlDecode(@submenusitem.Name)</a>
+                                                        @Html.Partial("~/Views/Dashboard/SubMenu.cshtml", new ViewDataDictionary { { "menumodel", Model.MenuViewModel.Menus }, { "id", submenusitem.MenuId } })
+                                                    </li>
+                                                    }
+                                                    else
+                                                    {
+                                                        if (submenusitem.ExternalLink == String.Empty)
+                                                        {
+                                                    <li class="@classname menuclick" data-submenu="true">
+                                                        @if (Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.Internal.ToString() || Model.MenuViewModel.ComingFrom == null)
+                                                        {
+                                                            @Html.ActionLink(HttpUtility.HtmlDecode(submenusitem.Name), "BuildPage", new { NavigationId = HttpUtility.HtmlDecode(submenusitem.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(submenusitem.UniqueName) })
+                                                        }
+                                                        else if (Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.External.ToString())
+                                                        {
+                                                            @Html.ActionLink(HttpUtility.HtmlDecode(item.Name), "ExternalBuildPage", new { NavigationId = HttpUtility.HtmlDecode(submenusitem.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(submenusitem.UniqueName) })
+                                                        }
+                                                    </li>
+                                                        }
+                                                        else
+                                                        {
+                                                    <li class="@classname menuclick" data-order="@submenusitem.Order">
+                                                        <a href="@submenusitem.ExternalLink" target="_blank">@HttpUtility.HtmlDecode(@submenusitem.Name)</a>
+                                                    </li>
+                                                        }
+                                                    }
+                                                }
+                                            </ul>
+                                        </li>
+                                                }
+                                                else
+                                                {
+                                                    if (item.ExternalLink == String.Empty)
+                                                    {
+                                        <li class="@classname menuclick" data-order="@item.Order">
+                                            @if (Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.Internal.ToString() || Model.MenuViewModel.ComingFrom == null)
+                                            {
+                                                @Html.ActionLink(HttpUtility.HtmlDecode(item.Name), "BuildPage", new { NavigationId = HttpUtility.HtmlDecode(item.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(item.UniqueName) })
+                                            }
+                                            else if (Model.MenuViewModel.ComingFrom == Portal.Helper.Enums.MenuSource.External.ToString())
+                                            {
+                                                @Html.ActionLink(HttpUtility.HtmlDecode(item.Name), "ExternalBuildPage", new { NavigationId = HttpUtility.HtmlDecode(item.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(item.UniqueName) })
+                                            }
+                                        </li>
+                                                    }
+                                                    else
+                                                    {
+                                        <li class="@classname menuclick" data-order="@item.Order">
+                                            <a href="@item.ExternalLink" target="_blank">@HttpUtility.HtmlDecode(@item.Name)</a>
+                                        </li>
+                                                    }
+                                                }
+                                            }
+                                        }
+
+                                    }
+
+                                </ul>
+                            </div>
+                            }
+
+                        }
+                        <!-- END NAVBAR COLLAPSE -->
+                    </div>
+                    <!--/container-->
+                </nav>
+            </header>
+            <!-- Header END -->
+
+            <!-- Page Content BEGIN -->
+
+       
+            <!-- END HEADER -->
+        }
+        <div class="container-fluid" style="background-color: #2f373e">
+
+            <div class="page-content">
+                @if (Convert.ToString(ViewContext.RouteData.Values["action"]) == "ExternalBuildPage")
+                {
+                    @Scripts.Render("~/Content/Javascript/LoginPage.js")
+                }
+
+                @RenderSection("MyOtherJavascript", required: false)
+                @RenderBody()
+            </div>
+        </div>
+
+    </div>
+    <!-- ADD DYNAMİC SCRİPTS -->
+    @{ 
+        if (Model.MenuViewModel != null && Model.MenuViewModel.Scripts != null)
+        {
+            String[] ScriptArr = Model.MenuViewModel.Scripts.Split(new string[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+            foreach (var item in ScriptArr)
+            {
+                if (item != String.Empty)
+                {
+        @Scripts.Render(item)
+                }
+            }
+        }
+    }
+    <!-- END DYNAMİC SCRİPTS -->
+
+</body>
+</html>

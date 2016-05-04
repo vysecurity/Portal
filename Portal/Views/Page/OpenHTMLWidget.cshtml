@@ -1,0 +1,35 @@
+﻿@model Portal.Models.GeneralModel
+
+
+@section MyOtherJavascript {
+
+    @Styles.Render("~/Content/ExternalLibraries/JqueryDateTimePicker/jquery.datetimepicker.css")
+    @Styles.Render("~/Content/Css/CustomCss.css")
+    @Styles.Render("~/assets/global/plugins/select2/select2.css")
+    @Styles.Render("~/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css")
+    @Styles.Render("~/Content/ExternalLibraries/SignaturePad/signature-pad.css")
+    @Styles.Render("~/assets/global/plugins/bootstrap-toastr/toastr.min.css")
+
+    @Scripts.Render("~/assets/global/plugins/select2/select2.min.js")
+    @Scripts.Render("~/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js")
+    @Scripts.Render("~/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js")
+    @Scripts.Render("~/Content/ExternalLibraries/JqueryDateTimePicker/jquery.datetimepicker.js")
+    @Scripts.Render("~/Content/ExternalLibraries/SignaturePad/signature_pad.js")
+    @Scripts.Render("~/Content/Javascript/GeneralFunctions.js")
+
+    @Scripts.Render("~/Content/Javascript/BuildPage.js")
+    @Scripts.Render("~/assets/global/plugins/bootstrap-toastr/toastr.min.js")
+
+}
+
+<script>
+    var htmlwidgetarray = [];        
+    var obj ={};
+    obj.Id = @Html.Raw("'" + Model.ExtraViewModel.WidgetId +"'");
+    obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.WidgetDataViewModel.FirstOrDefault().HTML));
+    htmlwidgetarray.push(obj);
+
+</script>
+
+<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" data-type="htmlwidget" data-id="@Model.ExtraViewModel.WidgetId">
+</div>

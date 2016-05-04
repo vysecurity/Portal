@@ -1,0 +1,33 @@
+﻿@{ Portal.Models.LocalizationModel LocalizationModel = (Portal.Models.LocalizationModel)ViewData["LanguageModel"];
+
+}
+
+<div id="responsive_lookupdetail_@ViewData["id"]" class="modal fade modal-scroll responsivelookupdetail" tabindex="-1" aria-hidden="true" data-replace="true">
+    <div class="modal-dialog modal-full">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">@LocalizationModel.LookupHeader</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                        <div class="portlet light">
+                            <div class="portlet-body divlookupcontent">
+                            </div>
+                        </div>
+                        <!-- END EXAMPLE TABLE PORTLET-->
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" data-dismiss="modal" class="btn default">@LocalizationModel.Close</button>
+                @*<button type="button" class="btn green">Save changes</button>*@
+            </div>
+        </div>
+    </div>
+</div>
+
+

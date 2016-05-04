@@ -1,0 +1,407 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="xRMLinkDev" Class="ConfigurationSqlDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=192.168.1.123;Initial Catalog=xRMLinkDev;Persist Security Info=True;User ID=sa" SettingsObjectName="Azure.Properties.Settings" SettingsPropertyName="xRMLinkDevConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.p4crm_portalroleconditionBase" Member="p4crm_portalroleconditionBases">
+    <Type Name="p4crm_portalroleconditionBase">
+      <Column Name="p4crm_portalroleconditionId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwningBusinessUnit" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_portalroleconditionname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_attributelogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_attributevalue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_entitylogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_filtertype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_portalroleid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="p4crm_portalroleBase_p4crm_portalroleconditionBase" Member="p4crm_portalroleBase" ThisKey="p4crm_portalroleid" OtherKey="p4crm_portalroleId" Type="p4crm_portalroleBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_filterBase" Member="p4crm_filterBases">
+    <Type Name="p4crm_filterBase">
+      <Column Name="p4crm_filterId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_filtername" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_islookupfilter" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_staticfilter" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_filtertype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_dynamicfiltertype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_operator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_Value" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_lookupoperator" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_lookuprelationattributevalue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_pagewidgetid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_entitylogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_operatorlogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_attributelogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_usecustomfetch" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_lookupattributelogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_lookupattributeentitylogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_customfetchxml" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="p4crm_lookuprelationattributelogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_lookupoperatorlogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="p4crm_pagewidgetBase_p4crm_filterBase" Member="p4crm_pagewidgetBase" ThisKey="p4crm_pagewidgetid" OtherKey="p4crm_pagewidgetId" Type="p4crm_pagewidgetBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_navigationBase" Member="p4crm_navigationBases">
+    <Type Name="p4crm_navigationBase">
+      <Column Name="p4crm_navigationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_navigationname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_externallink" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_isexternal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_portalid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_parentnavigationid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_pageid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_uniqueid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_urlname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="p4crm_navigationBase_p4crm_navigationBase" Member="p4crm_navigationBases" ThisKey="p4crm_navigationId" OtherKey="p4crm_parentnavigationid" Type="p4crm_navigationBase" />
+      <Association Name="p4crm_navigationBase_p4crm_p4crm_portalrole_p4crm_navigationBase" Member="p4crm_p4crm_portalrole_p4crm_navigationBases" ThisKey="p4crm_navigationId" OtherKey="p4crm_navigationid" Type="p4crm_p4crm_portalrole_p4crm_navigationBase" />
+      <Association Name="p4crm_navigationBase_p4crm_navigationBase" Member="p4crm_navigationBase1" ThisKey="p4crm_parentnavigationid" OtherKey="p4crm_navigationId" Type="p4crm_navigationBase" IsForeignKey="true" />
+      <Association Name="p4crm_pageBase_p4crm_navigationBase" Member="p4crm_pageBase" ThisKey="p4crm_pageid" OtherKey="p4crm_pageId" Type="p4crm_pageBase" IsForeignKey="true" />
+      <Association Name="p4crm_portalBase_p4crm_navigationBase" Member="p4crm_portalBase" ThisKey="p4crm_portalid" OtherKey="p4crm_portalId" Type="p4crm_portalBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_p4crm_portal_p4crm_configurationBase" Member="p4crm_p4crm_portal_p4crm_configurationBases">
+    <Type Name="p4crm_p4crm_portal_p4crm_configurationBase">
+      <Column Name="p4crm_p4crm_portal_p4crm_configurationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="p4crm_portalid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="p4crm_configurationid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="p4crm_configurationBase_p4crm_p4crm_portal_p4crm_configurationBase" Member="p4crm_configurationBase" ThisKey="p4crm_configurationid" OtherKey="p4crm_configurationId" Type="p4crm_configurationBase" IsForeignKey="true" />
+      <Association Name="p4crm_portalBase_p4crm_p4crm_portal_p4crm_configurationBase" Member="p4crm_portalBase" ThisKey="p4crm_portalid" OtherKey="p4crm_portalId" Type="p4crm_portalBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_p4crm_portalrole_p4crm_navigationBase" Member="p4crm_p4crm_portalrole_p4crm_navigationBases">
+    <Type Name="p4crm_p4crm_portalrole_p4crm_navigationBase">
+      <Column Name="p4crm_p4crm_portalrole_p4crm_navigationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="p4crm_portalroleid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="p4crm_navigationid" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Association Name="p4crm_navigationBase_p4crm_p4crm_portalrole_p4crm_navigationBase" Member="p4crm_navigationBase" ThisKey="p4crm_navigationid" OtherKey="p4crm_navigationId" Type="p4crm_navigationBase" IsForeignKey="true" />
+      <Association Name="p4crm_portalroleBase_p4crm_p4crm_portalrole_p4crm_navigationBase" Member="p4crm_portalroleBase" ThisKey="p4crm_portalroleid" OtherKey="p4crm_portalroleId" Type="p4crm_portalroleBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_pagewidgetBase" Member="p4crm_pagewidgetBases">
+    <Type Name="p4crm_pagewidgetBase">
+      <Column Name="p4crm_pagewidgetId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_pagewidgetname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_pageid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_widgetid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_entitylogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_order" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_width" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_language" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_calculatedfieldcolor" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_isclickable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_calculatedfieldformid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_gridtype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_recordsperpage" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_openingwidgettype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_gridrowclick" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_formwidgetid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_formopenstyle" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_iseditable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_useownership" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_widgettypevalue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_description" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_aftercreateredirecttoeditpage" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_percentageoftotalwidth" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_issignature" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_chartfontcolor" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="p4crm_chartfontsize" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="p4crm_chartfontfamily" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="p4crm_is3d" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_chartlegendposition" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_ishandwrite" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_labeltext" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="p4crm_pagewidgetBase_p4crm_filterBase" Member="p4crm_filterBases" ThisKey="p4crm_pagewidgetId" OtherKey="p4crm_pagewidgetid" Type="p4crm_filterBase" />
+      <Association Name="p4crm_pagewidgetBase_p4crm_pagewidgetsubgridslookupsBase" Member="p4crm_pagewidgetsubgridslookupsBases" ThisKey="p4crm_pagewidgetId" OtherKey="p4crm_pagewidgetid" Type="p4crm_pagewidgetsubgridslookupsBase" />
+      <Association Name="p4crm_pagewidgetBase_p4crm_pagewidgetvariableBase" Member="p4crm_pagewidgetvariableBases" ThisKey="p4crm_pagewidgetId" OtherKey="p4crm_pagewidgetid" Type="p4crm_pagewidgetvariableBase" />
+      <Association Name="p4crm_widgetBase_p4crm_pagewidgetBase" Member="p4crm_widgetBase" ThisKey="p4crm_widgetid" OtherKey="p4crm_widgetId" Type="p4crm_widgetBase" IsForeignKey="true" />
+      <Association Name="p4crm_widgetBase_p4crm_pagewidgetBase1" Member="p4crm_widgetBase1" ThisKey="p4crm_calculatedfieldformid" OtherKey="p4crm_widgetId" Type="p4crm_widgetBase" IsForeignKey="true" />
+      <Association Name="p4crm_widgetBase_p4crm_pagewidgetBase2" Member="p4crm_widgetBase2" ThisKey="p4crm_formwidgetid" OtherKey="p4crm_widgetId" Type="p4crm_widgetBase" IsForeignKey="true" />
+      <Association Name="p4crm_pageBase_p4crm_pagewidgetBase" Member="p4crm_pageBase" ThisKey="p4crm_pageid" OtherKey="p4crm_pageId" Type="p4crm_pageBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_pagewidgetsubgridslookupsBase" Member="p4crm_pagewidgetsubgridslookupsBases">
+    <Type Name="p4crm_pagewidgetsubgridslookupsBase">
+      <Column Name="p4crm_pagewidgetsubgridslookupsId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_pagewidgetsubgridslookupsname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_pagewidgetid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_entitylogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_type" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_subgridviewid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_subgridnewformid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_subgridupdateformid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_subgridlogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_subgridid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_lookupentitylogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_lookuplogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_lookupbehaviour" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_lookupopenformid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_editable" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="p4crm_pagewidgetsubgridslookupsBase_p4crm_pagewidgetvariableBase" Member="p4crm_pagewidgetvariableBases" ThisKey="p4crm_pagewidgetsubgridslookupsId" OtherKey="p4crm_subgridsid" Type="p4crm_pagewidgetvariableBase" />
+      <Association Name="p4crm_pagewidgetBase_p4crm_pagewidgetsubgridslookupsBase" Member="p4crm_pagewidgetBase" ThisKey="p4crm_pagewidgetid" OtherKey="p4crm_pagewidgetId" Type="p4crm_pagewidgetBase" IsForeignKey="true" />
+      <Association Name="p4crm_widgetBase_p4crm_pagewidgetsubgridslookupsBase" Member="p4crm_widgetBase" ThisKey="p4crm_lookupopenformid" OtherKey="p4crm_widgetId" Type="p4crm_widgetBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_pagewidgetvariableBase" Member="p4crm_pagewidgetvariableBases">
+    <Type Name="p4crm_pagewidgetvariableBase">
+      <Column Name="p4crm_pagewidgetvariableId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_pagewidgetvariablename" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_attributelogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_customertype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_entitylogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_initialvalue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_isstatic" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_lookuplogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_lookupnamevalue" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_pagewidgetid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_attributetype" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_subgridsid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Association Name="p4crm_pagewidgetBase_p4crm_pagewidgetvariableBase" Member="p4crm_pagewidgetBase" ThisKey="p4crm_pagewidgetid" OtherKey="p4crm_pagewidgetId" Type="p4crm_pagewidgetBase" IsForeignKey="true" />
+      <Association Name="p4crm_pagewidgetsubgridslookupsBase_p4crm_pagewidgetvariableBase" Member="p4crm_pagewidgetsubgridslookupsBase" ThisKey="p4crm_subgridsid" OtherKey="p4crm_pagewidgetsubgridslookupsId" Type="p4crm_pagewidgetsubgridslookupsBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_portalroleBase" Member="p4crm_portalroleBases">
+    <Type Name="p4crm_portalroleBase">
+      <Column Name="p4crm_portalroleId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_portalrolename" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_portalid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_entitylogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="p4crm_portalroleBase_p4crm_portalroleconditionBase" Member="p4crm_portalroleconditionBases" ThisKey="p4crm_portalroleId" OtherKey="p4crm_portalroleid" Type="p4crm_portalroleconditionBase" />
+      <Association Name="p4crm_portalroleBase_p4crm_p4crm_portalrole_p4crm_navigationBase" Member="p4crm_p4crm_portalrole_p4crm_navigationBases" ThisKey="p4crm_portalroleId" OtherKey="p4crm_portalroleid" Type="p4crm_p4crm_portalrole_p4crm_navigationBase" />
+      <Association Name="p4crm_portalBase_p4crm_portalroleBase" Member="p4crm_portalBase" ThisKey="p4crm_portalid" OtherKey="p4crm_portalId" Type="p4crm_portalBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_cacheBase" Member="p4crm_cacheBases">
+    <Type Name="p4crm_cacheBase">
+      <Column Name="ID" Type="System.String" DbType="NVarChar(100) NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="Data" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="CacheType" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_widgetBase" Member="p4crm_widgetBases">
+    <Type Name="p4crm_widgetBase">
+      <Column Name="p4crm_widgetId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_widgetname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_widgetuniqueid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_widgettype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_configurationid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_usecustomfilter" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_customfilter" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="p4crm_entitynamelogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_viewid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_calculatedfieldlogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_calculatedfieldtype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_calendarlogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_calendarstartdatelogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_calendarenddatelogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_formid" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_formupdatefetchxml" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="p4crm_htmlsource" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="p4crm_isprofile" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_signatureenabled" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_htmlwidgetportalid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_charttypecode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_serieslogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_horizontallogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_series0_logicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_series1_logicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_series2_logicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_series3_logicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_series4_logicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_series0aggregate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="p4crm_series1aggregate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="p4crm_series2aggregate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="p4crm_series3aggregate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="p4crm_series4aggregate" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="p4crm_legendcolor0" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="p4crm_legendcolor1" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="p4crm_legendcolor2" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="p4crm_legendcolor3" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="p4crm_legendcolor4" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="p4crm_urlattributelogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_linkedwidgetisgrid" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_linkedwidgetisexternal" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_linkedwidgetexternalurltext" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="p4crm_fieldwidgetfield1" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_fieldwidgetfield2" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_fieldwidgetfield3" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_notificationattributename" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="p4crm_widgetBase_p4crm_pagewidgetBase" Member="p4crm_pagewidgetBases" ThisKey="p4crm_widgetId" OtherKey="p4crm_widgetid" Type="p4crm_pagewidgetBase" />
+      <Association Name="p4crm_widgetBase_p4crm_pagewidgetBase1" Member="p4crm_pagewidgetBases1" ThisKey="p4crm_widgetId" OtherKey="p4crm_calculatedfieldformid" Type="p4crm_pagewidgetBase" />
+      <Association Name="p4crm_widgetBase_p4crm_pagewidgetBase2" Member="p4crm_pagewidgetBases2" ThisKey="p4crm_widgetId" OtherKey="p4crm_formwidgetid" Type="p4crm_pagewidgetBase" />
+      <Association Name="p4crm_widgetBase_p4crm_pagewidgetsubgridslookupsBase" Member="p4crm_pagewidgetsubgridslookupsBases" ThisKey="p4crm_widgetId" OtherKey="p4crm_lookupopenformid" Type="p4crm_pagewidgetsubgridslookupsBase" />
+      <Association Name="p4crm_widgetBase_p4crm_portalBase" Member="p4crm_portalBases" ThisKey="p4crm_widgetId" OtherKey="p4crm_widgetid" Type="p4crm_portalBase" />
+      <Association Name="p4crm_configurationBase_p4crm_widgetBase" Member="p4crm_configurationBase" ThisKey="p4crm_configurationid" OtherKey="p4crm_configurationId" Type="p4crm_configurationBase" IsForeignKey="true" />
+      <Association Name="p4crm_portalBase_p4crm_widgetBase" Member="p4crm_portalBase" ThisKey="p4crm_htmlwidgetportalid" OtherKey="p4crm_portalId" Type="p4crm_portalBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_configurationBase" Member="p4crm_configurationBases">
+    <Type Name="p4crm_configurationBase">
+      <Column Name="p4crm_configurationId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_configurationname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_username" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_password" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_domain" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_organizationalurl" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_discoveryurl" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_isifd" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_crmtype" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_isoffice365" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_region" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_usessl" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_organizationname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_developmentserviceurl" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_testserviceurl" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_productionserviceurl" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="p4crm_configurationBase_p4crm_p4crm_portal_p4crm_configurationBase" Member="p4crm_p4crm_portal_p4crm_configurationBases" ThisKey="p4crm_configurationId" OtherKey="p4crm_configurationid" Type="p4crm_p4crm_portal_p4crm_configurationBase" />
+      <Association Name="p4crm_configurationBase_p4crm_widgetBase" Member="p4crm_widgetBases" ThisKey="p4crm_configurationId" OtherKey="p4crm_configurationid" Type="p4crm_widgetBase" />
+      <Association Name="p4crm_configurationBase_p4crm_portalBase" Member="p4crm_portalBases" ThisKey="p4crm_configurationId" OtherKey="p4crm_configurationid" Type="p4crm_portalBase" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_pageBase" Member="p4crm_pageBases">
+    <Type Name="p4crm_pageBase">
+      <Column Name="p4crm_pageId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_pagename" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_customscript" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="p4crm_createlayout" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_layoutxml" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="p4crm_portalid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_usercache" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_isheaderzoneactive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_mainzonewidth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_isleftzoneactive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_leftzonewidth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_isrightzoneactive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="p4crm_rightzonewidth" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_isfooterzoneactive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="p4crm_pageBase_p4crm_navigationBase" Member="p4crm_navigationBases" ThisKey="p4crm_pageId" OtherKey="p4crm_pageid" Type="p4crm_navigationBase" />
+      <Association Name="p4crm_pageBase_p4crm_pagewidgetBase" Member="p4crm_pagewidgetBases" ThisKey="p4crm_pageId" OtherKey="p4crm_pageid" Type="p4crm_pagewidgetBase" />
+      <Association Name="p4crm_portalBase_p4crm_pageBase" Member="p4crm_portalBase" ThisKey="p4crm_portalid" OtherKey="p4crm_portalId" Type="p4crm_portalBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.p4crm_portalBase" Member="p4crm_portalBases">
+    <Type Name="p4crm_portalBase">
+      <Column Name="p4crm_portalId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="CreatedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ModifiedBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="CreatedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="ModifiedOnBehalfBy" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="OwnerId" Type="System.Guid" DbType="UniqueIdentifier NOT NULL" CanBeNull="false" />
+      <Column Name="statecode" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="statuscode" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_portalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_entitylogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_passwordlogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_userlogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_portalcreatedby" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_portalmodifiedby" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_configurationid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_customscript" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="p4crm_widgetid" Type="System.Guid" DbType="UniqueIdentifier" CanBeNull="true" />
+      <Column Name="p4crm_domainurl" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_language" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_theme" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="p4crm_portalbaselanguage" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="p4crm_mainlanguage" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_emailalias" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_portalemaillogicalname" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="emailaddress" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="p4crm_portallogourl" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Association Name="p4crm_portalBase_p4crm_navigationBase" Member="p4crm_navigationBases" ThisKey="p4crm_portalId" OtherKey="p4crm_portalid" Type="p4crm_navigationBase" />
+      <Association Name="p4crm_portalBase_p4crm_p4crm_portal_p4crm_configurationBase" Member="p4crm_p4crm_portal_p4crm_configurationBases" ThisKey="p4crm_portalId" OtherKey="p4crm_portalid" Type="p4crm_p4crm_portal_p4crm_configurationBase" />
+      <Association Name="p4crm_portalBase_p4crm_portalroleBase" Member="p4crm_portalroleBases" ThisKey="p4crm_portalId" OtherKey="p4crm_portalid" Type="p4crm_portalroleBase" />
+      <Association Name="p4crm_portalBase_p4crm_widgetBase" Member="p4crm_widgetBases" ThisKey="p4crm_portalId" OtherKey="p4crm_htmlwidgetportalid" Type="p4crm_widgetBase" />
+      <Association Name="p4crm_portalBase_p4crm_pageBase" Member="p4crm_pageBases" ThisKey="p4crm_portalId" OtherKey="p4crm_portalid" Type="p4crm_pageBase" />
+      <Association Name="p4crm_configurationBase_p4crm_portalBase" Member="p4crm_configurationBase" ThisKey="p4crm_configurationid" OtherKey="p4crm_configurationId" Type="p4crm_configurationBase" IsForeignKey="true" />
+      <Association Name="p4crm_widgetBase_p4crm_portalBase" Member="p4crm_widgetBase" ThisKey="p4crm_widgetid" OtherKey="p4crm_widgetId" Type="p4crm_widgetBase" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>

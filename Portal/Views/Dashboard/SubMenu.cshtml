@@ -1,0 +1,50 @@
+﻿@model Portal.Models.MenuModel
+
+@{ 
+    List<Portal.Models.Menu> mydata = ViewData["menumodel"] as List<Portal.Models.Menu>;
+
+    List<Portal.Models.Menu> submenus = new List<Portal.Models.Menu>();
+    submenus = mydata.Where(p => p.ParentMenuId == ViewData["id"].ToString()).ToList();                          
+}
+
+@if (submenus.Count == 0)
+{
+    List<Portal.Models.Menu> menu = mydata.Where(p => p.MenuId == ViewData["id"].ToString()).ToList();  
+    <ul class="dropdown-menu">
+        <li class=" ">
+            <a href="#">@menu[0].Name </a>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="dropdown-menu">
+        @foreach (var item in submenus)
+        {
+            List<Portal.Models.Menu> newsubmenus = mydata.Where(p => p.ParentMenuId == item.MenuId).ToList();
+            if (newsubmenus.Count > 0)
+            {
+   
+            <li class=" dropdown-submenu">
+                <a href="#">@item.Name</a>
+                @foreach (var newsubmenusitem in newsubmenus)
+                {			          
+                    @Html.Partial("~/Views/Dashboard/SubMenu.cshtml", new ViewDataDictionary { { "menumodel", mydata }, { "id", newsubmenusitem.MenuId } })             
+             
+                }
+            </li>
+    
+            }
+            else
+            {
+                String ParentPageHref = "/P/" + HttpUtility.HtmlDecode(item.URLName.Replace(" ", "-")) + "-" + HttpUtility.HtmlDecode(item.UniqueName) + "/" + HttpUtility.HtmlDecode(ViewData["PortalLanguage"].ToString());
+            
+            <li class="menuclick">
+                <a href="@ParentPageHref">@item.Name </a>
+            </li>
+         
+            }
+        }
+    </ul>
+}
+

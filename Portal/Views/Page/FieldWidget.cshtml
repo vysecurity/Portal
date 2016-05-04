@@ -1,0 +1,25 @@
+﻿@model Portal.Models.WidgetDataModel
+
+<div class="@ViewData["class"]">
+    <div class="dashboard-stat @Model.Color" style="height:120px !important">
+        <div class="visual">
+            <i class="fa fa-info-circle"></i>
+        </div>
+        <div class="details">
+            <div class="desc" style="margin-top: 9px;">
+                @Model.FieldInfo.Field1Text : @Model.FieldInfo.Field1Value
+            </div>
+
+
+            <div class="desc" style="margin-top: 7px;">
+                @Model.FieldInfo.Field2Text : @Model.FieldInfo.Field2Value
+            </div>
+
+            <div class="desc" style="margin-top: 7px;">
+                @Model.FieldInfo.Field3Text : @Model.FieldInfo.Field3Value
+            </div>
+        </div>
+        <span class="more">-</span>
+    </div>
+</div>
+

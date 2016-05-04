@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Localization>
+  <lang code="1055">
+    <!--Login -->
+    <LoginHeader>Giriş</LoginHeader>
+    <LoginUserName>Kullanıcı Adı</LoginUserName>
+    <LoginPassword>Şifre</LoginPassword>
+    <LoginButton>Giriş Yap</LoginButton>
+    <ForgotPassword>Şifremi Unuttum?</ForgotPassword>
+    <ForgotPasswordMessage>Şifrenizi almak için portal kullanıcı veya emailinizi giriniz.</ForgotPasswordMessage>
+    <UserNameOrEmail>Kullanıcı Adı veya Email</UserNameOrEmail>
+    <Submit>Gönder</Submit>
+    <Back>Geri</Back>
+    <Actions>Işlemler</Actions>
+    <!--Login -->
+    <Profile>Profilim</Profile>
+    <ChangeProfilePicture>Profil Resmini Değiştir</ChangeProfilePicture>
+    <LogOut>Çıkış Yap</LogOut>
+    <Update>Güncelle</Update>
+    <Browse>Gözat</Browse>
+    <ChangePictureHeader>Resmi Değiştir</ChangePictureHeader>
+    <ExportExcel>Excele Aktar</ExportExcel>
+    <!--Jquery DataTable Parameters Start-->
+    <Prev>Önceki</Prev>
+    <Next>Sonraki</Next>
+    <SearchValue>Arama</SearchValue>
+    <EmptyTable>Kayıt Bulunamadı</EmptyTable>
+    <InfoEmpty>Kayıt Yok</InfoEmpty>
+    <!--_START_ , _END_ , _TOTAL_ THESE ARE PARAMETRIC TYPES OF JQUERY DATATABLE-->
+    <TotalRecords>_TOTAL_ Kayıttan _START_ - _END_ Arası Kayıtlar</TotalRecords>
+    <!--Jquery DataTable Parameters End-->
+    <Close>Kapat</Close>
+    <Save>Kaydet</Save>
+    <Open>Aç</Open>
+    <SearchMessage>Arama Tamamlandı!</SearchMessage>
+    <SuccessMessageHeader>Başarılı</SuccessMessageHeader>
+    <SearchCriteria>Arama yapmak için en az 3 karakter girin</SearchCriteria>
+    <ErrorMessageHeader>Hata</ErrorMessageHeader>
+    <UpdateMessage>Kayıt Güncellenmiştir!</UpdateMessage>
+    <ErrorUpdateMessage>Kayıt Güncelleme Sırasında Hata Oluştu</ErrorUpdateMessage>
+    <CreateMessage>Kayıt Yaratılmıştır!</CreateMessage>
+    <ErrorCreateMessage>Kayıt Yaratılma Sırasında Hata Oluştu</ErrorCreateMessage>
+    <UpdateImageMessage>Resim Güncellenmiştir!</UpdateImageMessage>
+    <UnSupportedFileFormat>Destekleyen Dosya Formatı</UnSupportedFileFormat>
+    <!--Notes Button Start -->
+    <BrowseButtonForNote>Gözat</BrowseButtonForNote>
+    <AttachButtonForNote>Ekle</AttachButtonForNote>
+    <NewButtonForNote>Yeni</NewButtonForNote>
+    <DeleteButtonForNote>Sil</DeleteButtonForNote>
+    <AddAttachment>Ek sisteme kaydedilmiştir.</AddAttachment>
+    <DeleteAttachment>Ek sistemdensilinmiştir.</DeleteAttachment>
+    <NoAttachmentForDelete>Silinecek Dosya Bulunamamıştır</NoAttachmentForDelete>
+    <NoAttachmentForInsert>Dosya Bulunamamıştır</NoAttachmentForInsert>
+    <!--Notes Button End -->
+    <Required> Alanı Zorunludur!</Required>
+    <LookupHeader>Arama Görünümü</LookupHeader>
+    <!--SubGrid -->
+    <SubGridContent>İlişki kayıtlarını görmek için lütfen kayıt yaratınız</SubGridContent>
+    <NewRecordFromSubGrid>Yeni</NewRecordFromSubGrid>
+    <NoNewSubGridForm>İlişkili kaydı eklemek için gerekli form tanımı bulunamadı</NoNewSubGridForm>
+    <NoUpdateSubGridForm>İlişkili kaydı güncellemek için gerekli form tanımı bulunamadı</NoUpdateSubGridForm>
+    <!--SubGrid  -->
+    <MoreRecords>Detay Görüntüle</MoreRecords>
+    <ErrorLoginMessage>Kullanıcı adı veya Şifre Hatalı</ErrorLoginMessage>
+    <SuccessLoginMessage>Sisteme Giriş Yapılıyor,Lütfen Bekleyiniz</SuccessLoginMessage>
+    <EmptyLoginMessage>Lütfen Kullanıcı adı ve Şifrenizi Giriniz.</EmptyLoginMessage>
+    <EmptyEmailMessage>Lütfen Kullanıcızı Adı veya Email alanını doldurunuz</EmptyEmailMessage>
+    <NoUserMessage>Girdiğiniz değere ait kullanıcı yada email bulunamadı</NoUserMessage>
+    <SuccessMailMessage>Mailiniz Gönderilmiştir</SuccessMailMessage>
+    <NotFoundErrorMessageHeader>Oops! Kayboldunuz</NotFoundErrorMessageHeader>
+    <NotFoundErrorMessageDetail>Aradığınız Sayfayı Bulamadık</NotFoundErrorMessageDetail>
+    <ReturnHome>Ana Sayfa</ReturnHome>
+    <GeneralSuccessMessage>Işlemiz Gerçekleşmiştir</GeneralSuccessMessage>
+    <Notifications>Duyurular</Notifications>
+  </lang>
+  <lang code="1033">
+    <!--Login -->
+    <LoginHeader>Sign In</LoginHeader>
+    <LoginUserName>Username</LoginUserName>
+    <LoginPassword>Password</LoginPassword>
+    <LoginButton>LOGIN</LoginButton>
+    <ForgotPassword>Forgot Password?</ForgotPassword>
+    <ForgotPasswordMessage>Enter your username or email to be emailed a password reminder</ForgotPasswordMessage>
+    <UserNameOrEmail>Username or Email</UserNameOrEmail>
+    <Submit>Submit</Submit>
+    <Back>Back</Back>
+    <Actions>Actions</Actions>
+    <!--Login -->
+    <Profile>My Profile</Profile>
+    <ChangeProfilePicture>Change Profile Picture</ChangeProfilePicture>
+    <LogOut>LogOut</LogOut>
+    <Update>Update</Update>
+    <Browse>Browse</Browse>
+    <ChangePictureHeader>Change Picture</ChangePictureHeader>
+    <ExportExcel>Excel-Export</ExportExcel>
+    <!--Jquery DataTable Parameters Start-->
+    <Prev>Prev</Prev>
+    <Next>Next</Next>
+    <SearchValue>Search</SearchValue>
+    <EmptyTable>No data available</EmptyTable>
+    <InfoEmpty>Showing 0 to 0 of 0 entries</InfoEmpty>
+    <!--_START_ , _END_ , _TOTAL_ THESE ARE PARAMETRIC TYPES OF JQUERY DATATABLE-->
+    <TotalRecords>Showing _START_ to _END_ of _TOTAL_  records</TotalRecords>
+    <!--Jquery DataTable Parameters End-->
+    <Close>Close</Close>
+    <Save>Save</Save>
+    <Open>Open</Open>
+    <SuccessMessageHeader>Success</SuccessMessageHeader>
+    <SearchMessage>Search Succeeded</SearchMessage>
+    <SearchCriteria>Minimum 3 characters required for search.</SearchCriteria>
+    <ErrorMessageHeader>Error</ErrorMessageHeader>
+    <UpdateMessage>Record Updated</UpdateMessage>
+    <ErrorUpdateMessage>Error while updating record</ErrorUpdateMessage>
+    <CreateMessage>Record Created!</CreateMessage>
+    <ErrorCreateMessage>Error while creating record</ErrorCreateMessage>
+    <UpdateImageMessage>Image Updated!</UpdateImageMessage>
+    <UnSupportedFileFormat>Unsupported File Format</UnSupportedFileFormat>
+    <!--Notes Button Start -->
+    <BrowseButtonForNote>Browse</BrowseButtonForNote>
+    <AttachButtonForNote>Attach</AttachButtonForNote>
+    <NewButtonForNote>New</NewButtonForNote>
+    <DeleteButtonForNote>Delete</DeleteButtonForNote>
+    <AddAttachment>Attachment Added!</AddAttachment>
+    <DeleteAttachment>Attachment Deleted!</DeleteAttachment>
+    <NoAttachmentForDelete>No file found for delete</NoAttachmentForDelete>
+    <NoAttachmentForInsert>No file is found</NoAttachmentForInsert>
+    <!--Notes Button End -->
+    <Required> Is Required!</Required>
+    <LookupHeader>Lookup View</LookupHeader>
+    <!--SubGrid Content Start -->
+    <SubGridContent>Create the record for enable this content</SubGridContent>
+    <NewRecordFromSubGrid>New</NewRecordFromSubGrid>
+    <NoNewSubGridForm>There is no Subgrid Create form in configuration</NoNewSubGridForm>
+    <NoUpdateSubGridForm>There is no Subgrid Update form in configuration</NoUpdateSubGridForm>
+    <!--SubGrid Content End -->
+    <MoreRecords>ViewMore</MoreRecords>
+    <ErrorLoginMessage>Wrong username or password</ErrorLoginMessage>
+    <SuccessLoginMessage>Login Succeeded...Please wait..</SuccessLoginMessage>
+    <EmptyLoginMessage>Enter username and password.</EmptyLoginMessage>
+    <EmptyEmailMessage>Please Fill in your Username or Email</EmptyEmailMessage>
+    <NoUserMessage>No such username or emailaddress found!</NoUserMessage>
+    <SuccessMailMessage>Mail sent to email address on record.</SuccessMailMessage>
+    <NotFoundErrorMessageHeader>Oops! You're lost</NotFoundErrorMessageHeader>
+    <NotFoundErrorMessageDetail>We can not find the page you're looking for.</NotFoundErrorMessageDetail>
+    <ReturnHome>Return Home</ReturnHome>
+    <GeneralSuccessMessage>Process Succeeded</GeneralSuccessMessage>
+    <Notifications>Notifications</Notifications>
+  </lang>
+</Localization>

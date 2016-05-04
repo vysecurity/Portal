@@ -1,0 +1,18 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Şifremi Unuttum</title>
+</head>
+<body>
+<p>Sayın @portaluser[hs_name] @portaluser[hs_surname]</p>
+
+https://turkcell-test.xrm.link adresi için Şifre Hatırlatma bilgileriniz aşağıdaki gibidir;
+<p>Kullanıcı Adı: @portaluser[emailaddress]<br>
+Şifre: @portaluser[hs_password]</p>
+
+<p>İlginiz için teşekkür ederiz.</p>
+
+<b>Turkcell / İnsan Kaynakları Müdürlüğü </b>
+
+</body>
+</html>

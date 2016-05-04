@@ -1,0 +1,131 @@
+﻿@model Portal.Models.GeneralModel
+
+@section MyOtherJavascript {
+
+    @{Random rnd = new Random();
+      int RandomNumber = rnd.Next(1, 5000000);}
+
+    @Styles.Render("~/assets/global/plugins/select2/select2.css")
+    @Styles.Render("~/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css")
+    @Styles.Render("~/Content/ExternalLibraries/SignaturePad/signature-pad.css")
+    @Styles.Render("~/assets/global/plugins/bootstrap-toastr/toastr.min.css")
+
+    @Scripts.Render("~/assets/global/plugins/counterup/jquery.waypoints.min.js")
+    @Scripts.Render("~/assets/global/plugins/counterup/jquery.counterup.min.js")
+    @Scripts.Render("~/assets/global/plugins/select2/select2.min.js")
+    @Scripts.Render("~/assets/global/plugins/datatables/media/js/jquery.dataTables.js")
+    @Scripts.Render("~/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js")
+    @Scripts.Render("~/Content/ExternalLibraries/ExportExcel/tableExport.js")
+    @Scripts.Render("~/Content/ExternalLibraries/ExportExcel/base64.js")
+    @Scripts.Render("~/Content/ExternalLibraries/download.js")
+    @Scripts.Render("~/assets/global/plugins/bootstrap-toastr/toastr.min.js")
+    @Scripts.Render("~/Content/ExternalLibraries/SignaturePad/signature_pad.js")
+    @Scripts.Render("~/assets/admin/pages/scripts/ui-extended-modals.js")
+    @Scripts.Render("~/assets/Charts/amcharts.js")
+    @Scripts.Render("~/assets/Charts/pie.js")
+    @Scripts.Render("~/assets/Charts/serial.js")
+    @Scripts.Render("~/assets/Charts/funnel.js")
+    @Scripts.Render("~/Content/Javascript/GeneralFunctions.js" + "?ver=" + @RandomNumber)
+    @Scripts.Render("~/Content/Javascript/BuildPage.js" + "?ver=" + @RandomNumber)
+    
+    @Html.Partial("~/Views/Page/RenderCommonScripts.cshtml")
+}
+
+@Html.Partial("~/Views/Dashboard/PictureUpload.cshtml")
+
+@{ var WidgetHasHeaderZones = Model.WidgetDataViewModel.Where(p => p.Zone.Equals("1")).ToList();
+   var WidgetHasMainZones = Model.WidgetDataViewModel.Where(p => p.Zone.Equals("2")).ToList();
+   var WidgetHasLeftZones = Model.WidgetDataViewModel.Where(p => p.Zone.Equals("3")).ToList();
+   var WidgetHasRightZones = Model.WidgetDataViewModel.Where(p => p.Zone.Equals("4")).ToList();
+   var WidgetHasFooterZones = Model.WidgetDataViewModel.Where(p => p.Zone.Equals("5")).ToList();
+   var Localization = Model.LocalizationModel;
+}
+
+
+<script>
+    var calendararray = [];
+    var gridarray = [];    
+    var forminitialvaluearray = [];
+    var dataarrayguids = [];
+    var dataarray = [];
+    var chartarray = [];
+</script>
+
+<script>   
+    navigationid = @Html.Raw("'" + ViewContext.RouteData.Values["NavigationId"] + "'");
+</script>
+
+
+@{String ZoneType = String.Empty;}
+@Html.Raw("<div class='row bodycontent'>")
+
+@*-------------------------------------------------------Render Header Zone Start------------------------------------------------------*@
+
+@if (WidgetHasHeaderZones.Count > 0)
+{
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @foreach (var item in WidgetHasHeaderZones)
+        {
+            @Html.Partial("~/Views/Page/RenderZones.cshtml", item, new ViewDataDictionary { { "Localization", Localization }, {"ExtraModel",Model.ExtraViewModel} })
+        }
+    </div>
+}
+@*-------------------------------------------------------Render Header Zone End------------------------------------------------------*@
+    
+@*-------------------------------------------------------Render Left Zone Start------------------------------------------------------*@
+@if (WidgetHasLeftZones.Count > 0)
+{
+    String classname = Portal.Helper.PortalHelper.GetBootStrapClass(Model.ZoneModel.LeftZoneWidth);
+    <div class="@classname">
+        @foreach (var item in WidgetHasLeftZones)
+        {
+            @Html.Partial("~/Views/Page/RenderZones.cshtml", item, new ViewDataDictionary { { "Localization", Localization }, {"ExtraModel",Model.ExtraViewModel}  })
+        }
+    </div>
+}
+@*-------------------------------------------------------Render Left Zone End------------------------------------------------------*@
+
+@*-------------------------------------------------------Calculate  and Render Main Zone  Start------------------------------------------------------*@
+@{ int leftWidth = Convert.ToBoolean(Model.ZoneModel.IsLeftZoneActive) == true ? Convert.ToInt32(Model.ZoneModel.LeftZoneWidth) : 0;
+   int rightWidth = Convert.ToBoolean(Model.ZoneModel.IsRightZoneActive) == true ? Convert.ToInt32(Model.ZoneModel.RightZoneWidth) : 0;
+   int MainZoneWidth = 12 - (Portal.Helper.PortalHelper.GetBootStrapClassSize(leftWidth) + Portal.Helper.PortalHelper.GetBootStrapClassSize(rightWidth));
+}
+
+@if (MainZoneWidth > 0)
+{
+    if (WidgetHasMainZones.Count > 0)
+    {
+    <div class="col-md-@MainZoneWidth col-sm-12 col-xs-12">
+        @foreach (var item in WidgetHasMainZones)
+        {
+            @Html.Partial("~/Views/Page/RenderZones.cshtml", item, new ViewDataDictionary { { "Localization", Localization }, {"ExtraModel",Model.ExtraViewModel}  })
+        }
+    </div>
+    }
+}
+@*-------------------------------------------------------Calculate  and Render Main Zone End-------------------------------------------------------*@
+
+@*-------------------------------------------------------Render Right Zone Start------------------------------------------------------*@
+@if (WidgetHasRightZones.Count > 0)
+{
+    String classname = Portal.Helper.PortalHelper.GetBootStrapClass(Model.ZoneModel.RightZoneWidth);
+    <div class="@classname">
+        @foreach (var item in WidgetHasRightZones)
+        {
+            @Html.Partial("~/Views/Page/RenderZones.cshtml", item, new ViewDataDictionary { { "Localization", Localization }, {"ExtraModel",Model.ExtraViewModel}  })
+        }
+    </div>
+}
+@*-------------------------------------------------------Render Right Zone End------------------------------------------------------*@
+
+@*-------------------------------------------------------Render Footer Zone Start------------------------------------------------------*@
+@if (WidgetHasFooterZones.Count > 0)
+{
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        @foreach (var item in WidgetHasFooterZones)
+        {
+            @Html.Partial("~/Views/Page/RenderZones.cshtml", item, new ViewDataDictionary { { "Localization", Localization }, {"ExtraModel",Model.ExtraViewModel}  })
+        }
+    </div>
+}
+@*-------------------------------------------------------Render Footer Zone End------------------------------------------------------*@

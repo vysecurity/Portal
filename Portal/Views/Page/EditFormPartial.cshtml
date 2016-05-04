@@ -1,0 +1,35 @@
+﻿@model Portal.Models.WidgetDataModel
+
+@Scripts.Render("~/Content/Javascript/EditForm.js")  
+@{ List<Portal.Models.Tabs> tabs = ((List<Portal.Models.Tabs>)Model.FormLayout.Tabs);
+
+   List<Portal.Models.FormDataDetail> detaillist = new List<Portal.Models.FormDataDetail>();
+   
+}
+@foreach (var item in tabs)
+{
+    
+    foreach (var data in item.FormData)
+	{
+        detaillist.Add(data);
+	}
+    
+}
+
+<script>
+    var dataarray = [];
+</script> 
+   
+    @Html.Raw("<div class='row'>")
+    @Html.Partial("~/Views/Page/Form.cshtml",Model, new ViewDataDictionary { { "class", "col-lg-12 col-md-12 col-sm-12 col-xs-12" }, { "Detail", "1" }, {"IsEditable" ,ViewData["editable"] }, {"IsOwnerShip" , ViewData["IsOwnerShip"]}, {"LanguageModel" , ViewData["LanguageModel"]} } )
+    @Html.Raw("</div>")
+
+     <script>                
+         var obj ={};
+         obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(detaillist));
+         obj.IsVisible = @Html.Raw("0");
+         obj.Id = @Html.Raw("'" +  @Model.PageWidgetId + "'");
+         obj.EntityId = @Html.Raw("'" +  @Model.FormLayout.EntityId + "'");
+         obj.DateTime = @Html.Raw("'" + long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")) + "'");
+         dataarray.push(obj);
+    </script> 

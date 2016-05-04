@@ -1,0 +1,82 @@
+﻿@{      
+    Portal.Models.LocalizationModel LanguageModel = Portal.Helper.PortalHelper.ParsePortalLangXml(System.Web.HttpContext.Current.Server.MapPath("~/Helper/Localization.xml"), System.Web.HttpContext.Current.Request.Cookies[Request.Url.Authority + "languagecookie"].Values[0]);
+    dynamic value = ViewData.Model == null ? ViewData : ViewData.Model;
+    List<Portal.Models.Attachment> attachment = new List<Portal.Models.Attachment>();
+    int Length = 0;
+
+    if (value["Attachments"] != null)
+    {
+        attachment = (List<Portal.Models.Attachment>)value["Attachments"];
+        Length = attachment.Count;
+
+    }
+    <script>      
+        var notescounter = @Html.Raw(Length);
+    </script>
+}
+
+
+
+
+@if (attachment.Count == 0)
+{
+    <div data-count="@value["id"]" class="notediv" style="margin-bottom:10px" >
+        <textarea id="notescontrol_@value["id"]" class="form-control memo" name="@value["name"]" data-type="@value["type"]" data-attribute="yes"></textarea>
+
+        <div class="btn-group btn-group-xs btn-group-solid">
+            <span class="btn blue fileinput-button" style="float: left">
+                <i class="fa fa-plus"></i>
+                <span>@LanguageModel.BrowserForNotes</span>
+                <input type="file" name="files[]" id="files_@value["id"]" class="notesbrowser" multiple="" data-count="@value["id"]">
+            </span>
+        </div>
+        <div class="btn-group btn-group-xs btn-group-solid">
+            <button type="button" class="btn green notesupdater" id="updatenote_@value["id"]" data-count="@value["id"]" @value["disabled"] data-disabled="@value["disabled"]" name="@value["name"]" data-type="@value["type"]" data-attribute="yes" data-rows="@value["rows"]">@LanguageModel.AttachForNotes</button>
+        </div>
+        <div class="btn-group btn-group-xs btn-group-solid" style="display: none">
+            <button type="button" class="btn red deleter" id="deletenote_@value["id"]" data-count="@value["id"]">@LanguageModel.DeleteForNotes</button>
+        </div>
+        <div class="btn-group btn-group-xs btn-group-solid">
+            <button type="button" class="btn yellow newer" id="newnote_@value["id"]" data-count="@value["id"]">@LanguageModel.NewForNotes</button>
+        </div>
+        <a class="notesdownloader" style="float: right"></a>
+
+        <iframe id="frame_@value["id"]" style="display:none"></iframe>
+    </div>
+}
+
+else
+{
+    int Counter = 1;
+
+    foreach (var item in attachment)
+    {
+    <div style="margin-bottom: 10px" class="notediv" data-count="@Counter" data-noteid="@item.AttachmentId" data-canbedeleted="1">
+        <textarea @value["disabled"] id="notescontrol_@Counter" class="form-control memo" name="@value["name"]" data-type="@value["type"]" data-attribute="yes" data-id="@item.RecordId">@item.Subject</textarea>
+        @if (item.MimeType == String.Empty)
+        {
+            <div class="btn-group btn-group-xs btn-group-solid">
+                <span class="btn blue fileinput-button" style="float: left">
+                    <i class="fa fa-plus"></i>
+                    <span>@LanguageModel.BrowserForNotes</span>
+                    <input type="file" name="files[]" id="files_@value["id"]" class="notesbrowser" multiple="" data-count="@value["id"]">
+                </span>
+            </div>  
+        }
+        else
+        {
+            <div class="btn-group btn-group-xs btn-group-solid">
+                <button type="button" class="btn red deleter" id="deletenote_@Counter" data-count="@value["id"]" data-mimetype="@item.MimeType">@LanguageModel.DeleteForNotes</button>
+            </div>
+        }
+        <div class="btn-group btn-group-xs btn-group-solid">
+            <button type="button" class="btn yellow newer" id="newnote_@value["id"]" data-count="@value["id"]">@LanguageModel.NewForNotes</button>
+        </div>
+
+        <a class="notesdownloader" style="float:right"  data-src="@item.DocumentBody" data-mimetype="@item.MimeType"  data-filename="@item.FileName">@item.FileName</a>
+        <iframe id="frame_@Counter" style="display:none" data-src="data:@item.MimeType;base64,@item.DocumentBody" data-mimetype="@item.MimeType" data-name="@item.FileName" data-subject="@item.Subject"></iframe>
+
+    </div>
+        Counter = Counter + 1;
+    }
+}

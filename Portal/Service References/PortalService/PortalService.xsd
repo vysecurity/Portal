@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/PortalService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ClassLibrary" />
+  <xs:import schemaLocation="http://localhost/PortalService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:element name="GetDataTrailer">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDataTrailerResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDataTrailerResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExternalWidgetHTML">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="URL" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExternalWidgetHTMLResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetExternalWidgetHTMLResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPortalIdAndCreateSourceCrmService">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DomainURL" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPortalIdAndCreateSourceCrmServiceResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetPortalIdAndCreateSourceCrmServiceResult" nillable="true" type="q1:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfigurationInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetConfigurationInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetConfigurationInfoResult" nillable="true" type="q2:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDynamicScriptForEntity">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetDynamicScriptForEntityResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetDynamicScriptForEntityResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoginInfo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q3:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoginInfoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetLoginInfoResult" nillable="true" type="q4:LoginInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AttemptLogin">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q5:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="LoginInformation" nillable="true" type="q6:LoginInformation" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="LoginValues" nillable="true" type="q7:Login" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AttemptLoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="AttemptLoginResult" nillable="true" type="q8:ArrayOfanyType" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPicture">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q9:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityLogicalName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PrimaryField" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LoginUser" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPictureResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPictureResult" nillable="true" type="xs:base64Binary" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNavigationPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q10:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="NavigationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNavigationPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetNavigationPageResult" nillable="true" type="q11:Page" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PageId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetPageResult" nillable="true" type="q12:Page" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWidgetData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q13:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="WidgetParameters" nillable="true" type="q14:ArrayOfWidgetParameters" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="UseCache" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWidgetDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetWidgetDataResult" nillable="true" type="q15:ArrayOfWidgetData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLookupValues">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q16:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Page" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="lookupfilters" nillable="true" type="q17:ArrayOfLookupFilter" />
+        <xs:element minOccurs="0" name="UseCache" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLookupValuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetLookupValuesResult" nillable="true" type="q18:ArrayOfGridRowData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubGridData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q19:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ViewId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubGridDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q20="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetSubGridDataResult" nillable="true" type="q20:ArrayOfSubGridData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q21="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q21:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q22="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="FormData" nillable="true" type="q22:ArrayOfFormData" />
+        <xs:element minOccurs="0" name="Signature" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OwnerShip" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RelationShipName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ParentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q23="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="CreateDataResult" nillable="true" type="q23:CreatedData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEditFormLayout">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q24="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q24:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FormId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q25="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="SubGridModel" nillable="true" type="q25:ArrayOfSubGridModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEditFormLayoutResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q26="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetEditFormLayoutResult" nillable="true" type="q26:FormLayout" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q27="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q27:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q28="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="FormData" nillable="true" type="q28:ArrayOfFormData" />
+        <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="OwnerShip" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateDataResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGridDataPerPage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q29="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q29:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q30="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="WidgetParameters" nillable="true" type="q30:ArrayOfWidgetParameters" />
+        <xs:element minOccurs="0" name="WidgetId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Page" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RecordCount" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchValue" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGridDataPerPageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q31="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetGridDataPerPageResult" nillable="true" type="q31:ArrayOfGridRowData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPersonelInformation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q32="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q32:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPersonelInformationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q33="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetPersonelInformationResult" nillable="true" type="q33:PersonelInformationForm" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoginUserRoles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q34="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q34:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLoginUserRolesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q35="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetLoginUserRolesResult" nillable="true" type="q35:ArrayOfRoles" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExternalNavigation">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetExternalNavigationResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q36="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetExternalNavigationResult" nillable="true" type="q36:ArrayOfNavigation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNavigationOfUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q37="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q37:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q38="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="roles" nillable="true" type="q38:ArrayOfRoles" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetNavigationOfUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q39="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetNavigationOfUserResult" nillable="true" type="q39:ArrayOfNavigation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGridWidgetId">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q40="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q40:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="WidgetGuid" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetGridWidgetIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetGridWidgetIdResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCalculatedFieldRecords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q41="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q41:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="CalculatedWidgetId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="GridWidgetId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q42="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="filters" nillable="true" type="q42:ArrayOfFilters" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Page" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SearchValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RecordCount" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCalculatedFieldRecordsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q43="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetCalculatedFieldRecordsResult" nillable="true" type="q43:ArrayOfGridRowData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAndChangeDynamicInitialValues">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q44="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q44:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q45="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="InitialValues" nillable="true" type="q45:ArrayOfInitialValues" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAndChangeDynamicInitialValuesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q46="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetAndChangeDynamicInitialValuesResult" nillable="true" type="q46:ArrayOfInitialValues" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHtmlWidgetContent">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q47="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q47:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="WidgetGuid" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetHtmlWidgetContentResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetHtmlWidgetContentResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEntityImage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q48="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q48:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Image" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntity" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserValue" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalEntityUserField" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateEntityImageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="UpdateEntityImageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNotesToRelatedRecord">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q49="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q49:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q50="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="Attachment" nillable="true" type="q50:Attachment" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddNotesToRelatedRecordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q51="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="AddNotesToRelatedRecordResult" nillable="true" type="q51:AttachmentReturn" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteNote">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q52="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q52:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="AttachmentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteNoteResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteNoteResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCrmEntityList">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q53="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q53:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCrmEntityListResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q54="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetCrmEntityListResult" nillable="true" type="q54:ArrayOfCrmEntities" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEntityAttributes">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q55="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q55:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="calculatedfieldtype" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="DateTime" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Lookup" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEntityAttributesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q56="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetEntityAttributesResult" nillable="true" type="q56:ArrayOfCrmAttributes" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEntityViews">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q57="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q57:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEntityViewsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q58="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetEntityViewsResult" nillable="true" type="q58:ArrayOfCrmViews" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEntityForms">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q59="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q59:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetEntityFormsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q60="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetEntityFormsResult" nillable="true" type="q60:ArrayOfCrmForms" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlows">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        <xs:element xmlns:q61="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q61:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetWorkFlowsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q62="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetWorkFlowsResult" nillable="true" type="q62:ArrayOfCrmWorkFlows" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFormSubGrids">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FormId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q63="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q63:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFormSubGridsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q64="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetFormSubGridsResult" nillable="true" type="q64:ArrayOfSubGrid" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFormLookups">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FormId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q65="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q65:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFormLookupsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q66="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetFormLookupsResult" nillable="true" type="q66:ArrayOfFormLookups" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubGridRecords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q67="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q67:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q68="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SubGridColumns" nillable="true" type="q68:ArrayOfstring" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSubGridRecordsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q69="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetSubGridRecordsResult" nillable="true" type="q69:ArrayOfSubGridRecords" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRelatedSubGridRecords">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q70="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q70:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="SubGridViewId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="RelationShipName" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ParentId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetRelatedSubGridRecordsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q71="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetRelatedSubGridRecordsResult" nillable="true" type="q71:ArrayOfGridRowData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q72="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q72:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q73="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetLanguagesResult" nillable="true" type="q73:ArrayOfLanguage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguagesForPageWidget">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q74="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q74:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetLanguagesForPageWidgetResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q75="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetLanguagesForPageWidgetResult" nillable="true" type="q75:ArrayOfLanguage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFormats">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LangId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="FormatType" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetFormatsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q76="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetFormatsResult" nillable="true" type="q76:ArrayOfFormats" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTimeZones">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTimeZonesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q77="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetTimeZonesResult" nillable="true" type="q77:ArrayOfTimeZone" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPortalLanguages">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPortalLanguagesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q78="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="GetPortalLanguagesResult" nillable="true" type="q78:ArrayOfLanguage" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPortalBaseLanguage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q79="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q79:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPortalBaseLanguageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPortalBaseLanguageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPortalMainLanguage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element xmlns:q80="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q80:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetPortalMainLanguageResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="GetPortalMainLanguageResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetPassword">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="Template" nillable="true" type="xs:string" />
+        <xs:element xmlns:q81="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="information" nillable="true" type="q81:CrmServiceInformation" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ResetPasswordResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ResetPasswordResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteCustomActions">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q82="http://schemas.datacontract.org/2004/07/ClassLibrary" minOccurs="0" name="serviceinfo" nillable="true" type="q82:CrmServiceInformation" />
+        <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="EntityId" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="WorkflowId" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ExecuteCustomActionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ExecuteCustomActionsResult" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,70 @@
+﻿@model Portal.Models.WidgetDataModel
+
+@Styles.Render("~/assets/admin/pages/css/login.css")
+
+@{var LocalizationModel = (Portal.Models.LocalizationModel)ViewData["LanguageModel"];
+  var ExtraModel = (Portal.Models.ExtraModel)ViewData["ExtraModel"];}
+<div class="@ViewData["class"]">
+    <div class="login col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <!-- BEGIN LOGIN -->
+        <div class="content">
+            <!-- BEGIN LOGIN FORM -->
+            <div class="mainform">
+                <h3 class="form-title">@LocalizationModel.LoginHeader</h3>
+                <div class="alert alert-danger display-hide">
+                    <button class="close" data-close="alert"></button>
+                    <span>@LocalizationModel.EmptyLoginMessage </span>
+                </div>
+                <div class="alert alert-wrong display-hide">
+                    <button class="close" data-close="alert"></button>
+                    <span>@LocalizationModel.ErrorLoginMessage</span>
+                </div>
+                <div class="alert alert-success display-hide">
+                    <button class="close" data-close="alert"></button>
+                    <span>@LocalizationModel.SuccessLoginMessage </span>
+                </div>
+                <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@LocalizationModel.UserName</label>
+                    <input placeholder="@LocalizationModel.UserName" autocomplete="off" id="username" name="username" class="form-control form-control-solid placeholder-no-fix" />
+
+                </div>
+                <div class="form-group">
+                    <label class="control-label visible-ie8 visible-ie9">@LocalizationModel.Password</label>
+                    <input type="password" placeholder="@LocalizationModel.Password" autocomplete="off" id="password" name="password" class="form-control form-control-solid placeholder-no-fix" />
+                </div>
+
+                <div class="form-actions">
+                    @if (!String.IsNullOrEmpty(ExtraModel.MailAdress))
+                    {   
+                        <button type="button" class="btn btn-success uppercase col-lg-12 col-md-12 col-sm-12 col-xs-12" id="submitbutton">@LocalizationModel.LoginButton</button>
+                        <button type="button" class="btn btn-success red uppercase col-lg-12 col-md-12 col-sm-12 col-xs-12" id="forget-password">@LocalizationModel.ForgotPassword</button>                       
+                     
+                    }
+                    else
+                    {
+                        <button type="button" class="btn btn-success uppercase" id="submitbutton">@LocalizationModel.LoginButton</button>
+                    }
+
+                </div>
+            </div>
+            <!-- END LOGIN FORM -->
+
+            <div class="forget-form">
+                <h3 class="font-green" style="margin-bottom: 15px">@LocalizationModel.ForgotPassword</h3>
+                <p>@LocalizationModel.ForgotPasswordMessage</p>
+                <div class="form-group">
+                    <input class="form-control placeholder-no-fix" type="text" autocomplete="off" id="usernameoremail" placeholder="@LocalizationModel.UserNameOrEmail" name="email" />
+                </div>
+                <div class="form-actions">
+
+                    <button type="button" id="back-btn" class="btn btn-default">@LocalizationModel.Back</button>
+                    <button type="submit" id="submitreset" style="margin: 0px !important" class="btn btn-success uppercase pull-right">@LocalizationModel.Submit</button>
+
+                </div>
+            </div>
+        </div>
+        <!-- END LOGIN -->
+    </div>
+</div>
+

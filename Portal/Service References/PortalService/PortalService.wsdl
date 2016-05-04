@@ -1,0 +1,895 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="PortalService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost/PortalService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost/PortalService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost/PortalService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/ClassLibrary" />
+      <xsd:import schemaLocation="http://localhost/PortalService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IPortalService_GetDataTrailer_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataTrailer" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetDataTrailer_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDataTrailerResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetExternalWidgetHTML_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalWidgetHTML" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetExternalWidgetHTML_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalWidgetHTMLResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPortalIdAndCreateSourceCrmService_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortalIdAndCreateSourceCrmService" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPortalIdAndCreateSourceCrmService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortalIdAndCreateSourceCrmServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetConfigurationInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfigurationInfo" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetConfigurationInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetConfigurationInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetDynamicScriptForEntity_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetDynamicScriptForEntity" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetDynamicScriptForEntity_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetDynamicScriptForEntityResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLoginInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginInfo" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLoginInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_AttemptLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:AttemptLogin" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_AttemptLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AttemptLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPicture_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPicture" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPicture_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPictureResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetNavigationPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNavigationPage" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetNavigationPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNavigationPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPage" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetWidgetData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWidgetData" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetWidgetData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWidgetDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLookupValues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupValues" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLookupValues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLookupValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetSubGridData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubGridData" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetSubGridData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubGridDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_CreateData_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateData" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_CreateData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetEditFormLayout_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEditFormLayout" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetEditFormLayout_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEditFormLayoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_UpdateData_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateData" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_UpdateData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetGridDataPerPage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGridDataPerPage" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetGridDataPerPage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGridDataPerPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPersonelInformation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelInformation" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPersonelInformation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPersonelInformationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLoginUserRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginUserRoles" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLoginUserRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLoginUserRolesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetExternalNavigation_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalNavigation" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetExternalNavigation_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetExternalNavigationResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetNavigationOfUser_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetNavigationOfUser" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetNavigationOfUser_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetNavigationOfUserResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetGridWidgetId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetGridWidgetId" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetGridWidgetId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetGridWidgetIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetCalculatedFieldRecords_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCalculatedFieldRecords" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetCalculatedFieldRecords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCalculatedFieldRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetAndChangeDynamicInitialValues_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAndChangeDynamicInitialValues" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetAndChangeDynamicInitialValues_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAndChangeDynamicInitialValuesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetHtmlWidgetContent_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetHtmlWidgetContent" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetHtmlWidgetContent_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetHtmlWidgetContentResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_UpdateEntityImage_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEntityImage" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_UpdateEntityImage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateEntityImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_AddNotesToRelatedRecord_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddNotesToRelatedRecord" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_AddNotesToRelatedRecord_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddNotesToRelatedRecordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_DeleteNote_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNote" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_DeleteNote_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteNoteResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetCrmEntityList_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetCrmEntityList" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetCrmEntityList_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetCrmEntityListResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetEntityAttributes_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntityAttributes" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetEntityAttributes_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntityAttributesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetEntityViews_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntityViews" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetEntityViews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntityViewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetEntityForms_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntityForms" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetEntityForms_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetEntityFormsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetWorkFlows_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlows" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetWorkFlows_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetWorkFlowsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetFormSubGrids_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormSubGrids" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetFormSubGrids_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormSubGridsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetFormLookups_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormLookups" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetFormLookups_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormLookupsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetSubGridRecords_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubGridRecords" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetSubGridRecords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSubGridRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetRelatedSubGridRecords_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelatedSubGridRecords" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetRelatedSubGridRecords_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetRelatedSubGridRecordsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLanguages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLanguages" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLanguages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLanguagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLanguagesForPageWidget_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetLanguagesForPageWidget" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetLanguagesForPageWidget_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetLanguagesForPageWidgetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetFormats_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormats" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetFormats_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFormatsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetTimeZones_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeZones" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetTimeZones_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTimeZonesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPortalLanguages_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortalLanguages" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPortalLanguages_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortalLanguagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPortalBaseLanguage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortalBaseLanguage" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPortalBaseLanguage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortalBaseLanguageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPortalMainLanguage_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortalMainLanguage" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_GetPortalMainLanguage_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetPortalMainLanguageResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_ResetPassword_InputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPassword" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_ResetPassword_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ResetPasswordResponse" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_ExecuteCustomActions_InputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteCustomActions" />
+  </wsdl:message>
+  <wsdl:message name="IPortalService_ExecuteCustomActions_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ExecuteCustomActionsResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IPortalService">
+    <wsdl:operation name="GetDataTrailer">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetDataTrailer" message="tns:IPortalService_GetDataTrailer_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetDataTrailerResponse" message="tns:IPortalService_GetDataTrailer_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalWidgetHTML">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetExternalWidgetHTML" message="tns:IPortalService_GetExternalWidgetHTML_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetExternalWidgetHTMLResponse" message="tns:IPortalService_GetExternalWidgetHTML_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPortalIdAndCreateSourceCrmService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetPortalIdAndCreateSourceCrmService" message="tns:IPortalService_GetPortalIdAndCreateSourceCrmService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetPortalIdAndCreateSourceCrmServiceResponse" message="tns:IPortalService_GetPortalIdAndCreateSourceCrmService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetConfigurationInfo" message="tns:IPortalService_GetConfigurationInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetConfigurationInfoResponse" message="tns:IPortalService_GetConfigurationInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetDynamicScriptForEntity">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetDynamicScriptForEntity" message="tns:IPortalService_GetDynamicScriptForEntity_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetDynamicScriptForEntityResponse" message="tns:IPortalService_GetDynamicScriptForEntity_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetLoginInfo" message="tns:IPortalService_GetLoginInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetLoginInfoResponse" message="tns:IPortalService_GetLoginInfo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AttemptLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/AttemptLogin" message="tns:IPortalService_AttemptLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/AttemptLoginResponse" message="tns:IPortalService_AttemptLogin_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPicture">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetPicture" message="tns:IPortalService_GetPicture_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetPictureResponse" message="tns:IPortalService_GetPicture_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNavigationPage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetNavigationPage" message="tns:IPortalService_GetNavigationPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetNavigationPageResponse" message="tns:IPortalService_GetNavigationPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetPage" message="tns:IPortalService_GetPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetPageResponse" message="tns:IPortalService_GetPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWidgetData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetWidgetData" message="tns:IPortalService_GetWidgetData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetWidgetDataResponse" message="tns:IPortalService_GetWidgetData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupValues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetLookupValues" message="tns:IPortalService_GetLookupValues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetLookupValuesResponse" message="tns:IPortalService_GetLookupValues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubGridData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetSubGridData" message="tns:IPortalService_GetSubGridData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetSubGridDataResponse" message="tns:IPortalService_GetSubGridData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/CreateData" message="tns:IPortalService_CreateData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/CreateDataResponse" message="tns:IPortalService_CreateData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEditFormLayout">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetEditFormLayout" message="tns:IPortalService_GetEditFormLayout_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetEditFormLayoutResponse" message="tns:IPortalService_GetEditFormLayout_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/UpdateData" message="tns:IPortalService_UpdateData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/UpdateDataResponse" message="tns:IPortalService_UpdateData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGridDataPerPage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetGridDataPerPage" message="tns:IPortalService_GetGridDataPerPage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetGridDataPerPageResponse" message="tns:IPortalService_GetGridDataPerPage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelInformation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetPersonelInformation" message="tns:IPortalService_GetPersonelInformation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetPersonelInformationResponse" message="tns:IPortalService_GetPersonelInformation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginUserRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetLoginUserRoles" message="tns:IPortalService_GetLoginUserRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetLoginUserRolesResponse" message="tns:IPortalService_GetLoginUserRoles_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalNavigation">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetExternalNavigation" message="tns:IPortalService_GetExternalNavigation_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetExternalNavigationResponse" message="tns:IPortalService_GetExternalNavigation_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetNavigationOfUser">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetNavigationOfUser" message="tns:IPortalService_GetNavigationOfUser_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetNavigationOfUserResponse" message="tns:IPortalService_GetNavigationOfUser_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetGridWidgetId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetGridWidgetId" message="tns:IPortalService_GetGridWidgetId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetGridWidgetIdResponse" message="tns:IPortalService_GetGridWidgetId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCalculatedFieldRecords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetCalculatedFieldRecords" message="tns:IPortalService_GetCalculatedFieldRecords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetCalculatedFieldRecordsResponse" message="tns:IPortalService_GetCalculatedFieldRecords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAndChangeDynamicInitialValues">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetAndChangeDynamicInitialValues" message="tns:IPortalService_GetAndChangeDynamicInitialValues_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetAndChangeDynamicInitialValuesResponse" message="tns:IPortalService_GetAndChangeDynamicInitialValues_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetHtmlWidgetContent">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetHtmlWidgetContent" message="tns:IPortalService_GetHtmlWidgetContent_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetHtmlWidgetContentResponse" message="tns:IPortalService_GetHtmlWidgetContent_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEntityImage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/UpdateEntityImage" message="tns:IPortalService_UpdateEntityImage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/UpdateEntityImageResponse" message="tns:IPortalService_UpdateEntityImage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddNotesToRelatedRecord">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/AddNotesToRelatedRecord" message="tns:IPortalService_AddNotesToRelatedRecord_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/AddNotesToRelatedRecordResponse" message="tns:IPortalService_AddNotesToRelatedRecord_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNote">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/DeleteNote" message="tns:IPortalService_DeleteNote_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/DeleteNoteResponse" message="tns:IPortalService_DeleteNote_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCrmEntityList">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetCrmEntityList" message="tns:IPortalService_GetCrmEntityList_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetCrmEntityListResponse" message="tns:IPortalService_GetCrmEntityList_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityAttributes">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetEntityAttributes" message="tns:IPortalService_GetEntityAttributes_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetEntityAttributesResponse" message="tns:IPortalService_GetEntityAttributes_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityViews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetEntityViews" message="tns:IPortalService_GetEntityViews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetEntityViewsResponse" message="tns:IPortalService_GetEntityViews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityForms">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetEntityForms" message="tns:IPortalService_GetEntityForms_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetEntityFormsResponse" message="tns:IPortalService_GetEntityForms_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkFlows">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetWorkFlows" message="tns:IPortalService_GetWorkFlows_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetWorkFlowsResponse" message="tns:IPortalService_GetWorkFlows_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormSubGrids">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetFormSubGrids" message="tns:IPortalService_GetFormSubGrids_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetFormSubGridsResponse" message="tns:IPortalService_GetFormSubGrids_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormLookups">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetFormLookups" message="tns:IPortalService_GetFormLookups_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetFormLookupsResponse" message="tns:IPortalService_GetFormLookups_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSubGridRecords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetSubGridRecords" message="tns:IPortalService_GetSubGridRecords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetSubGridRecordsResponse" message="tns:IPortalService_GetSubGridRecords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetRelatedSubGridRecords">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetRelatedSubGridRecords" message="tns:IPortalService_GetRelatedSubGridRecords_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetRelatedSubGridRecordsResponse" message="tns:IPortalService_GetRelatedSubGridRecords_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetLanguages" message="tns:IPortalService_GetLanguages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetLanguagesResponse" message="tns:IPortalService_GetLanguages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguagesForPageWidget">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetLanguagesForPageWidget" message="tns:IPortalService_GetLanguagesForPageWidget_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetLanguagesForPageWidgetResponse" message="tns:IPortalService_GetLanguagesForPageWidget_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetFormats">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetFormats" message="tns:IPortalService_GetFormats_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetFormatsResponse" message="tns:IPortalService_GetFormats_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeZones">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetTimeZones" message="tns:IPortalService_GetTimeZones_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetTimeZonesResponse" message="tns:IPortalService_GetTimeZones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPortalLanguages">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetPortalLanguages" message="tns:IPortalService_GetPortalLanguages_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetPortalLanguagesResponse" message="tns:IPortalService_GetPortalLanguages_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPortalBaseLanguage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetPortalBaseLanguage" message="tns:IPortalService_GetPortalBaseLanguage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetPortalBaseLanguageResponse" message="tns:IPortalService_GetPortalBaseLanguage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetPortalMainLanguage">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/GetPortalMainLanguage" message="tns:IPortalService_GetPortalMainLanguage_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/GetPortalMainLanguageResponse" message="tns:IPortalService_GetPortalMainLanguage_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/ResetPassword" message="tns:IPortalService_ResetPassword_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/ResetPasswordResponse" message="tns:IPortalService_ResetPassword_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteCustomActions">
+      <wsdl:input wsaw:Action="http://tempuri.org/IPortalService/ExecuteCustomActions" message="tns:IPortalService_ExecuteCustomActions_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IPortalService/ExecuteCustomActionsResponse" message="tns:IPortalService_ExecuteCustomActions_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IPortalService" type="tns:IPortalService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetDataTrailer">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetDataTrailer" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalWidgetHTML">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetExternalWidgetHTML" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPortalIdAndCreateSourceCrmService">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetPortalIdAndCreateSourceCrmService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConfigurationInfo">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetConfigurationInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetDynamicScriptForEntity">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetDynamicScriptForEntity" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginInfo">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetLoginInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AttemptLogin">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/AttemptLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPicture">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetPicture" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNavigationPage">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetNavigationPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPage">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWidgetData">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetWidgetData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLookupValues">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetLookupValues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubGridData">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetSubGridData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateData">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/CreateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEditFormLayout">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetEditFormLayout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateData">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/UpdateData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGridDataPerPage">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetGridDataPerPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPersonelInformation">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetPersonelInformation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLoginUserRoles">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetLoginUserRoles" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetExternalNavigation">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetExternalNavigation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetNavigationOfUser">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetNavigationOfUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetGridWidgetId">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetGridWidgetId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCalculatedFieldRecords">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetCalculatedFieldRecords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAndChangeDynamicInitialValues">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetAndChangeDynamicInitialValues" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetHtmlWidgetContent">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetHtmlWidgetContent" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateEntityImage">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/UpdateEntityImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddNotesToRelatedRecord">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/AddNotesToRelatedRecord" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteNote">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/DeleteNote" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCrmEntityList">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetCrmEntityList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityAttributes">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetEntityAttributes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityViews">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetEntityViews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetEntityForms">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetEntityForms" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetWorkFlows">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetWorkFlows" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormSubGrids">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetFormSubGrids" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormLookups">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetFormLookups" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSubGridRecords">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetSubGridRecords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetRelatedSubGridRecords">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetRelatedSubGridRecords" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguages">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetLanguages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetLanguagesForPageWidget">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetLanguagesForPageWidget" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetFormats">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetFormats" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTimeZones">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetTimeZones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPortalLanguages">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetPortalLanguages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPortalBaseLanguage">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetPortalBaseLanguage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetPortalMainLanguage">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/GetPortalMainLanguage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ResetPassword">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/ResetPassword" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ExecuteCustomActions">
+      <soap:operation soapAction="http://tempuri.org/IPortalService/ExecuteCustomActions" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="PortalService">
+    <wsdl:port name="BasicHttpBinding_IPortalService" binding="tns:BasicHttpBinding_IPortalService">
+      <soap:address location="http://localhost/PortalService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

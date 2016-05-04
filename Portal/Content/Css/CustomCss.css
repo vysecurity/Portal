@@ -1,0 +1,32 @@
+﻿.sectionheader {
+    display: inline-block;
+    font-size: 12px;
+    line-height: 18px;
+    font-weight: 800;
+}
+
+.floatleft {
+    float: left;
+}
+
+.nonedisplayer {
+    display: none;
+}
+
+.makehorizontalvertical {
+    position: relative;
+    top: 50%;
+}
+
+.makehorizontalverticalfortheme1 {
+    position: relative;
+    top: 25%;
+}
+
+.page-content {
+    min-height: auto !important;
+}
+
+.table-scrollable {
+    overflow-x: hidden !important;
+}

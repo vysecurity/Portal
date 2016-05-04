@@ -1,0 +1,73 @@
+﻿<div class="@ViewData["class"]" data-type="picturewidget" data-id="@ViewData["id"]">
+
+    @{
+        int counter = 0;
+        List<Portal.Models.PictureData> pd = (List<Portal.Models.PictureData>)ViewData["picture"];
+    }
+    <div id="@ViewData["id"]myCarousel" class="carousel slide" data-ride="carousel">
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+
+            @foreach (var item in pd)
+            {
+                foreach (var pic in item.PictureList)
+                {
+                    
+                    if (counter == 0)
+                    {
+                <li data-target="#@ViewData["id"]myCarousel" data-slide-to="@counter" class="active"></li>
+                    }
+                    else
+                    {
+                <li data-target="#@ViewData["id"]myCarousel" data-slide-to="@counter"></li>
+                    }
+
+                    counter += 1;
+                }
+            }
+
+        </ol>
+
+        <!-- Wrapper for slides -->
+        <div class="carousel-inner" role="listbox">
+            <div class="item active">
+                <a href="@(string.IsNullOrEmpty(pd.FirstOrDefault().PictureUrlAddress) ? Html.Raw("#") : Html.Raw(pd.FirstOrDefault().PictureUrlAddress))" target="_blank">
+                    <img style="width:100%; height:@string.Format("{0}px", @pd.FirstOrDefault().PictureHeight)" 
+                        src="data:@pd.FirstOrDefault().PictureList.FirstOrDefault().MimeType;base64,@pd.FirstOrDefault().PictureList.FirstOrDefault().PictureBase64List" 
+                        alt="@pd.FirstOrDefault().PictureList.FirstOrDefault().Name">
+                </a>
+            </div>
+
+            @{pd.FirstOrDefault().PictureList.RemoveAt(0);}
+
+            @foreach (var item in pd)
+            {
+                foreach (var pic in item.PictureList)
+                {
+                <div class="item">
+                    <a href="@(string.IsNullOrEmpty(item.PictureUrlAddress) ? Html.Raw("#") : Html.Raw(item.PictureUrlAddress))" target="_blank">
+                        <img style="width:100%; height:@string.Format("{0}px", item.PictureHeight)" 
+                            src="data:@pic.MimeType;base64,@pic.PictureBase64List" alt="@pic.Name">
+                    </a>
+                </div>
+                }
+
+
+            }
+
+        </div>
+
+        <!-- Left and right controls -->
+        <a class="left carousel-control" href="#@ViewData["id"]myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#@ViewData["id"]myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+
+
+
+</div>

@@ -1,0 +1,20 @@
+﻿@model Portal.Models.GeneralModel
+<!-- BEGIN PAGE CONTENT INNER -->
+@Styles.Render("~/assets/admin/pages/css/error.css")
+			<div class="row">
+				<div class="col-md-12 page-404">
+					<div class="number">
+						 404
+					</div>
+					<div class="details">
+						<h3>@Model.LocalizationModel.NotFoundErrorMessageHeader</h3>
+						<p>@Model.LocalizationModel.NotFoundErrorMessageDetail<br/>
+							<a href="/Dashboard?LangId =@Model.ExtraViewModel.PortalLanguage">
+							@Model.LocalizationModel.HomePage </a>
+						
+						</p>
+						
+					</div>
+				</div>
+			</div>
+<!-- END PAGE CONTENT INNER -->

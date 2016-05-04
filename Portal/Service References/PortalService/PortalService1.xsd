@@ -1,0 +1,994 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/ClassLibrary" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/ClassLibrary" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost/PortalService.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="CrmServiceInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CrmType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DiscoveryUri" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Domain" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsOffice365" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LangId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrganizationUri" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PortalBaseLanguage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PortalEmailField" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PortalId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PortalLogoURL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PortalMainLanguageCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Source" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ThemeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UseSSL" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CrmServiceInformation" nillable="true" type="tns:CrmServiceInformation" />
+  <xs:complexType name="LoginInformation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordField" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserNameField" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginInformation" nillable="true" type="tns:LoginInformation" />
+  <xs:complexType name="Login">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PasswordValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserNameValue" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Login" nillable="true" type="tns:Login" />
+  <xs:complexType name="Page">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FormLayoutXml" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFooterZoneActive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsHeaderZoneActive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsLeftZoneActive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsRightZoneActive" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LeftZoneWidth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MainZoneWidth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RightZoneWidth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Scripts" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UseCache" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Page" nillable="true" type="tns:Page" />
+  <xs:complexType name="ArrayOfWidgetParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WidgetParameters" nillable="true" type="tns:WidgetParameters" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWidgetParameters" nillable="true" type="tns:ArrayOfWidgetParameters" />
+  <xs:complexType name="WidgetParameters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActionsCount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridPerPage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageWidgetId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PercentageofTotalWidth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PictureHeight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QueryStrings" nillable="true" type="tns:ArrayOfQueryStrings" />
+      <xs:element minOccurs="0" name="WidgetId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="filters" nillable="true" type="tns:ArrayOfFilters" />
+      <xs:element minOccurs="0" name="subgrids" nillable="true" type="tns:ArrayOfSubGridModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WidgetParameters" nillable="true" type="tns:WidgetParameters" />
+  <xs:complexType name="ArrayOfQueryStrings">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="QueryStrings" nillable="true" type="tns:QueryStrings" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfQueryStrings" nillable="true" type="tns:ArrayOfQueryStrings" />
+  <xs:complexType name="QueryStrings">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="QueryStrings" nillable="true" type="tns:QueryStrings" />
+  <xs:complexType name="ArrayOfFilters">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Filters" nillable="true" type="tns:Filters" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFilters" nillable="true" type="tns:ArrayOfFilters" />
+  <xs:complexType name="Filters">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="filter" nillable="true" type="tns:ArrayOfFilter" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Filters" nillable="true" type="tns:Filters" />
+  <xs:complexType name="ArrayOfFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Filter" nillable="true" type="tns:Filter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFilter" nillable="true" type="tns:ArrayOfFilter" />
+  <xs:complexType name="Filter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Operator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="attributtename" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="condition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isstatic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="uitype" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Filter" nillable="true" type="tns:Filter" />
+  <xs:complexType name="ArrayOfSubGridModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubGridModel" nillable="true" type="tns:SubGridModel" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubGridModel" nillable="true" type="tns:ArrayOfSubGridModel" />
+  <xs:complexType name="SubGridModel">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="NewFormId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubGridId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubGridLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubGridViewId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UpdateFormId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubGridModel" nillable="true" type="tns:SubGridModel" />
+  <xs:complexType name="ArrayOfWidgetData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="WidgetData" nillable="true" type="tns:WidgetData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfWidgetData" nillable="true" type="tns:ArrayOfWidgetData" />
+  <xs:complexType name="WidgetData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Actions" nillable="true" type="tns:ArrayOfActions" />
+      <xs:element minOccurs="0" name="CalculatedIcon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CalculatedOnClick" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CalculatedOnClickOpenFormId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CalculatedTheme" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChartColor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChartData" nillable="true" type="tns:ArrayOfChartData" />
+      <xs:element minOccurs="0" name="ChartFontFamily" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChartFontSize" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChartLegendPosition" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ChartType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Count" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityNameForLinkWidget" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalLinkDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalLinkUrl" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalURLBGColor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExternalURLIcon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FieldInfo" nillable="true" type="tns:FieldInfo" />
+      <xs:element minOccurs="0" name="FormBGColor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FormIcon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FormId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FormLayout" nillable="true" type="tns:FormLayout" />
+      <xs:element minOccurs="0" name="FormLinkDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridBGColor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridClickOpenFormStyle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridData" nillable="true" type="tns:ArrayOfGridRowData" />
+      <xs:element minOccurs="0" name="GridHeaderColor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridHeaderFontColor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridIcon" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridLinkDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridOnClick" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridOnClickOpenFormId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridOnClickOpenHTMLId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridOnClickWidgetType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridRecordPerPage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HTML" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Is3D" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsExcelExport" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsExternalLink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsFormLink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsGridLink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsHandWrite" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSeperate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSignature" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LabelText" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LookupLinks" nillable="true" type="tns:ArrayOfLookupLink" />
+      <xs:element minOccurs="0" name="NotificationDirection" nillable="true" type="xs:string" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="NotificationList" nillable="true" type="q1:ArrayOfstring" />
+      <xs:element minOccurs="0" name="OnClickOpenFormIdForLinkWidget" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageWidgetId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PercentageofTotalWidth" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PictureData" nillable="true" type="tns:ArrayOfPictureData" />
+      <xs:element minOccurs="0" name="RedirectAfterCreate" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Values" nillable="true" type="tns:ArrayOfCalendarData" />
+      <xs:element minOccurs="0" name="WidgetGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WidgetId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WidgetType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Zone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="iseditable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="isownership" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="language" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="width" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WidgetData" nillable="true" type="tns:WidgetData" />
+  <xs:complexType name="ArrayOfActions">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Actions" nillable="true" type="tns:Actions" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfActions" nillable="true" type="tns:ArrayOfActions" />
+  <xs:complexType name="Actions">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorReturnMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FontColor" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FormActions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GridActions" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsEditable" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpenFormId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpenStyle" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpeningWidgetType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ReturnMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UseOwnerShip" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WidgetType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WorkFlowId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Actions" nillable="true" type="tns:Actions" />
+  <xs:complexType name="ArrayOfChartData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ChartData" nillable="true" type="tns:ChartData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfChartData" nillable="true" type="tns:ArrayOfChartData" />
+  <xs:complexType name="ChartData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Horizontal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series1Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series2Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series3Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series4Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Series5Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeriesColor1" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeriesColor2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeriesColor3" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeriesColor4" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeriesColor5" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SeriesName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ChartData" nillable="true" type="tns:ChartData" />
+  <xs:complexType name="FieldInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Field1Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Field1Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Field2Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Field2Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Field3Text" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Field3Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FieldInfo" nillable="true" type="tns:FieldInfo" />
+  <xs:complexType name="FormLayout">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FormName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tabs" nillable="true" type="tns:ArrayOfTabs" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FormLayout" nillable="true" type="tns:FormLayout" />
+  <xs:complexType name="ArrayOfTabs">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Tabs" nillable="true" type="tns:Tabs" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTabs" nillable="true" type="tns:ArrayOfTabs" />
+  <xs:complexType name="Tabs">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessProcessFlowList" nillable="true" type="tns:ArrayOfBusinessProcessFlow" />
+      <xs:element minOccurs="0" name="BusinessRules" nillable="true" type="tns:BusinessRuleContainer" />
+      <xs:element minOccurs="0" name="Columns" nillable="true" type="tns:ArrayOfColumns" />
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Expanded" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FormData" nillable="true" type="tns:ArrayOfFormDataDetail" />
+      <xs:element minOccurs="0" name="IsBpf" type="xs:boolean" />
+      <xs:element minOccurs="0" name="IsBr" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShowLabel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Visible" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Tabs" nillable="true" type="tns:Tabs" />
+  <xs:complexType name="ArrayOfBusinessProcessFlow">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BusinessProcessFlow" nillable="true" type="tns:BusinessProcessFlow" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBusinessProcessFlow" nillable="true" type="tns:ArrayOfBusinessProcessFlow" />
+  <xs:complexType name="BusinessProcessFlow">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCrmUIWorkflow" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Mode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NextStepIndex" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PrimaryEntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ProcessID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectedProcessID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectedStageID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SelectedTraversedPath" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StageList" nillable="true" type="tns:ArrayOfStageItem" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessProcessFlow" nillable="true" type="tns:BusinessProcessFlow" />
+  <xs:complexType name="ArrayOfStageItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StageItem" nillable="true" type="tns:StageItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStageItem" nillable="true" type="tns:ArrayOfStageItem" />
+  <xs:complexType name="StageItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ConditionList" nillable="true" type="tns:ArrayOfConditionItem" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsMainStage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LabelDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LabelID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LanguageCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NextStageID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StageCategory" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StageID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StepList" nillable="true" type="tns:ArrayOfStepItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StageItem" nillable="true" type="tns:StageItem" />
+  <xs:complexType name="ArrayOfConditionItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ConditionItem" nillable="true" type="tns:ConditionItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfConditionItem" nillable="true" type="tns:ArrayOfConditionItem" />
+  <xs:complexType name="ConditionItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AndOr" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConditionOperator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConditionType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ContainsElsebranch" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NextStageID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentStageID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ConditionItem" nillable="true" type="tns:ConditionItem" />
+  <xs:complexType name="ArrayOfStepItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="StepItem" nillable="true" type="tns:StepItem" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfStepItem" nillable="true" type="tns:ArrayOfStepItem" />
+  <xs:complexType name="StepItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ControlElement" nillable="true" type="tns:ControlItem" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsProcessRequired" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LabelDescription" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LabelID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LanguageCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StepID" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="StepItem" nillable="true" type="tns:StepItem" />
+  <xs:complexType name="ControlItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ControlDisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ControlID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ControlProperty" nillable="true" type="tns:ControlPropertyItem" />
+      <xs:element minOccurs="0" name="DataFieldName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSystemControl" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Parameters" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SystemStepType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ControlItem" nillable="true" type="tns:ControlItem" />
+  <xs:complexType name="ControlPropertyItem">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BeforeDateFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BeforeTimeFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DatePart" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ElementType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MinValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PicklistValues" nillable="true" type="tns:ArrayOfPicklist" />
+      <xs:element minOccurs="0" name="Precision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TimeFormat" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ControlPropertyItem" nillable="true" type="tns:ControlPropertyItem" />
+  <xs:complexType name="ArrayOfPicklist">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Picklist" nillable="true" type="tns:Picklist" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPicklist" nillable="true" type="tns:ArrayOfPicklist" />
+  <xs:complexType name="Picklist">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DefaultValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Picklist" nillable="true" type="tns:Picklist" />
+  <xs:complexType name="BusinessRuleContainer">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BusinessRules" nillable="true" type="tns:ArrayOfBusinessRuleList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessRuleContainer" nillable="true" type="tns:BusinessRuleContainer" />
+  <xs:complexType name="ArrayOfBusinessRuleList">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BusinessRuleList" nillable="true" type="tns:BusinessRuleList" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBusinessRuleList" nillable="true" type="tns:ArrayOfBusinessRuleList" />
+  <xs:complexType name="BusinessRuleList">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BRList" nillable="true" type="tns:ArrayOfBRBranch" />
+      <xs:element minOccurs="0" name="BusinessRuleName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BusinessRuleList" nillable="true" type="tns:BusinessRuleList" />
+  <xs:complexType name="ArrayOfBRBranch">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BRBranch" nillable="true" type="tns:BRBranch" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBRBranch" nillable="true" type="tns:ArrayOfBRBranch" />
+  <xs:complexType name="BRBranch">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActionList" nillable="true" type="tns:ArrayOfBRAction" />
+      <xs:element minOccurs="0" name="BranchID" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConditionList" nillable="true" type="tns:ArrayOfBRCondition" />
+      <xs:element minOccurs="0" name="LogicalOperator" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BRBranch" nillable="true" type="tns:BRBranch" />
+  <xs:complexType name="ArrayOfBRAction">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BRAction" nillable="true" type="tns:BRAction" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBRAction" nillable="true" type="tns:ArrayOfBRAction" />
+  <xs:complexType name="BRAction">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operation" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValueType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BRAction" nillable="true" type="tns:BRAction" />
+  <xs:complexType name="ArrayOfBRCondition">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="BRCondition" nillable="true" type="tns:BRCondition" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfBRCondition" nillable="true" type="tns:ArrayOfBRCondition" />
+  <xs:complexType name="BRCondition">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValueType" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="BRCondition" nillable="true" type="tns:BRCondition" />
+  <xs:complexType name="ArrayOfColumns">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Columns" nillable="true" type="tns:Columns" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfColumns" nillable="true" type="tns:ArrayOfColumns" />
+  <xs:complexType name="Columns">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Sections" nillable="true" type="tns:ArrayOfSections" />
+      <xs:element minOccurs="0" name="Width" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Columns" nillable="true" type="tns:Columns" />
+  <xs:complexType name="ArrayOfSections">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Sections" nillable="true" type="tns:Sections" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSections" nillable="true" type="tns:ArrayOfSections" />
+  <xs:complexType name="Sections">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ColumnLength" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Rows" nillable="true" type="tns:ArrayOfRows" />
+      <xs:element minOccurs="0" name="ShowLabel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Visible" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Sections" nillable="true" type="tns:Sections" />
+  <xs:complexType name="ArrayOfRows">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Rows" nillable="true" type="tns:Rows" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRows" nillable="true" type="tns:ArrayOfRows" />
+  <xs:complexType name="Rows">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Attachments" nillable="true" type="tns:ArrayOfAttachment" />
+      <xs:element minOccurs="0" name="BeforeDateFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BeforeTimeFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClassId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ColSpan" nillable="true" type="xs:string" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="CustomerLogicalName" nillable="true" type="q2:ArrayOfstring" />
+      <xs:element minOccurs="0" name="DateFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DatePart" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Disabled" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ElementType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsSpace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LookupLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MaxValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MinValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PicklistValues" nillable="true" type="tns:ArrayOfPicklist" />
+      <xs:element minOccurs="0" name="Precision" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RelationShipName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RequiredLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowSpan" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ShowLabel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubGridId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubGridTargetEntity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubGrids" nillable="true" type="tns:ArrayOfSubGridModel" />
+      <xs:element minOccurs="0" name="TimeFormat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserSpacer" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ViewId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Visible" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Rows" nillable="true" type="tns:Rows" />
+  <xs:complexType name="ArrayOfAttachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Attachment" nillable="true" type="tns:Attachment" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAttachment" nillable="true" type="tns:ArrayOfAttachment" />
+  <xs:complexType name="Attachment">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttachmentId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DocumentBody" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecordId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Subject" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Attachment" nillable="true" type="tns:Attachment" />
+  <xs:complexType name="ArrayOfFormDataDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FormDataDetail" nillable="true" type="tns:FormDataDetail" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFormDataDetail" nillable="true" type="tns:ArrayOfFormDataDetail" />
+  <xs:complexType name="FormDataDetail">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LookUpValueName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LookupLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FormDataDetail" nillable="true" type="tns:FormDataDetail" />
+  <xs:complexType name="ArrayOfGridRowData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GridRowData" nillable="true" type="tns:GridRowData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGridRowData" nillable="true" type="tns:ArrayOfGridRowData" />
+  <xs:complexType name="GridRowData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Data" nillable="true" type="tns:ArrayOfGridData" />
+      <xs:element minOccurs="0" name="HasAction" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsEmptyGrid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RowNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalRecord" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Width" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GridRowData" nillable="true" type="tns:GridRowData" />
+  <xs:complexType name="ArrayOfGridData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="GridData" nillable="true" type="tns:GridData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfGridData" nillable="true" type="tns:ArrayOfGridData" />
+  <xs:complexType name="GridData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ColumnName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NameAttributeValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecordId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Width" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="GridData" nillable="true" type="tns:GridData" />
+  <xs:complexType name="ArrayOfLookupLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LookupLink" nillable="true" type="tns:LookupLink" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLookupLink" nillable="true" type="tns:ArrayOfLookupLink" />
+  <xs:complexType name="LookupLink">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LookupEntityLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LookupLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OpenFormId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LookupLink" nillable="true" type="tns:LookupLink" />
+  <xs:complexType name="ArrayOfPictureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PictureData" nillable="true" type="tns:PictureData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPictureData" nillable="true" type="tns:ArrayOfPictureData" />
+  <xs:complexType name="PictureData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PictureHeight" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PictureList" nillable="true" type="tns:ArrayOfPictureInfo" />
+      <xs:element minOccurs="0" name="PictureUrlAddress" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PictureData" nillable="true" type="tns:PictureData" />
+  <xs:complexType name="ArrayOfPictureInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="PictureInfo" nillable="true" type="tns:PictureInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfPictureInfo" nillable="true" type="tns:ArrayOfPictureInfo" />
+  <xs:complexType name="PictureInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="MimeType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PictureBase64List" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PictureInfo" nillable="true" type="tns:PictureInfo" />
+  <xs:complexType name="ArrayOfCalendarData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CalendarData" nillable="true" type="tns:CalendarData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCalendarData" nillable="true" type="tns:ArrayOfCalendarData" />
+  <xs:complexType name="CalendarData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EndDateValue" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="StartDateValue" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CalendarData" nillable="true" type="tns:CalendarData" />
+  <xs:complexType name="ArrayOfLookupFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="LookupFilter" nillable="true" type="tns:LookupFilter" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLookupFilter" nillable="true" type="tns:ArrayOfLookupFilter" />
+  <xs:complexType name="LookupFilter">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FetchXml" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FilterType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsCustom" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsStatic" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Operator" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ValueLogicalName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LookupFilter" nillable="true" type="tns:LookupFilter" />
+  <xs:complexType name="ArrayOfSubGridData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubGridData" nillable="true" type="tns:SubGridData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubGridData" nillable="true" type="tns:ArrayOfSubGridData" />
+  <xs:complexType name="SubGridData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ColumnName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Counter" type="xs:int" />
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubGridData" nillable="true" type="tns:SubGridData" />
+  <xs:complexType name="ArrayOfFormData">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FormData" nillable="true" type="tns:FormData" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFormData" nillable="true" type="tns:ArrayOfFormData" />
+  <xs:complexType name="FormData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="dateformat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="datetimepicker" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="entityname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="logicalname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="timeformat" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="type" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FormData" nillable="true" type="tns:FormData" />
+  <xs:complexType name="CreatedData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CreatedData" nillable="true" type="tns:CreatedData" />
+  <xs:complexType name="PersonelInformationForm">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FormId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WidgetGuid" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="WidgetId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PersonelInformationForm" nillable="true" type="tns:PersonelInformationForm" />
+  <xs:complexType name="ArrayOfRoles">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Roles" nillable="true" type="tns:Roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfRoles" nillable="true" type="tns:ArrayOfRoles" />
+  <xs:complexType name="Roles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Roles" nillable="true" type="tns:Roles" />
+  <xs:complexType name="ArrayOfNavigation">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Navigation" nillable="true" type="tns:Navigation" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfNavigation" nillable="true" type="tns:ArrayOfNavigation" />
+  <xs:complexType name="Navigation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ExternalLink" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NavigationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Order" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PageId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentNavigationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ParentNavigationName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UniqueId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UrlName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Navigation" nillable="true" type="tns:Navigation" />
+  <xs:complexType name="ArrayOfInitialValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="InitialValues" nillable="true" type="tns:InitialValues" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfInitialValues" nillable="true" type="tns:ArrayOfInitialValues" />
+  <xs:complexType name="InitialValues">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AttributeLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EntityLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="InitialValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LookupLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LookupNameValue" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Static" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="InitialValues" nillable="true" type="tns:InitialValues" />
+  <xs:complexType name="AttachmentReturn">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Content" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Status" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AttachmentReturn" nillable="true" type="tns:AttachmentReturn" />
+  <xs:complexType name="ArrayOfCrmEntities">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CrmEntities" nillable="true" type="tns:CrmEntities" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCrmEntities" nillable="true" type="tns:ArrayOfCrmEntities" />
+  <xs:complexType name="CrmEntities">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CrmEntities" nillable="true" type="tns:CrmEntities" />
+  <xs:complexType name="ArrayOfCrmAttributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CrmAttributes" nillable="true" type="tns:CrmAttributes" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCrmAttributes" nillable="true" type="tns:ArrayOfCrmAttributes" />
+  <xs:complexType name="CrmAttributes">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LookupLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CrmAttributes" nillable="true" type="tns:CrmAttributes" />
+  <xs:complexType name="ArrayOfCrmViews">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CrmViews" nillable="true" type="tns:CrmViews" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCrmViews" nillable="true" type="tns:ArrayOfCrmViews" />
+  <xs:complexType name="CrmViews">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CrmViews" nillable="true" type="tns:CrmViews" />
+  <xs:complexType name="ArrayOfCrmForms">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CrmForms" nillable="true" type="tns:CrmForms" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCrmForms" nillable="true" type="tns:ArrayOfCrmForms" />
+  <xs:complexType name="CrmForms">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CrmForms" nillable="true" type="tns:CrmForms" />
+  <xs:complexType name="ArrayOfCrmWorkFlows">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CrmWorkFlows" nillable="true" type="tns:CrmWorkFlows" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCrmWorkFlows" nillable="true" type="tns:ArrayOfCrmWorkFlows" />
+  <xs:complexType name="CrmWorkFlows">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SolutionId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CrmWorkFlows" nillable="true" type="tns:CrmWorkFlows" />
+  <xs:complexType name="ArrayOfSubGrid">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubGrid" nillable="true" type="tns:SubGrid" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubGrid" nillable="true" type="tns:ArrayOfSubGrid" />
+  <xs:complexType name="SubGrid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="EntityName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SubGridId" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubGrid" nillable="true" type="tns:SubGrid" />
+  <xs:complexType name="ArrayOfFormLookups">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="FormLookups" nillable="true" type="tns:FormLookups" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFormLookups" nillable="true" type="tns:ArrayOfFormLookups" />
+  <xs:complexType name="FormLookups">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LookupLogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="FormLookups" nillable="true" type="tns:FormLookups" />
+  <xs:complexType name="ArrayOfSubGridRecords">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubGridRecords" nillable="true" type="tns:SubGridRecords" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubGridRecords" nillable="true" type="tns:ArrayOfSubGridRecords" />
+  <xs:complexType name="SubGridRecords">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="LogicalName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubGridRecords" nillable="true" type="tns:SubGridRecords" />
+  <xs:complexType name="ArrayOfLanguage">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Language" nillable="true" type="tns:Language" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfLanguage" nillable="true" type="tns:ArrayOfLanguage" />
+  <xs:complexType name="Language">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="BaseLangId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BaseNativeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ConfigurationId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsMain" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Label" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LangId" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="NativeName" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Language" nillable="true" type="tns:Language" />
+  <xs:complexType name="ArrayOfFormats">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Formats" nillable="true" type="tns:Formats" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfFormats" nillable="true" type="tns:ArrayOfFormats" />
+  <xs:complexType name="Formats">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Formats" nillable="true" type="tns:Formats" />
+  <xs:complexType name="ArrayOfTimeZone">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="TimeZone" nillable="true" type="tns:TimeZone" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfTimeZone" nillable="true" type="tns:ArrayOfTimeZone" />
+  <xs:complexType name="TimeZone">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DisplayName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TotalMinutes" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="TimeZone" nillable="true" type="tns:TimeZone" />
+</xs:schema>

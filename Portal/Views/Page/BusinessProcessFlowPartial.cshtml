@@ -1,0 +1,225 @@
+﻿@model Portal.Models.BusinessProcessFlow
+
+@{
+    int modalCounter = 100;
+}
+
+<link href="~/assets/global/plugins/bootstrap-button/bootstrap_buttonbreadcrumbs.css" rel="stylesheet" />
+<link href="~/Content/Css/business-process-flow.css" rel="stylesheet" />
+
+<script>
+    var bpfDescription = @Html.Raw("'" + Model.Description + "'");
+    var bpfName = @Html.Raw("'" + @Model.Name + "'");
+    var bpfPrimaryEntityName = @Html.Raw("'" + @Model.PrimaryEntityName + "'");
+    var bpfTitle = @Html.Raw("'" + @Model.Title + "'");
+    var bpfData = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(@Model));
+    var datawidgetid = @Html.Raw("'"+ViewData["data-widgetid"]+"'");
+    var currentStageID;
+</script>
+
+
+
+<div class="page-content">
+    <div class="container-fluid">
+        
+        <div class="row" id="processlinediv">
+            <div class="col-sm-12" id="bpfButtons">
+
+                <div class="col-sm-11" style="padding:0">
+                    <div id="stageButtons" class="btn-group btn-group-justified btn-breadcrumb" style="display:inline-block;">
+                    </div>
+                </div>
+                <div class="col-sm-1" style="padding:0">
+                    <div id="navigationButtons" class="btn-group" style="display:inline-flex; margin-left:10px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" style="margin-bottom:-25px">
+                <div class="portlet light">
+
+                    <div class="portlet-body">
+                        <div class="row">
+                            <div class="col-sm-12" id="stageGridContainer">
+
+                                @foreach (var Stage in Model.StageList)
+                                {
+                                    
+                                    <div class="stage invisible" id="grid_@Stage.StageID" data-conditions="@Newtonsoft.Json.JsonConvert.SerializeObject(Stage.ConditionList)">
+                                        <div class="row">
+                                            <div class="DocumentList">
+                                                <ul class="list-inline">
+
+                                                    @{
+                                                        var stepCounter = 0;
+                                                        var liWrite = true;
+                                                        
+                                                    }
+
+                                                    @foreach (var Step in Stage.StepList)
+                                                    {
+                                                        string requiredText = Step.IsProcessRequired ? "data-required=true" : "data-required=false";
+                                                        
+                                                        if (stepCounter == 3 || liWrite)
+                                                        {
+                                                            liWrite = false;
+                                                            @:<li class="DocumentItem">                                                                    
+                                                        }
+                                                        
+                                                            <div id="process-@Stage.StageID">
+                                                                <div class="form-group">
+                                                                    <label class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label font">
+                                                                        @Step.LabelDescription
+                                                                        @if (Step.IsProcessRequired)
+                                                                        {
+                                                                            <span class="required" aria-required="true">*</span>
+                                                                        }
+                                                                    </label>
+                                                                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                                                                        @if (Step.ControlElement.ControlProperty.ElementType == "string" || Step.ControlElement.ControlProperty.ElementType == "memo")
+                                                                        {
+                                                                            <input type="text" data-subgrid="" data-disabled="" @requiredText  class="form-control input-sm inputformat bpftrigger brtrigger" name="@Step.ControlElement.DataFieldName" id="bpf_@Step.ControlElement.ControlID" data-type="@Step.ControlElement.ControlProperty.ElementType" data-attribute="yes">
+                                                                        }
+                                                                        else if (Step.ControlElement.ControlProperty.ElementType == "decimal" || Step.ControlElement.ControlProperty.ElementType == "double")
+                                                                        {
+                                                                            String round = String.Empty;
+                                                                            for (var i = 0; i < Convert.ToInt32(Step.ControlElement.ControlProperty.Precision); i++)
+                                                                            {
+                                                                                if (i == 0)
+                                                                                {
+                                                                                    round += "0.";
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    round += "0";
+                                                                                }
+                                                                            }
+                                                                            round = round + "1";
+                                                                            <input type="number" data-subgrid="" data-disabled="" @requiredText class="form-control input-sm inputformat bpftrigger brtrigger" pattern="[0-9]+([\.|,][0-9]+)?" name="@Step.ControlElement.DataFieldName" id="bpf_@Step.ControlElement.ControlID" data-type="@Step.ControlElement.ControlProperty.ElementType" step="@round"  data-attribute="yes">
+                                                                        }
+                                                                        else if (Step.ControlElement.ControlProperty.ElementType == "integer")
+                                                                        {
+                                                                            <input type="number"  data-subgrid=""data-disabled="" @requiredText class="form-control input-sm inputformat bpftrigger brtrigger" pattern="[0-9]+([\.|,][0-9]+)?" name="@Step.ControlElement.DataFieldName" id="bpf_@Step.ControlElement.ControlID"  min="@Step.ControlElement.ControlProperty.MinValue" max="@Step.ControlElement.ControlProperty.MaxValue" data-type="@Step.ControlElement.ControlProperty.ElementType" data-attribute="yes">
+                                                                        }
+                                                                        else if (Step.ControlElement.ControlProperty.ElementType == "money")
+                                                                        {
+                                                                            String round = String.Empty;
+                                                                            for (var i = 0; i < Convert.ToInt32(Step.ControlElement.ControlProperty.Precision); i++)
+                                                                            {
+                                                                                if (i == 0)
+                                                                                {
+                                                                                    round += "0.";
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    round += "0";
+                                                                                }
+                                                                            }
+                                                                            round = round + "1";
+                                                                            <input type="number"  data-subgrid=""data-disabled="" @requiredText class="form-control input-sm inputformat bpftrigger brtrigger" pattern="[0-9]+([\.|,][0-9]+)?" name="@Step.ControlElement.DataFieldName" id="bpf_@Step.ControlElement.ControlID" step="@round" min="@Step.ControlElement.ControlProperty.MinValue" max="@Step.ControlElement.ControlProperty.MaxValue" data-type="@Step.ControlElement.ControlProperty.ElementType" data-attribute="yes">
+                                                                        }
+                                                                        else if (Step.ControlElement.ControlProperty.ElementType == "picklist" || Step.ControlElement.ControlProperty.ElementType == "status" || Step.ControlElement.ControlProperty.ElementType == "boolean")
+                                                                        {
+                                                                            <select class="form-control inputformat bpftrigger brtrigger" name="@Step.ControlElement.DataFieldName" @requiredText id="bpf_@Step.ControlElement.ControlID" data-type="@Step.ControlElement.ControlProperty.ElementType" data-attribute="yes">
+                                                                                @if (Step.ControlElement.ControlProperty.ElementType != "boolean")
+                                                                                {
+                                                                                    <option value="null"></option>   
+                                                                                }
+                                                                                
+                                                                                 
+                                                                                @foreach (var Option in Step.ControlElement.ControlProperty.PicklistValues)
+                                                                                {
+		                                                                            <option value="@Option.Value">@Option.Label</option>
+                                                                                }
+                                                                            </select>
+                                                                            
+                                                                            
+                                                                        }
+                                                                        else if (Step.ControlElement.ControlProperty.ElementType == "datetime")
+                                                                        {
+                                                                            
+                                                                            <input type="text" data-disabled="" class="form-control inputformat bpftrigger brtrigger datetimefield" @requiredText name="@Step.ControlElement.DataFieldName" id="bpf_@Step.ControlElement.ControlID"  data-timepicker="@Step.ControlElement.ControlProperty.DatePart" data-dateformat="@Step.ControlElement.ControlProperty.DateFormat" data-timeformat="@Step.ControlElement.ControlProperty.TimeFormat" data-beforetimeformat="@Step.ControlElement.ControlProperty.BeforeTimeFormat" data-beforedateformat="@Step.ControlElement.ControlProperty.BeforeDateFormat" data-type="metronicdate" data-attribute="yes">
+                                                                            
+                                                                        }
+                                                                        else if (Step.ControlElement.ControlProperty.ElementType == "lookup")
+                                                                        {
+                                                                            modalCounter += 1;
+                                                                            
+                                                                            <div class="input-group" style="padding-left: 20px; margin-right:-16px; margin-bottom:5px;">
+                                                                                <input style="height:20px;" type="text" data-disabled="" @requiredText disabled class="form-control input-sm bpftrigger brtrigger" name="@Step.ControlElement.DataFieldName" id="bpf_@Step.ControlElement.DataFieldName" data-target="@Step.ControlElement.ControlProperty.LogicalName" data-count="@modalCounter"    data-type="@Step.ControlElement.ControlProperty.ElementType" data-attribute="yes">
+                                                                                <span class="input-group-btn">
+                                                                                    <button type="button" class="btn btn-sm blue clicker" style="height:20px; font-size:8px;" data-target="@Step.ControlElement.ControlProperty.LogicalName" data-count="@modalCounter" data-widgetid="@ViewData["data-widgetid"]" >
+                                                                                        <i class="fa fa-search"></i>
+                                                                                    </button>
+                                                                                </span>
+                                                                                
+                                                                            </div>
+                                                                            
+                                                                            string logicalName = Step.ControlElement.ControlProperty.LogicalName;
+
+                                                                            Html.RenderAction("Index", "Lookup", new { LogicalName = logicalName, Count = modalCounter.ToString(), ReturnField = string.Format("bpf_{0}", Step.ControlElement.ControlID), IsMultiType = String.Empty });
+
+
+
+                                                                        }
+                                                                        else if (Step.ControlElement.ControlProperty.ElementType == "customer")
+                                                                        {
+                                                                            modalCounter += 1;
+                                                                            string logicalName = Step.ControlElement.ControlProperty.LogicalName;
+
+                                                                            String CType = String.IsNullOrEmpty(logicalName) == true ? "account" : logicalName;
+                                                                            <div class="input-group" style="padding-left: 20px; margin-right:-16px; margin-bottom:5px;">
+
+                                                                                <input style="height:20px;" type="text" data-disabled="" @requiredText disabled class="form-control input-sm bpftrigger brtrigger" data-subgrid="" data-count="@modalCounter" id="bpf_@Step.ControlElement.DataFieldName" name="@Step.ControlElement.DataFieldName"  data-target ="@CType" data-type="@Step.ControlElement.ControlProperty.ElementType"  data-attribute="yes">
+
+                                                                                <span class="input-group-btn">
+                                                                                    <button class="btn btn-sm blue clicker" style="height:20px; font-size:8px;" data-ismultitype="customer" data-ismulti="true" type="button" data-target="account" data-count="@modalCounter" data-widgetid="@ViewData["data-widgetid"]" data-count="@modalCounter">
+                                                                                        <i class="fa fa-search"></i>
+                                                                                    </button>
+                                                                                </span>
+
+                                                                            </div>
+                                                                            
+                                                                            Html.RenderAction("Index", "Lookup", new { LogicalName = "account", Count = modalCounter.ToString(), ReturnField = string.Format("bpf_{0}", Step.ControlElement.ControlID), IsMultiType = Step.ControlElement.ControlProperty.ElementType });
+
+                                                                        }
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        
+                                                            
+                                                                        stepCounter += 1;
+                                                                        if (stepCounter == 3 || liWrite)
+                                                                        {
+                                                                @:</li>
+                                                                stepCounter = 0;
+                                                                liWrite = true;
+                                                                        }
+
+
+                                                    }
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                <div id="bpfFormValue">
+                                    <input name="stageid" id="stageid" value="" style="display:none" data-type="guid" data-attribute="yes" />
+                                    <input name="traversedpath" id="traversedpath" value="" style="display:none" data-type="string" data-attribute="yes" />
+                                    <input name="processid" id="processid" value="" style="display:none" data-type="guid" data-attribute="yes" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+@Html.Partial("~/Views/Page/RenderCommonScripts.cshtml")
+@Scripts.Render("~/Content/Javascript/BusinessProcessFlow.js") 

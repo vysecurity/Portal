@@ -1,0 +1,13 @@
+﻿@model Portal.Models.GeneralModel 
+
+@{ 
+   
+     List<Portal.Models.Menu> mydata = Model.MenuViewModel.Menus ;
+     
+     List<Portal.Models.Menu> defaultarea = mydata.OrderBy(p=>Convert.ToInt32(p.Order)).ToList();
+     // Order'ı 1 olan ilk gelsin..
+
+     Response.Redirect(Url.Action("BuildPage", "Page", new { NavigationId = defaultarea.FirstOrDefault().URLName.Replace(" ", "-") + "-" + defaultarea.FirstOrDefault().UniqueName, LangId = Model.ExtraViewModel.PortalLanguage }));
+      
+ }
+

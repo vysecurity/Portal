@@ -1,0 +1,30 @@
+﻿@{
+    if (Request.Url.AbsoluteUri.Contains("RenderExternalWidget"))
+    {
+        Layout = "~/Views/Shared/ExternalLayout.cshtml";
+    }
+    else
+    {
+        if (System.Web.HttpContext.Current.Request.Cookies[Request.Url.Authority + "portalcookie"] != null)
+        {
+            Portal.PortalService.CrmServiceInformation portalserviceinfo = Newtonsoft.Json.JsonConvert.DeserializeObject<Portal.PortalService.CrmServiceInformation>(System.Web.HttpContext.Current.Request.Cookies[Request.Url.Authority + "portalcookie"].Values[0]);
+
+            if (portalserviceinfo.ThemeType == "1")
+            {
+                Layout = "~/Views/Shared/_Layout.cshtml";
+            }
+            else if (portalserviceinfo.ThemeType == "2")
+            {
+                Layout = "~/Views/Shared/DarkLayout.cshtml";
+            }
+            else
+            {
+                Layout = "~/Views/Shared/_Layout.cshtml";
+            }
+        }
+        else
+        {
+            Layout = "~/Views/Shared/_Layout.cshtml";
+        }
+    }
+}

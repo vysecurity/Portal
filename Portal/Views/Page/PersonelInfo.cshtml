@@ -1,0 +1,55 @@
+﻿@model Portal.Models.GeneralModel
+
+@section MyOtherJavascript {
+    @Styles.Render("~/assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css")
+    @Styles.Render("~/assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css")
+    @Styles.Render("~/Content/ExternalLibraries/JqueryDateTimePicker/jquery.datetimepicker.css")
+    @Styles.Render("~/Content/Css/CustomCss.css")
+    @Styles.Render("~/assets/global/plugins/select2/select2.css")
+    @Styles.Render("~/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css")
+    @Styles.Render("~/Content/ExternalLibraries/SignaturePad/signature-pad.css")
+    @Styles.Render("~/assets/global/plugins/bootstrap-toastr/toastr.min.css")
+
+    @Scripts.Render("~/assets/global/plugins/select2/select2.min.js")
+    @Scripts.Render("~/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js")
+    @Scripts.Render("~/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js")
+    @Scripts.Render("~/Content/ExternalLibraries/JqueryDateTimePicker/jquery.datetimepicker.js")
+    @Scripts.Render("~/Content/ExternalLibraries/SignaturePad/signature_pad.js")
+    @Scripts.Render("~/Content/Javascript/GeneralFunctions.js")
+    @Scripts.Render("~/Content/Javascript/BuildPage.js")
+    @Scripts.Render("~/Content/Javascript/EditForm.js")    
+    @Scripts.Render("~/assets/global/plugins/bootstrap-toastr/toastr.min.js")
+    @Scripts.Render("~/Content/ExternalLibraries/download.js")
+}
+
+@Html.Partial("~/Views/Dashboard/PictureUpload.cshtml")
+
+<script>
+    var dataarray = [];
+</script>
+
+@foreach (var item in Model.WidgetDataViewModel)
+{
+    item.WidgetId =  Model.ExtraViewModel != null ? Model.ExtraViewModel.WidgetId : "99";
+   
+    @Html.Raw("<div class='row'>")
+    @Html.Partial("~/Views/Page/Form.cshtml",item, 
+                                             new ViewDataDictionary { 
+                                             { "class", "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+                                             { "layout", item.FormLayout.Tabs }, 
+                                             { "Detail", "1" },
+                                             {"IsEditable", "true"},
+                                             { "LanguageModel" , Model.LocalizationModel}, 
+                                             {"Personel" , "1"} })
+    @Html.Raw("</div>")
+
+     <script>                
+        var obj ={};
+        obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(item.FormDatas));
+         obj.IsVisible = @Html.Raw(Model.MenuViewModel.IsVisible == null ? "0" : "1");
+         obj.Id = @Html.Raw("'" + Model.ExtraViewModel.WidgetId + "'");
+         obj.EntityId = @Html.Raw("'" + @item.FormLayout.EntityId + "'");
+         obj.DateTime = @Html.Raw("'" + long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")) + "'");
+        dataarray.push(obj);
+    </script> 
+}

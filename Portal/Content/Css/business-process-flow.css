@@ -1,0 +1,143 @@
+﻿#processlinediv {
+    margin-bottom: 3px;
+}
+
+.currentStage {
+    display: block;
+}
+
+.invisible {
+    display: none;
+}
+
+.visible {
+    display: block;
+}
+
+.font {
+    white-space: nowrap;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+.inputformat {
+    width: 98%;
+    margin-left: 20px;
+    margin-bottom: 5px;
+    font-size: 12px;
+    height: 20px;
+    padding: 0px;
+    padding-left: 3px;
+}
+
+.DocumentList {
+    overflow-x: auto;
+    overflow-y: hidden;
+    height: 120px;
+    width: 100%;
+    padding: 0 15px;
+}
+
+.DocumentItem {
+    border-right: 1px solid #ddd;
+    padding: 0;
+    height: 120px;
+    width: 400px;
+}
+
+.list-inline {
+    white-space: nowrap;
+}
+
+#stageButtons {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.tooltip-inner {
+    max-width: none;
+    white-space: nowrap;
+}
+
+#bpfButtons {
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.breadcrumb {
+    list-style: none;
+    overflow: hidden;
+    font: 18px Helvetica, Arial, Sans-Serif;
+}
+
+    .breadcrumb li {
+        float: left;
+    }
+
+        .breadcrumb li a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 0 10px 55px;
+            background: brown; /* fallback color */
+            background: hsla(34,85%,35%,1);
+            position: relative;
+            display: block;
+            float: left;
+        }
+
+            .breadcrumb li a:after {
+                content: " ";
+                display: block;
+                width: 0;
+                height: 0;
+                border-top: 50px solid transparent; /* Go big on the size, and let overflow hide */
+                border-bottom: 50px solid transparent;
+                border-left: 30px solid hsla(34,85%,35%,1);
+                position: absolute;
+                top: 50%;
+                margin-top: -50px;
+                left: 100%;
+                z-index: 2;
+            }
+
+            .breadcrumb li a:before {
+                content: " ";
+                display: block;
+                width: 0;
+                height: 0;
+                border-top: 50px solid transparent; /* Go big on the size, and let overflow hide */
+                border-bottom: 50px solid transparent;
+                border-left: 30px solid white;
+                position: absolute;
+                top: 50%;
+                margin-top: -50px;
+                margin-left: 1px;
+                left: 100%;
+                z-index: 1;
+            }
+
+        .breadcrumb li:first-child a {
+            padding-left: 10px;
+        }
+
+        .breadcrumb li:last-child a {
+            background: white !important;
+            color: black;
+            pointer-events: none;
+            cursor: default;
+        }
+
+            .breadcrumb li:last-child a:after {
+                border: 0;
+            }
+
+        .breadcrumb li a:hover {
+            background: hsla(34,85%,25%,1);
+        }
+
+            .breadcrumb li a:hover:after {
+                border-left-color: hsla(34,85%,25%,1) !important;
+            }

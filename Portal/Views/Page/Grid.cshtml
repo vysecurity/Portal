@@ -1,0 +1,127 @@
+﻿@using Portal.Helper
+@model Portal.Models.WidgetDataModel
+@{ 
+    String URLForGrid = System.Web.HttpContext.Current.Request.Url.Authority.ToString();
+    Portal.Models.LocalizationModel LanguageModel = (Portal.Models.LocalizationModel)(ViewData["LanguageModel"]);
+}
+
+@if (Model.GridType == "basic")
+{
+    <div class="@ViewData["class"]">
+        <!-- BEGIN SAMPLE TABLE PORTLET-->
+        <div class="portlet light">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-cogs font-green-sharp"></i>
+                    <span class="caption-subject font-green-sharp bold uppercase">@Model.Name</span>
+                </div>
+
+            </div>
+            <div class="portlet-body">
+                <div class="table table-borderless">
+                    <table class="table table-hover table-light" id="@Model.PageWidgetId" data-type="grid" data-formopenstyle="@Model.GridClickOpenFormStyle" data-onclick="@Model.GridOnClick" , data-openformid="@Model.GridOnClickOpenFormId"  data-recordperpage="@Model.GridRecordPerPage" data-editable="@Model.IsEditable" data-ownership="@Model.IsOwnership" data-openhtmlid="@Model.GridOnClickOpenHTMLId" data-openwidgettype="@Model.GridOnClickWidgetType">
+                        <thead>
+                            <tr>
+
+                                @{ Portal.Models.GridRowData d = ((List<Portal.Models.GridRowData>)@Model.GridData)[0];
+                                   List<Portal.Models.GridRowData> listd = ((List<Portal.Models.GridRowData>)@Model.GridData);}
+
+                                @foreach (var item in d.Data)
+                                {
+                                    <th>@item.DisplayName  </th>
+                                }
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var items in listd)
+                            {
+                                @Html.Raw("<tr>")
+                                foreach (var dataitem in items.Data)
+                                {
+                                @Html.Raw("<td>")
+                                @dataitem.Value
+                                @Html.Raw("</td>")
+                                
+                                }
+                                @Html.Raw("</tr>")
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- END SAMPLE TABLE PORTLET-->
+    </div>
+
+}
+<!-- BEGIN PAGE CONTENT INNER -->
+@if (Model.GridType == "advanced")
+{
+    <div class="@ViewData["class"]">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        @{var border = Model.GridHeaderColor != String.Empty ? "1px solid" + @Model.GridHeaderColor : String.Empty;
+          var mainClass = Model.GridHeaderColor != String.Empty ? "portlet light box" : "portlet light";}
+
+        <div class="@mainClass" style="background-color:@Model.GridHeaderColor;border:@border">
+            <div class="portlet-title">
+                <div class="caption" style="margin-left:5px;">
+                    <i class="fa fa-cogs font-green-sharp" style="color:@Model.GridHeaderFontColor !important"></i>
+                    <span class="caption-subject font-green-sharp bold uppercase" style="color:@Model.GridHeaderFontColor !important">@Model.Name</span>
+                </div>
+            </div>
+            <div class="portlet-body">
+                <div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        </div>
+                        <div class="col-md-6">
+                        </div>
+                    </div>
+                </div>
+
+                <table class="table table-striped table-bordered table-hover grid"   id="@Model.PageWidgetId" data-widgetid="@Model.WidgetId" data-type="grid" data-formopenstyle="@Model.GridClickOpenFormStyle" data-onclick="@Model.GridOnClick" , data-openformid="@Model.GridOnClickOpenFormId"  data-recordperpage="@Model.GridRecordPerPage" data-editable="@Model.IsEditable" data-ownership="@Model.IsOwnership" data-openhtmlid="@Model.GridOnClickOpenHTMLId" data-openwidgettype="@Model.GridOnClickWidgetType">
+                    <thead>
+                        <tr>
+                            @{ Portal.Models.GridRowData d = ((List<Portal.Models.GridRowData>)@Model.GridData)[0];
+                               List<Portal.Models.GridRowData> listd = ((List<Portal.Models.GridRowData>)@Model.GridData);}
+
+                            @foreach (var item in d.Data)
+                            {
+                                <th>@item.DisplayName  </th>
+                            }
+                            @if (Model.Actions.Where(p => p.GridActions.Equals(1)).ToList().Count > 0)
+                            {
+                                <th>@LanguageModel.Actions</th>
+                            }
+                            <th>Id</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <div id="responsive_main_@Model.PageWidgetId" class='modal fade modal-scroll' tabindex='-1' data-replace='true'>
+                    <div class='modal-dialog modal-full'>
+                        <div class='modal-content'>
+
+
+                            <div class='modal-body'>
+                                <div id="responsive_@Model.PageWidgetId"></div>
+                            </div>
+                            <div class='modal-footer'>
+                                <button type='button' data-dismiss='modal' class='btn'>@LanguageModel.Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+
+    </div>
+
+}
+

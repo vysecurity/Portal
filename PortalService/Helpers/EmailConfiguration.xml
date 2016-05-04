@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Configurations>
+  <Configuration portalid="21985D4D-F75D-E511-80EA-3863BB345A68">
+    <SMTPUserName>xrmlink@genbil.com</SMTPUserName>
+    <SMTPPassword>Xrmlink2015!</SMTPPassword>
+    <SMTPHost>monthly.smtp.com</SMTPHost>
+    <SMTPPort>2525</SMTPPort>
+  </Configuration>
+  <Configuration portalid="default">
+    <SMTPUserName>xrmlink@genbil.com</SMTPUserName>
+    <SMTPPassword>Xrmlink2015!</SMTPPassword>
+    <SMTPHost>monthly.smtp.com</SMTPHost>
+    <SMTPPort>2525</SMTPPort>
+  </Configuration>
+</Configurations>

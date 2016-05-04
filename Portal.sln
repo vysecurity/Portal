@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal", "Portal\Portal.csproj", "{9DB9BF13-2216-4B58-96AD-5D054537B1E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PortalService", "PortalService\PortalService.csproj", "{1AAEA08C-8C73-4279-B49B-2F0FB4DED535}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary", "ClassLibrary\ClassLibrary.csproj", "{3B667C67-00AF-4F14-A3B1-006A83BCE92E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Azure", "Azure\Azure.csproj", "{3FFA9460-7461-45CE-8338-65BC4C9C9153}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assemblies", "Assemblies", "{424CDC11-FCB8-4BB0-BD54-93C990B23734}"
+	ProjectSection(SolutionItems) = preProject
+		Assemblies\Microsoft.Crm.dll = Assemblies\Microsoft.Crm.dll
+		Assemblies\Microsoft.Crm.Sdk.Proxy.dll = Assemblies\Microsoft.Crm.Sdk.Proxy.dll
+		Assemblies\Microsoft.Crm.Workflow.dll = Assemblies\Microsoft.Crm.Workflow.dll
+		Assemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll = Assemblies\Microsoft.IdentityModel.Clients.ActiveDirectory.dll
+		Assemblies\Microsoft.Xrm.Sdk.Deployment.dll = Assemblies\Microsoft.Xrm.Sdk.Deployment.dll
+		Assemblies\Microsoft.Xrm.Sdk.dll = Assemblies\Microsoft.Xrm.Sdk.dll
+		Assemblies\Microsoft.Xrm.Sdk.Workflow.dll = Assemblies\Microsoft.Xrm.Sdk.Workflow.dll
+		Assemblies\Microsoft.Xrm.Tooling.Connector.dll = Assemblies\Microsoft.Xrm.Tooling.Connector.dll
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DB9BF13-2216-4B58-96AD-5D054537B1E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DB9BF13-2216-4B58-96AD-5D054537B1E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DB9BF13-2216-4B58-96AD-5D054537B1E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DB9BF13-2216-4B58-96AD-5D054537B1E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AAEA08C-8C73-4279-B49B-2F0FB4DED535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AAEA08C-8C73-4279-B49B-2F0FB4DED535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AAEA08C-8C73-4279-B49B-2F0FB4DED535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AAEA08C-8C73-4279-B49B-2F0FB4DED535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B667C67-00AF-4F14-A3B1-006A83BCE92E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B667C67-00AF-4F14-A3B1-006A83BCE92E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B667C67-00AF-4F14-A3B1-006A83BCE92E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B667C67-00AF-4F14-A3B1-006A83BCE92E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3FFA9460-7461-45CE-8338-65BC4C9C9153}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3FFA9460-7461-45CE-8338-65BC4C9C9153}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3FFA9460-7461-45CE-8338-65BC4C9C9153}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3FFA9460-7461-45CE-8338-65BC4C9C9153}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

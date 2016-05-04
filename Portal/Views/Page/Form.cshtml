@@ -1,0 +1,748 @@
+﻿@model Portal.Models.WidgetDataModel
+
+<!-- BEGIN ACCORDION PORTLET-->
+
+@{ 
+    List<Portal.Models.Tabs> tabs = ((List<Portal.Models.Tabs>)Model.FormLayout.Tabs);
+    int count = 1;
+    String GeneralDisabled = String.Empty;
+    String IsSubGridProp = Convert.ToString(ViewData["IscomingFromSubGrid"]);
+    Portal.Models.WidgetModel models = new Portal.Models.WidgetModel();
+    if (@ViewData["Personel"] != "1")
+    {
+        if (Request.Cookies[Request.Url.Authority + "usernameguidcookie"] != null)
+        {
+            models = ((List<Portal.Models.WidgetModel>)System.Web.HttpContext.Current.Application[Request.Cookies[Request.Url.Authority + "usernameguidcookie"].Values[0] + "widgets"]).Where(p => p.pagewidgetid.Equals(Model.PageWidgetId)).FirstOrDefault();
+        }
+    }
+    Portal.Models.LocalizationModel LanguageModel = (Portal.Models.LocalizationModel)(ViewData["LanguageModel"]);
+    
+}
+
+<script>  
+    var forminitialvaluearray = [];
+    var obj ={};
+    obj.Id = @Html.Raw("'" + @Model.PageWidgetId + "'");
+    obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(models));
+    forminitialvaluearray.push(obj);
+</script>
+
+<div class="portlet light formwidgetclass" data-formopenstyle="@ViewData["formopenstyle"]" 
+    data-formid="@Model.FormId" data-widgetguid="@Model.WidgetGuid"     data-iscomingfromlookup="@ViewData["iscomingfromlookup"]" data-widgettype="form" 
+    data-entityid="@Model.FormLayout.EntityId" data-editable="@ViewData["IsEditable"]" data-subgridid="@Model.SubGridId" data-parentid="@Model.ParentId"  
+    data-relationshipname="@Model.RelationShipName" data-widgetid="@Model.PageWidgetId" data-personel=" @ViewData["Personel"]" 
+    data-ownership="@ViewData["IsOwnerShip"]" data-update="@ViewData["Detail"]" data-isredirect="@Model.RedirectAfterCreate" data-widget="@Model.WidgetId">
+
+    <div class="portlet-title">
+        <div class="caption">
+            <i class="fa fa-cogs font-green-sharp"></i>
+            <span class="caption-subject font-green-sharp bold uppercase">@Model.Name</span>
+        </div>
+
+        <div class="tools">
+
+            <div class="btn-group btn-theme-panel" style="margin-top: 0;" id="quickstartbutton">
+                <a href="javascript:;" class="btn dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                    <i class="icon-settings"></i>
+                </a>
+                <div class="dropdown-menu theme-panel pull-right dropdown-custom hold-on-click" style="min-width: 300px;">
+                    <div class="row">
+                        <div class="col-md-12 col-sm-12 col-xs-12 seperator">
+                            @*<h3>LAYOUT</h3>*@
+                            <ul class="theme-settings" id="quickstartelements">
+                                @*<li> İş Süreci Akışı
+                                 <select class="theme-setting theme-setting-style form-control input-sm input-small input-inline tooltips" id="bpfSelector">
+                           
+                                 </select>
+                             </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="javascript:;" class="collapse"></a>
+        </div>
+    </div>
+    <div class="portlet-body">
+
+        @{var bpf = tabs.Where(p => p.IsBpf.Equals("true")).Select(p => p.BusinessProcessFlowList).FirstOrDefault();}
+        @if (bpf != null)
+        {
+            // If exist business process flow than count val + 1
+            count += 1;
+            <script> var bpfList = @Html.Raw("'" + Newtonsoft.Json.JsonConvert.SerializeObject(bpf) + "'"); </script>
+                
+            <div class="panel-group accordion" id="bpfAccordion">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <div class="panel-title">
+                            <h4 style="margin-top: 0; margin-bottom: 0;">
+                                <select class="form-control" id="tmpbpfselectlist" style="display: none">
+                                    @foreach (var bpfItem in bpf)
+                                    {
+                                        <option value="@bpfItem.Title">@bpfItem.Title</option>
+                                    }
+                                </select>
+
+                                <a id="bpfTitle" class="accordion-toggle accordion-toggle-styled collapsed" data-toggle="collapse" data-parent="#bpfAccordion" href="#collapse_bpf" aria-expanded="false">@bpf.FirstOrDefault().Title </a>
+                            </h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="collapse_bpf" class="panel-collapse collapse" aria-expanded="false">
+
+                    @Html.Partial("~/Views/Page/BusinessProcessFlowPartial.cshtml", bpf.FirstOrDefault(), new ViewDataDictionary { { "data-widgetid", @Model.PageWidgetId } })
+
+                </div>
+            </div>
+        }
+
+        @{
+            // If exist business rule than count val + 1
+            if (tabs.Where(z => z.IsBr.Equals("true")).Any())
+            {
+                count += 1;
+                <script> var businessRules = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(tabs.Where(z => z.IsBr.Equals("true")).FirstOrDefault().BusinessRules));</script>    
+                @Scripts.Render("~/Content/Javascript/BusinessRule.js") 
+            }
+        }
+
+        <div style="margin-bottom: 5px">
+            @if (ViewData["Detail"] == "1")
+            {
+                if (!String.IsNullOrEmpty(Convert.ToString(ViewData["IsEditable"])))
+                {
+                    if (Convert.ToString(ViewData["IsEditable"]) == "true")
+                    {
+
+                        if (String.IsNullOrEmpty(Convert.ToString(ViewData["IscomingFromSubGrid"])))
+                        {
+                <button type="submit" class="btn green updater">@LanguageModel.Update</button>
+                        }
+                        else
+                        {
+                <button type="submit" class="btn green subgridupdater">@LanguageModel.Update</button>
+                        }
+                    }
+                    else
+                    {
+                        GeneralDisabled = "disabled";
+                    }
+                }
+            }
+            else
+            {          
+
+                <button type="submit" class="btn green submitter">@LanguageModel.Save</button>           
+            }
+            @if (Model.Actions != null)
+            {
+                var acts = Model.Actions.Where(p => (p.WidgetType.Equals("5") || p.WidgetType.Equals("6")) || (p.WidgetType.Equals("1") && String.IsNullOrEmpty(p.GridActions))).OrderBy(p => Convert.ToInt32(p.Order)).ToList();
+                foreach (var actions in acts)
+                {
+                <button type="submit" id="@actions.Id" data-errormessage ="@actions.ErrorReturnMessage" data-workflowid="@actions.WorkFlowId" data-order="@actions.Order" data-entitylogicalname="@actions.EntityLogicalName" data-returnmessage ="@actions.ReturnMessage" class="btn customactions" style="background:@actions.Color;color:@actions.FontColor">@actions.DisplayName</button>
+                }
+            }
+        </div>
+        <div class="panel-group accordion" id="accordion_@Model.WidgetId" data-detail ="@ViewData["Detail"]">
+            @foreach (var item in tabs)
+            {
+                if (item.IsBpf.Equals("true") || item.IsBr.Equals("true"))
+                {
+                    continue;
+                }
+                String paneltitleclass = String.Empty, bodyclass = String.Empty; String TabVisibility = String.Empty;
+                if (Convert.ToBoolean(item.Expanded) == true)
+                {
+                    paneltitleclass = "accordion-toggle accordion-toggle-styled";
+                    bodyclass = "panel-collapse in";
+                }
+                else
+                {
+                    paneltitleclass = "accordion-toggle accordion-toggle-styled collapsed";
+                    bodyclass = "panel-collapse collapse";
+                }
+                if (Convert.ToBoolean(item.Visible) == false)
+                {
+                    continue;
+                }
+               
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            @{ String TabLabel = item.ShowLabel == "true" ? item.Label : String.Empty;}
+
+                            <a class="@paneltitleclass" data-toggle="collapse" data-parent="#accordion_@Model.WidgetId" href="#collapse_@count">@TabLabel </a>
+                        </h4>
+                    </div>
+                    <div id="collapse_@count" class="@bodyclass">
+                        <div class="panel-body" data-entityname="@item.EntityName">
+
+                            @{  String classleft = "";}
+
+                            @foreach (var columnitem in item.Columns)
+                            {                                
+                                <!-- #region Arrange Width For BootStrap -->
+                                int columwidth = Convert.ToInt32(columnitem.Width.Replace("%", ""));
+
+                                if (columwidth == 100)
+                                {
+                                    classleft = "col-md-12";
+                                }
+                                else if (columwidth > 85 && columwidth < 100)
+                                {
+                                    classleft = "col-md-11";
+                                }
+                                else if (columwidth > 75 && columwidth < 85)
+                                {
+                                    classleft = "col-md-10";
+                                }
+                                else if (columwidth == 75)
+                                {
+                                    classleft = "col-md-9";
+                                }
+                                else if (columwidth > 60 && columwidth < 75)
+                                {
+                                    classleft = "col-md-8";
+                                }
+                                else if (columwidth > 50 && columwidth < 60)
+                                {
+                                    classleft = "col-md-7";
+                                }
+                                else if (columwidth == 50)
+                                {
+                                    classleft = "col-md-6";
+                                }
+                                else if (columwidth > 40 && columwidth < 50)
+                                {
+                                    classleft = "col-md-5";
+                                }
+                                else if (columwidth > 25 && columwidth < 40)
+                                {
+                                    classleft = "col-md-4";
+                                }
+                                else if (columwidth <= 25)
+                                {
+                                    classleft = "col-md-3";
+                                }
+                                    
+                                <!-- #endregion -->
+                                
+                                <div class="@classleft ">
+                                    @foreach (var sectionitems in columnitem.Sections)
+                                    {
+                                        int sectionwidthint = 0;
+
+                                        if (sectionitems.Visible == "false")
+                                        {
+                                            continue;
+                                        }                
+                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+
+                                            @{String SectionWidth = String.Empty;
+
+                                              if (sectionitems.ColumnLength == "1")
+                                              {
+                                                  sectionwidthint = 12;
+                                                  SectionWidth = "col-lg-12 col-md-12 col-sm-12 col-xs-12";
+                                              }
+                                              else if (sectionitems.ColumnLength == "11")
+                                              {
+                                                  sectionwidthint = 6;
+                                                  SectionWidth = "col-lg-6 col-md-6 col-sm-6 col-xs-6";
+                                              }
+                                              else if (sectionitems.ColumnLength == "111")
+                                              {
+                                                  sectionwidthint = 4;
+                                                  SectionWidth = "col-lg-4 col-md-4 col-sm-4 col-xs-4";
+                                              }
+                                              else if (sectionitems.ColumnLength == "1111")
+                                              {
+                                                  sectionwidthint = 3;
+                                                  SectionWidth = "col-lg-3 col-md-3 col-sm-3 col-xs-3";
+                                              }
+                                        
+                                            }
+                                            @if (Convert.ToBoolean(sectionitems.ShowLabel) == true)
+                                            {
+                                                <div class="portlet-title sectionheader">
+                                                    <div class="caption">
+                                                        @sectionitems.Name
+                                                    </div>
+
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <div class="portlet-title sectionheader">
+                                                    <div class="caption">
+                                                    </div>
+
+                                                </div>
+                                            }
+                                            <div class="form-body">
+                                                @{ int counter = 0; }
+
+
+                                                @foreach (var rowitems in sectionitems.Rows)
+                                                {
+                                                    //in create form we dont  allowed to create notes yet
+                                                    if (rowitems.Type == "notescontrol" && ViewData["Detail"] != "1")
+                                                    {
+                                                        continue;
+                                                    }
+                                                    String LabelClass = String.Empty; String InputClass = String.Empty; String PaddingLeft = String.Empty;
+                                                    counter = counter + 1;
+                                                    String oldSection = String.Empty;
+                                                    String fieldvisiblity = rowitems.Visible == "true" ? String.Empty : "display:none";
+                                                    if (rowitems.ColSpan != String.Empty && rowitems.ColSpan != null)
+                                                    {
+                                                        int newwidth = Convert.ToInt32(rowitems.ColSpan) * sectionwidthint;
+                                                        oldSection = SectionWidth;
+                                                        SectionWidth = "col-lg-" + newwidth.ToString() + " col-md-" + newwidth.ToString() + " col-sm-" + newwidth.ToString() + " col-xs-" + newwidth.ToString();
+
+                                                        InputClass = "col-lg-9 col-md-9 col-sm-9 col-xs-9";
+                                                        LabelClass = "col-lg-3 col-md-3 col-sm-3 col-xs-3";
+                                                        //PaddingLeft = "padding-left:4.85%";
+                                                    }
+                                                    else
+                                                    {
+                                                        PaddingLeft = String.Empty;
+                                                        InputClass = "col-lg-9 col-md-9 col-sm-9 col-xs-9";
+                                                        LabelClass = "col-lg-3 col-md-3 col-sm-3 col-xs-3";
+                                                        if (sectionitems.ColumnLength == "1")
+                                                        {
+                                                            SectionWidth = "col-lg-12 col-md-12 col-sm-12 col-xs-12";
+                                                        }
+                                                        else if (sectionitems.ColumnLength == "11")
+                                                        {
+                                                            SectionWidth = "col-lg-6 col-md-6 col-sm-6 col-xs-6";
+                                                        }
+                                                        else if (sectionitems.ColumnLength == "111")
+                                                        {
+                                                            SectionWidth = "col-lg-4 col-md-4 col-sm-4 col-xs-4";
+                                                        }
+                                                        else if (sectionitems.ColumnLength == "1111")
+                                                        {
+                                                            SectionWidth = "col-lg-3 col-md-3 col-sm-3 col-xs-3";
+                                                        }
+                                                    }
+                                                    if (rowitems.UserSpacer == "true")
+                                                    {
+                                                    <div class="form-group  @SectionWidth" style="display:none" >
+                                                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                                                            <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Spacer</label>
+                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                                                <input type="text" class="form-control" />
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    }
+                                                    else if (rowitems.Ispace == "true")
+                                                    {
+                                                    <div class="form-group  @SectionWidth" style="display:none" >
+
+                                                        <label class="col-lg-3 col-md-3 col-sm-3 col-xs-3">Spacer</label>
+                                                        <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+                                                            <input type="text" class="form-control" />
+                                                        </div>
+
+                                                    </div>
+                                                    }
+                                                    else
+                                                    {
+                                                    <div class="form-group  @SectionWidth" style="@fieldvisiblity"  >
+
+                                                        <!-- #region Crm Form Controls -->
+                                                        @if (@rowitems.ElementType == "formcontrol")
+                                                        {                                                         
+                                                           
+                                                            <label class="@LabelClass control-label" style="overflow: hidden; white-space: nowrap;" data-required ="@rowitems.RequiredLevel">@rowitems.DisplayName
+                                                                @if (rowitems.RequiredLevel == "applicationrequired")
+                                                                {
+                                                                    @Html.Raw("<span class='required' aria-required='true'>*</span>")
+                                                                }
+                                                            </label>
+                                                            <div class="@InputClass" style="@PaddingLeft">
+                                                                @if (GeneralDisabled != String.Empty)
+                                                                {
+                                                                    rowitems.Disabled = "disabled";
+                                                                }
+
+                                                                @{ 
+                                                                Type myType = typeof(Portal.Helper.ClassIds);
+                                                                var values = myType.GetFields().Select(p => new { name = p.Name, val = p.GetValue(p.Name) }).ToList(); 
+                                                                }
+                                                                @if (ViewData["issubgridfrom"] == "1" || ViewData["customform"] == "1")
+                                                                {
+                                                                    rowitems.LogicalName = "subgrid_" + rowitems.LogicalName;
+                                                                }
+                                                                @{ var lookuplinkpartial = new Portal.Models.LookupLinks();
+
+
+                                                                   Boolean CreateLink = false;
+                                                                   if (models.lookuplinks != null && models.lookuplinks.Count > 0)
+                                                                   {
+                                                                       lookuplinkpartial = models.lookuplinks.Where(p => p != null && p.LookupLogicalName.Equals(rowitems.LogicalName)).FirstOrDefault();
+                                                                       if (lookuplinkpartial != null)
+                                                                       {
+                                                                           CreateLink = true;
+                                                                       }
+                                                                   }                                                                    
+                                                                }
+
+                                                                @if (rowitems.Type == "string")
+                                                                {
+
+                                                                    var n = values.Where(p => p.val.ToString().ToLower().Replace(" ", String.Empty).Equals(rowitems.ClassId.ToLower())).SingleOrDefault();
+                                                                    if (n != null && n.name.ToLower() == "urlcontrol")
+                                                                    {   
+                                                                    <input type="url" data-disabled="@rowitems.Disabled" @rowitems.Disabled style="color:blue" class="form-control urlclicker bpfformtrigger brformtrigger" data-subgrid="@IsSubGridProp"  name="@rowitems.LogicalName" placeholder="@rowitems.DisplayName" data-type="@rowitems.Type" data-attribute="yes"  data-isurl="true"/>
+                                                                   
+                                                                    }
+                                                                    else
+                                                                    {      
+                                                                    <input type="text" data-disabled="@rowitems.Disabled" @rowitems.Disabled  class="form-control bpfformtrigger brformtrigger" data-subgrid="@IsSubGridProp" name="@rowitems.LogicalName" placeholder="@rowitems.DisplayName" data-type="@rowitems.Type" data-attribute="yes" data-isurl="false" >
+                                                                    }
+                                                                }
+                                                                else if (rowitems.Type == "lookup")
+                                                                {
+                                                                    <div class="input-group">
+                                                                        @if (CreateLink == true)
+                                                                        {                                                                         
+                                                                            <input type="text" data-disabled="@rowitems.Disabled" readonly style="color:blue; cursor:pointer" data-widgetid="@Model.WidgetId" data-pagewidgetid="@Model.PageWidgetId" data-editable="@lookuplinkpartial.Editable" data-openformid="@lookuplinkpartial.OpenFormId" class="form-control lookuplinkclicker bpfformtrigger brformtrigger" data-subgrid="@IsSubGridProp" data-count="@counter" id="@rowitems.LogicalName" name="@rowitems.LogicalName" placeholder="@rowitems.DisplayName" data-target ="@rowitems.LookupLogicalName" data-type="@rowitems.Type"  data-attribute="yes">
+                                                                            
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <input type="text"  data-disabled="@rowitems.Disabled" disabled class="form-control bpfformtrigger brformtrigger" data-subgrid="@IsSubGridProp" data-count="@counter" id="@rowitems.LogicalName" name="@rowitems.LogicalName" placeholder="@rowitems.DisplayName" data-target ="@rowitems.LookupLogicalName" data-type="@rowitems.Type"  data-attribute="yes">
+                                                                        }
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-icon-only blue clicker" @rowitems.Disabled type="button" data-target="@rowitems.LookupLogicalName" data-widgetid="@Model.PageWidgetId" data-count="@counter">
+                                                                                <i class="fa fa-search"></i>
+                                                                            </button>
+                                                                        </span>
+
+                                                                    </div>
+                                                                    @Html.Action("Index", "Lookup", new { LogicalName = @rowitems.LookupLogicalName, Count = counter.ToString(), ReturnField = @rowitems.LogicalName, IsMultiType = String.Empty })
+                                                                        if (CreateLink == true)
+                                                                        {
+                                                                    @Html.Partial("LookupDetail", new ViewDataDictionary { { "id", rowitems.LogicalName + "_" + counter.ToString() }, { "LanguageModel", LanguageModel } })    
+                                                                        }
+                                                                }
+                                                                else if (rowitems.Type == "customer")
+                                                                {
+
+                                                                    String CType = String.IsNullOrEmpty(rowitems.LookupLogicalName) == true ? "account" : rowitems.LookupLogicalName;
+                                                                    <div class="input-group">
+
+                                                                        <input type="text" data-disabled="@rowitems.Disabled" disabled class="form-control bpfformtrigger brformtrigger" data-subgrid="@IsSubGridProp" data-count="@counter" id="@rowitems.LogicalName" name="@rowitems.LogicalName" placeholder="@rowitems.DisplayName" data-target ="@CType" data-type="@rowitems.Type"  data-attribute="yes">
+
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn btn-icon-only blue clicker bpfformtrigger brformtrigger" @rowitems.Disabled data-ismultitype="customer" data-ismulti="true" type="button" data-target="account" data-widgetid="@Model.PageWidgetId" data-count="@counter">
+                                                                                <i class="fa fa-search"></i>
+                                                                            </button>
+                                                                        </span>
+
+                                                                    </div>
+                                                                    @Html.Action("Index", "Lookup", new { LogicalName = "account", Count = counter.ToString(), ReturnField = @rowitems.LogicalName, IsMultiType = rowitems.Type })
+                                                                   
+                                                                }
+                                                                else if (rowitems.Type == "ınteger" || rowitems.Type == "integer")
+                                                                {
+                                                                    <input data-subgrid="@IsSubGridProp" type="number" data-disabled="@rowitems.Disabled"  @rowitems.Disabled class="form-control bpfformtrigger brformtrigger" pattern="[0-9]+([\.|,][0-9]+)?" name="@rowitems.LogicalName" min="@rowitems.MinValue" max="@rowitems.MaxValue" data-type="@rowitems.Type" data-attribute="yes"> 
+                                                                }
+                                                                else if (rowitems.Type == "money")
+                                                                {
+                                                                    String round = String.Empty;
+                                                                    for (var i = 0; i < Convert.ToInt32(rowitems.Precision); i++)
+                                                                    {
+                                                                        if (i == 0)
+                                                                        {
+                                                                            round += "0.";
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            round += "0";
+                                                                        }
+                                                                    }
+                                                                    round = round + "1";
+                                                                    <input data-subgrid="@IsSubGridProp" type="number" data-disabled="@rowitems.Disabled" @rowitems.Disabled class="form-control bpfformtrigger brformtrigger" pattern="[0-9]+([\.|,][0-9]+)?" name="@rowitems.LogicalName" step="@round" min="@rowitems.MinValue" max="@rowitems.MaxValue" data-type="@rowitems.Type" data-attribute="yes"> 
+                                                                }
+                                                                else if (rowitems.Type == "decimal" || rowitems.Type == "double")
+                                                                {
+                                                                    String round = String.Empty;
+                                                                    for (var i = 0; i < Convert.ToInt32(rowitems.Precision); i++)
+                                                                    {
+                                                                        if (i == 0)
+                                                                        {
+                                                                            round += "0.";
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            round += "0";
+                                                                        }
+                                                                    }
+                                                                    round = round + "1";
+                                                                    <input data-subgrid="@IsSubGridProp" type="number" data-disabled="@rowitems.Disabled" @rowitems.Disabled class="form-control bpfformtrigger brformtrigger" pattern="[0-9]+([\.|,][0-9]+)?" name="@rowitems.LogicalName" step="@round" data-type="@rowitems.Type" data-attribute="yes"> 
+                                                                }
+                                                                else if (rowitems.Type == "datetime")
+                                                                {
+
+                                                                    if (rowitems.DatePart == "dateandtime")
+                                                                    {
+                                                                    <div class="input-group date form_datetime" data-type="divdatetime">
+                                                                        <input data-subgrid="@IsSubGridProp" type="text" size="16"  data-disabled="@rowitems.Disabled" @rowitems.Disabled data-type="metronicdatetime" class="form-control bpfformtrigger brformtrigger" name="@rowitems.LogicalName" data-timepicker ="@rowitems.DatePart"  data-dateformat="@rowitems.DateFormat" data-timeformat="@rowitems.TimeFormat" data-beforetimeformat="@rowitems.BeforeTimeFormat" data-beforedateformat="@rowitems.BeforeDateFormat" data-attribute="yes">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                                                        </span>
+                                                                    </div>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                            
+                                                                    <div class="input-group date form_date" data-type="divdatetime">
+                                                                        <input data-subgrid="@IsSubGridProp"data-disabled="@rowitems.Disabled" @rowitems.Disabled  data-type="metronicdate" type="text" size="16" class="form-control bpfformtrigger brformtrigger" name="@rowitems.LogicalName" data-timepicker ="@rowitems.DatePart" data-dateformat="@rowitems.DateFormat" data-timeformat="@rowitems.TimeFormat" data-beforetimeformat="@rowitems.BeforeTimeFormat" data-beforedateformat="@rowitems.BeforeDateFormat" data-attribute="yes">
+                                                                        <span class="input-group-btn">
+                                                                            <button class="btn default date-set" type="button"><i class="fa fa-calendar"></i></button>
+                                                                        </span>
+                                                                    </div>
+                                                                    }
+
+                                                                }
+                                                                else if (rowitems.Type == "picklist")
+                                                                {
+                                                                    <select @rowitems.Disabled  data-disabled="@rowitems.Disabled" @rowitems.Disabled class="form-control bpfformtrigger brformtrigger" name="@rowitems.LogicalName" data-type="@rowitems.Type" data-attribute="yes" data-subgrid="@IsSubGridProp">
+                                                                        <option value="null"></option>
+                                                                        @foreach (var picklistitem in rowitems.Picklist)
+                                                                        {
+                                                                            <option value="@picklistitem.Value">@picklistitem.Label</option>
+                                                                        }
+
+                                                                    </select>                                                                    
+                                                                }
+                                                                else if (rowitems.Type == "status")
+                                                                {
+                                                                    <select @rowitems.Disabled data-disabled="@rowitems.Disabled" @rowitems.Disabled class="form-control bpfformtrigger brformtrigger" name="@rowitems.LogicalName" data-type="@rowitems.Type" data-attribute="yes" data-subgrid="@IsSubGridProp">
+                                                                        <option value="null"></option>
+                                                                        @foreach (var picklistitem in rowitems.Picklist)
+                                                                        {
+                                                                            <option value="@picklistitem.Value">@picklistitem.Label</option>
+                                                                        }
+
+                                                                    </select>                                                                    
+                                                                }
+                                                                else if (rowitems.Type == "memo")
+                                                                {
+                                                                    <textarea @rowitems.Disabled data-disabled="@rowitems.Disabled" @rowitems.Disabled class="form-control memo bpfformtrigger brformtrigger" name="@rowitems.LogicalName" data-type="@rowitems.Type" data-attribute="yes" rows="@rowitems.RowSpan" data-subgrid="@IsSubGridProp"></textarea>
+                                                                }
+                                                                else if (rowitems.Type == "notescontrol")
+                                                                {
+
+                                                                    if (ViewData["Detail"] == "1")
+                                                                    {
+                                                                        if (!String.IsNullOrEmpty(Convert.ToString(ViewData["IsEditable"])))
+                                                                        {
+                                                                            if (Convert.ToString(ViewData["IsEditable"]) == "true")
+                                                                            {
+                                                                    @Html.Partial("~/Views/Page/NoteButtons.cshtml", new ViewDataDictionary { { "id", 1 }, { "name", @rowitems.LogicalName }, { "type", @rowitems.Type }, { "rows", @rowitems.RowSpan }, { "disabled", @rowitems.Disabled }, { "Attachments", @rowitems.Attachments } })
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else if (rowitems.Type == "boolean")
+                                                                {
+                                                                    var n = values.Where(p => p.val.ToString().ToLower().Replace(" ", String.Empty).Equals(rowitems.ClassId.ToLower())).SingleOrDefault();
+
+                                                                    if (n != null && n.name.ToLower() == "radiocontrol")
+                                                                    {
+                                                                    <div class="radio-list" style="display: inline-flex">
+
+                                                                        @foreach (var picklistitem in rowitems.Picklist)
+                                                                        {
+                                                                            <label class="radio-inline">
+                                                                                @{ String DefaultVal = picklistitem.DefaultValue.ToString().ToLower() == "false" ? "0" : picklistitem.DefaultValue.ToString().ToLower() == "true" ? "1" : String.Empty;
+
+                                                                                   if (DefaultVal == picklistitem.Value)
+                                                                                   {
+                                                                                    <input @rowitems.Disabled data-disabled="@rowitems.Disabled" @rowitems.Disabled type="radio" data-subgrid="@IsSubGridProp" name="@rowitems.LogicalName" class="booleanclicker bpfformtrigger brformtrigger"  checked value="@picklistitem.Value"  data-type="@rowitems.Type" data-attribute="yes">@picklistitem.Label
+                                                                                   }
+                                                                                   else if (picklistitem.DefaultValue == picklistitem.Value)
+                                                                                   {
+                                                                                    <input @rowitems.Disabled data-disabled="@rowitems.Disabled" @rowitems.Disabled type="radio" data-subgrid="@IsSubGridProp" name="@rowitems.LogicalName"  class="booleanclicker bpfformtrigger brformtrigger" checked value="@picklistitem.Value"  data-type="@rowitems.Type" data-attribute="yes">@picklistitem.Label
+                                                                                   }
+                                                                                   else
+                                                                                   {
+                                                                                    <input @rowitems.Disabled data-disabled="@rowitems.Disabled" @rowitems.Disabled type="radio" name="@rowitems.LogicalName" class="booleanclicker bpfformtrigger brformtrigger" value="@picklistitem.Value"  data-type="@rowitems.Type" data-attribute="yes">@picklistitem.Label
+                                                                                   }
+                                                                                }
+                                                                            </label>                                                                                    
+                                                                              
+                                                                        }
+                                                                    </div>
+                                                                    }
+                                                                    else if (n != null && n.name.ToLower() == "checkboxcontrol")
+                                                                    {
+                                                                    <div class="checkbox-list">
+
+                                                                        @{ String DefaultVal = rowitems.Picklist[0].DefaultValue.ToLower() == "false" ? String.Empty : rowitems.Picklist[0].DefaultValue.ToString().ToLower() == "true" ? "checked" : String.Empty;}
+                                                                        <input data-subgrid="@IsSubGridProp" @rowitems.Disabled  data-disabled="@rowitems.Disabled" @rowitems.Disabled type="checkbox"  @DefaultVal name="@rowitems.LogicalName" class="checkboxclicker bpfformtrigger brformtrigger"   data-type="@rowitems.Type" data-attribute="yes">
+                                                                    </div>
+                                                                    }
+                                                                }
+                                                            </div>
+                                                        }
+                                                        <!-- #endregion -->
+
+                                                        @if (@rowitems.ElementType == "subgrid")
+                                                        {                                                               
+                                                            <div class="col-md-12">
+                                                                <!-- BEGIN EXAMPLE TABLE PORTLET-->
+                                                                <div class="portlet light" data-subgridlogicalname="@rowitems.SubGridsAndLookups.SubGridLogicalName">
+                                                                    <div class="portlet-title">
+                                                                        @if (Convert.ToBoolean(rowitems.ShowLabel) == true)
+                                                                        {
+                                                                    
+                                                                            <div class="caption">
+                                                                                <i class="fa fa-cogs font-green-sharp"></i>
+
+                                                                                <span class="caption-subject font-green-sharp bold uppercase">@rowitems.Label</span>
+                                                                            </div>
+                                                                       
+                                                                        }
+                                                                    </div>
+                                                                    <div class="portlet-body">
+                                                                        <div class="table-toolbar">
+                                                                        </div>
+
+                                                                        <table class="table table-striped table-bordered table-hover grid"   data-update="@ViewData["Detail"]" data-editable="@ViewData["IsEditable"]"  data-subgridid="@rowitems.SubGridId" data-parentid="@Model.ParentId" data-relationshipname="@rowitems.RelationShipName" data-subgridlogicalname="@rowitems.SubGridsAndLookups.SubGridLogicalName" data-updateformid="@rowitems.SubGridsAndLookups.UpdateFormId"  data-newformid="@rowitems.SubGridsAndLookups.NewFormId" data-viewid="@rowitems.ViewId.Replace("{", "").Replace("}", "")"  data-type="subgrid" data-widgetguid="@Model.WidgetGuid" data-widgetid="@Model.WidgetId" data-pagewidgetid="@Model.PageWidgetId">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                </tr>
+
+
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            </tbody>
+                                                                        </table>
+
+                                                                        <div id="responsive_main_@Model.PageWidgetId" data-divtype="subgrid" class='modal fade modal-scroll' tabindex='-1' data-replace='true'>
+                                                                            <div class='modal-dialog modal-full'>
+                                                                                <div class='modal-content'>
+
+
+                                                                                    <div class='modal-body'>
+                                                                                        <div id="responsive_@Model.PageWidgetId"></div>
+                                                                                    </div>
+                                                                                    <div class='modal-footer'>
+                                                                                        <button type='button' data-dismiss='modal' class='btn'>@LanguageModel.Close</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <!-- END EXAMPLE TABLE PORTLET-->
+                                                            </div>                                                     
+                                                        }
+
+                                                    </div>
+                                                    }
+                                                }
+
+                                            </div>
+
+                                        </div>
+                                    }
+                                </div>
+                                
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                            { count = count + 1; }
+                            if (tabs.Count == count - 1 && Model.IsSignature != String.Empty)
+                            {
+                                if (Convert.ToBoolean(Convert.ToInt32(Model.IsSignature)) == true)
+                                {
+                                    if (ViewData["Detail"] != "1")
+                                    {
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a class="accordion-toggle accordion-toggle-styled" data-toggle="collapse" data-parent="#accordion_@Model.WidgetId" href="#collapse_@count">Signature</a>
+                        </h4>
+                    </div>
+                    <div id="collapse_@count" class="panel-collapse in">
+                        <div class="panel-body" data-entityname="@item.EntityName">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="signaturediv">
+                                        <div id="signature-pad" class="m-signature-pad">
+                                            <div class="m-signature-pad--body">
+                                                <canvas></canvas>
+                                            </div>
+                                            <div class="m-signature-pad--footer">
+                                                @*<button class="" >Clear</button>*@
+                                                <button data-action="clear" class="btn green button clear">Clear</button>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                                    }
+                                }
+
+                            }
+            }
+        </div>
+
+        @if (ViewData["Detail"] == "1")
+        {
+            if (!String.IsNullOrEmpty(Convert.ToString(ViewData["IsEditable"])))
+            {
+                if (Convert.ToString(ViewData["IsEditable"]) == "true")
+                {
+            <div class="row">
+                <div class="col-md-3 col-md-9" style="margin-bottom: 5px;">
+                    @if (String.IsNullOrEmpty(Convert.ToString(ViewData["IscomingFromSubGrid"])))
+                    {
+                        <button type="submit" class="btn green updater">@LanguageModel.Update</button>
+                    }
+                    else
+                    {
+                        <button type="submit" class="btn green subgridupdater">@LanguageModel.Update</button>
+                    }
+                </div>
+            </div>
+                }
+                else
+                {
+                    GeneralDisabled = "disabled";
+                }
+            }
+        }
+        else
+        {
+            <div class="row">
+                <div class="col-md-3 col-md-9" style="margin-bottom: 5px;">
+                    <button type="submit" class="btn green submitter">@LanguageModel.Save</button>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
+
+<!-- END ACCORDION PORTLET-->

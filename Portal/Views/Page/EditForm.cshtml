@@ -1,0 +1,128 @@
+﻿@model Portal.Models.GeneralModel
+
+<style>
+
+    .page-header {
+        height : 10%;
+    }
+</style>
+
+@section MyOtherJavascript {
+
+    @Styles.Render("~/Content/ExternalLibraries/JqueryDateTimePicker/jquery.datetimepicker.css")
+    @Styles.Render("~/Content/Css/CustomCss.css")
+    @Styles.Render("~/assets/global/plugins/select2/select2.css")
+    @Styles.Render("~/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.css")
+    @Styles.Render("~/Content/ExternalLibraries/SignaturePad/signature-pad.css")
+    @Styles.Render("~/assets/global/plugins/bootstrap-toastr/toastr.min.css")
+
+    @Scripts.Render("~/assets/global/plugins/select2/select2.min.js")
+    @Scripts.Render("~/assets/global/plugins/datatables/media/js/jquery.dataTables.min.js")
+    @Scripts.Render("~/assets/global/plugins/datatables/plugins/bootstrap/dataTables.bootstrap.js")
+    @Scripts.Render("~/Content/ExternalLibraries/JqueryDateTimePicker/jquery.datetimepicker.js")
+    @Scripts.Render("~/Content/ExternalLibraries/SignaturePad/signature_pad.js")
+    @Scripts.Render("~/Content/Javascript/GeneralFunctions.js")
+    @Scripts.Render("~/Content/Javascript/BuildPage.js")
+
+    @if (Model.ExtraViewModel.IsComingFromSubGrid != "modal")
+    {
+        @Scripts.Render("~/Content/ExternalLibraries/download.js")
+        @Styles.Render("~/assets/global/plugins/jquery-file-upload/css/jquery.fileupload.css")
+        @Styles.Render("~/assets/global/plugins/jquery-file-upload/css/jquery.fileupload-ui.css")
+
+    }
+    @if (Model.WidgetDataViewModel.Count > 0)
+    {
+        if (!String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromSubGrid))
+        {
+        @Scripts.Render("~/Content/Javascript/SubGridForm.js") 
+        }
+        else if (!String.IsNullOrEmpty(Model.ExtraViewModel.IsComingLookupDetail))
+        {
+        @Scripts.Render("~/Content/Javascript/LookupDetail.js") 
+        }
+        else
+        {
+        @Scripts.Render("~/Content/Javascript/EditForm.js")         
+        
+        }
+    }
+    else
+    {
+        @Scripts.Render("~/Content/Javascript/EditForm.js") 
+    }
+
+
+    @Scripts.Render("~/assets/global/plugins/bootstrap-toastr/toastr.min.js")
+
+}
+
+  @{ Portal.Models.WidgetModel models = new Portal.Models.WidgetModel(); }
+<script>
+    var dataarray = [];
+</script>
+
+
+@foreach (var item in Model.WidgetDataViewModel)
+{
+    item.WidgetId = Model.ExtraViewModel != null ? Model.ExtraViewModel.WidgetId : "99";
+    item.PageWidgetId = Model.ExtraViewModel != null ? Model.ExtraViewModel.PageWidgetId : "99";
+    
+    @Html.Raw("<div class='row'>")
+    @Html.Partial("~/Views/Page/Form.cshtml", item, new ViewDataDictionary { { "class", "col-lg-12 col-md-12 col-sm-12 col-xs-12" },
+                                                                             { "Detail", "1" }, 
+                                                                             { "IsEditable", Model.ExtraViewModel.Editable },
+                                                                             { "IsOwnerShip", Model.ExtraViewModel.Ownership }, 
+                                                                             { "IscomingFromSubGrid", Model.ExtraViewModel.IsComingFromSubGrid },
+                                                                             { "LanguageModel" , Model.LocalizationModel},
+                                                                             { "formopenstyle" , Model.ExtraViewModel.FormOpenType },
+                                                                             { "iscomingfromlookup" , Model.ExtraViewModel.IsComingLookupDetail },  })
+    @Html.Raw("</div>")
+   
+    if (String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromSubGrid))
+    {
+     
+        if (@ViewData["Personel"] != "1")
+        {
+            if (System.Web.HttpContext.Current.Request.Cookies[Request.Url.Authority + "usernameguidcookie"] != null)
+            {
+                models = ((List<Portal.Models.WidgetModel>)System.Web.HttpContext.Current.Application[Request.Cookies[Request.Url.Authority + "usernameguidcookie"].Values[0] + "widgets"]).Where(p => p.pagewidgetid.Equals(item.PageWidgetId)).FirstOrDefault();
+            }
+        }   
+
+    }
+    <script>   
+        
+        var dataarray = $.grep(dataarray, function(value) {
+            return value.LookupDetail != 1;
+        });
+
+        var dataarray = $.grep(dataarray, function(value) {
+            return value.SubGridDetail != 1;
+        });
+
+        var SubGridInitialValueArray = [];
+        var obj ={};
+        obj.Id = @Html.Raw("'" + @item.PageWidgetId + "'");
+        obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(models));
+        SubGridInitialValueArray.push(obj);
+
+        var obj ={};
+        obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(item.FormDatas));
+        obj.IsVisible = @Html.Raw(Model.MenuViewModel.IsVisible);
+        obj.Id = @Html.Raw("'" + item.PageWidgetId + "'");
+        obj.EntityId = @Html.Raw("'" + @item.FormLayout.EntityId + "'");
+        obj.DateTime = @Html.Raw("'" + long.Parse(DateTime.Now.ToString("yyyyMMddHHmmss")) + "'");
+
+        @if(!String.IsNullOrEmpty(Model.ExtraViewModel.IsComingLookupDetail))
+        {
+            @Html.Raw("obj.LookupDetail = " )   @Html.Raw("'1';");
+        }
+         @if(!String.IsNullOrEmpty(Model.ExtraViewModel.IsComingFromSubGrid))
+        {
+            @Html.Raw("obj.SubGridDetail = " )   @Html.Raw("'1';");
+        }
+        dataarray.push(obj);
+    </script> 
+}
+

@@ -1,0 +1,16 @@
+﻿@model Portal.Models.GeneralModel 
+<!-- BEGIN PAGE CONTENT INNER -->
+
+@Styles.Render("~/assets/admin/pages/css/error.css")
+@{ String ErrorMess = Model.ExtraViewModel.ErrorMessage == null || Model.ExtraViewModel.ErrorMessage == String.Empty ? "Oops! Something went wrong." : Model.ExtraViewModel.ErrorMessage;}
+<div class="row">
+    <div class="col-md-12 page-500">
+        <div class=" number" style="letter-spacing:0px !important; font-size:60px">
+           @ErrorMess
+        </div>
+       
+    </div>
+</div>
+<!-- END PAGE CONTENT INNER -->
+
+

@@ -1,0 +1,110 @@
+﻿@model Portal.Models.WidgetDataModel
+
+@{String classname = Portal.Helper.PortalHelper.GetBootStrapClass(Model.Width);
+  var Localization = (Portal.Models.LocalizationModel)ViewData["localization"]; }
+
+
+@if (Model.WidgetType == "calendar")
+            {
+    <script>                
+        var obj ={};
+        obj.Id =  @Html.Raw("'" + Model.WidgetId + "'");
+        obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Values));
+        calendararray.push(obj);
+    </script>
+}
+else if (Model.WidgetType == "chart")
+            {
+    <script>                
+        var obj ={};
+        obj.ChartType = @Html.Raw("'" + Model.ChartType + "'");
+        obj.Id =  @Html.Raw("'" + Model.PageWidgetId + "'");
+        obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.ChartData));
+        obj.ChartColor =  @Html.Raw("'" + Model.ChartColor + "'");
+        obj.ChartFontSize =  @Html.Raw("'" + Model.ChartFontSize + "'");
+        obj.ChartFontFamily =  @Html.Raw("'" + Model.ChartFontFamily + "'");
+        obj.Is3D =  @Html.Raw("'" + Model.Is3D + "'");
+        obj.ChartLegendPosition =  @Html.Raw("'" + Model.ChartLegendPosition + "'");
+        obj.IsHandWrite =  @Html.Raw("'" + Model.IsHandWrite + "'");
+        obj.LabelText =  @Html.Raw("'" + Model.LabelText + "'");
+
+        chartarray.push(obj);
+    </script>
+}
+else if (Model.WidgetType == "grid")
+            {
+        
+    <script>                
+        var obj ={};
+        obj.Id = @Html.Raw("'" + Model.PageWidgetId.Trim() + "'");
+        obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.GridData));
+        obj.Actions = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.Actions.OrderBy(p => Convert.ToInt32(p.Order)).Where(p => p.WidgetType.Equals("1") && String.IsNullOrEmpty(p.FormActions))));
+        obj.ActionButtonsCount = @Html.Raw("'" + Model.Actions.Where(p => p.WidgetType.Equals("1") && String.IsNullOrEmpty(p.FormActions)).ToList().Count + "'");
+        obj.PercentageTotalWidth = @Html.Raw("'" + Model.PercentageofTotalWidth + "'");
+        obj.IsExcelExport = @Html.Raw("'" + Model.IsExcelExport + "'");
+        gridarray.push(obj);
+    </script>
+
+}
+else if (Model.WidgetType == "picture")
+            {
+        
+    <script>                
+        var obj ={};
+        obj.Id = @Html.Raw("'" + Model.PageWidgetId.Trim() + "'");
+        obj.data = @Html.Raw(Newtonsoft.Json.JsonConvert.SerializeObject(Model.PictureData));
+        obj.PercentageTotalWidth = @Html.Raw("'" + Model.PercentageofTotalWidth + "'");
+    </script>
+
+}
+@if (Model.WidgetType == "calculatedfield")
+{
+    @Html.Partial("~/Views/Page/CalculatedField.cshtml", Model, new ViewDataDictionary { { "class", classname } })
+            
+}
+else if (Model.WidgetType == "chart")
+{
+    @Html.Partial("~/Views/Page/Chart.cshtml", Model, new ViewDataDictionary { { "class", classname } })
+}
+else if (Model.WidgetType == "form")
+{
+    @Html.Partial("~/Views/Page/Form.cshtml", Model, new ViewDataDictionary { { "class", classname }, { "IsOwnerShip", Model.IsOwnership }, { "LanguageModel", Localization } })   
+}
+else if (Model.WidgetType == "updateform")
+{
+    @Html.Partial("~/Views/Page/EditFormPartial.cshtml", Model, new ViewDataDictionary { { "class", classname }, { "Detail", "1" }, { "editable", Model.IsEditable }, { "IsOwnerShip", Model.IsOwnership }, { "LanguageModel", Localization } })
+           
+}
+else if (Model.WidgetType == "grid")
+{            
+    @Html.Partial("~/Views/Page/Grid.cshtml", Model, new ViewDataDictionary { { "class", classname }, { "LanguageModel", Localization } })
+}
+else if (Model.WidgetType == "calendar")
+{              
+
+    @Html.Partial("~/Views/Page/Calendar.cshtml", new ViewDataDictionary { { "class", classname }, { "id", Model.WidgetId }, { "name", Model.Name } })
+}
+else if (Model.WidgetType == "login")
+{
+    @Html.Partial("~/Views/Page/Login.cshtml", Model, new ViewDataDictionary { { "class", classname }, { "LanguageModel", Localization }, { "ExtraModel", ViewData["ExtraModel"] } })
+}
+else if (Model.WidgetType == "htmlwidget")
+{              
+    @Html.Partial("~/Views/Page/HTMLWidget.cshtml", new ViewDataDictionary { { "class", classname }, { "id", Model.WidgetId }, { "name", Model.Name }, { "html", Model.HTML } })
+}
+else if (Model.WidgetType == "picture")
+{              
+    @Html.Partial("~/Views/Page/PictureWidget.cshtml", new ViewDataDictionary { { "class", classname }, { "id", Model.WidgetId }, { "name", Model.Name }, { "picture", Model.PictureData } })
+}
+else if (Model.WidgetType == "link")
+{              
+    @Html.Partial("~/Views/Page/LinkWidget.cshtml", Model, new ViewDataDictionary { { "class", classname }, { "id", Model.WidgetId }, { "name", Model.Name } })
+}
+else if (Model.WidgetType == "field")
+{              
+    @Html.Partial("~/Views/Page/FieldWidget.cshtml", Model, new ViewDataDictionary { { "class", classname }, { "id", Model.WidgetId }, { "name", Model.Name } })
+}
+else if (Model.WidgetType == "notification")
+{              
+    @Html.Partial("~/Views/Page/NotificationWidget.cshtml", Model, new ViewDataDictionary { { "class", classname }, { "id", Model.WidgetId }, { "name", Model.Name }, { "LanguageModel", Localization }  })
+}
