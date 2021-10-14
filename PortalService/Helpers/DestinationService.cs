@@ -31,7 +31,7 @@ namespace PortalService
             String UseSSL, String IsOffice365, String ConfigurationId, String UseCache,Boolean UseUniqeInstansce = false)
         {
 
-            String PortalKey = "!xRMLink?PoRtA1";
+            String PortalKey = "";
             Password = Helpers.DecryptRijndael(Password, PortalKey);
             //second depth
             String ConfID = ConfigurationId.ToUpper().Replace("{", "").Replace("}", "");
